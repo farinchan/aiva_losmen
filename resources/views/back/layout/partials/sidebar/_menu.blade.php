@@ -182,7 +182,7 @@
                     </div><!--end:Menu content-->
                 </div><!--end:Menu item--><!--begin:Menu item-->
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{ route("back.pengguna.owner") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-user-tick fs-2">
                                 <span class="path1"></span>
@@ -194,7 +194,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{ route("back.pengguna.admin") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-user-edit fs-2">
                                 <span class="path1"></span>
@@ -206,7 +206,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{ route("back.pengguna.pelanggan") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-people fs-2">
                                 <span class="path1"></span>
@@ -215,7 +215,7 @@
                                 <span class="path4"></span>
                                 <span class="path5"></span>
                             </i>
-                        </span><span class="menu-title">Pengguna Biasa
+                        </span><span class="menu-title">Pelanggan
                         </span>
                     </a>
                 </div>

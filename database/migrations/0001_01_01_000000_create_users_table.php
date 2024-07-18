@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 20);
             $table->string('email', 50)->unique();
-            $table->string('username', 20)->unique();
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('no_telp', 15)->nullable();
             $table->string('foto')->nullable();
