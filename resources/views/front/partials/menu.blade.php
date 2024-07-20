@@ -67,25 +67,34 @@
             </div>
             <div class="thmv-leftmenu-option">
                 <ul class="thmv-option-nav" data-sm-skip="true">
-                    <li>
-                         <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                <img style="width: 40px"
-                                    src="https://play-lh.googleusercontent.com/jInS55DYPnTZq8GpylyLmK2L2cDmUoahVacfN_Js_TsOkBEoizKmAl5-p8iFeLiNjtE=w526-h296-rw"
-                                    class="img-thumbnail me-3" alt="...">
-                                Fajri Rinaldi Chan
-                            </button>
+                    @auth
+                        <li>
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <img style="width: 40px"
+                                        src="https://play-lh.googleusercontent.com/jInS55DYPnTZq8GpylyLmK2L2cDmUoahVacfN_Js_TsOkBEoizKmAl5-p8iFeLiNjtE=w526-h296-rw"
+                                        class="img-thumbnail me-3" alt="...">
+                                    Fajri Rinaldi Chan
+                                </button>
                             </div>
-                    </li>
-                    {{-- <li>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Login
-                            </button>
-                        </div>
-                    </li> --}}
+                        </li>
+                        <li>
+                            <a class="text-light py-3" href="#" title="">
+                                <i class="fas fa-ticket-alt me-2"></i>
+                                Pesanan Saya
+                            </a>
+                        </li>
+                    @else
+                        <li>
+                            <div class="d-grid gap-2">
+                                <a href="{{ route('auth.login') }}" class="btn btn-outline-light">
+                                    Login
+                                </a>
+                            </div>
+                        </li>
+                    @endauth
+
                 </ul>
             </div>
         </div>

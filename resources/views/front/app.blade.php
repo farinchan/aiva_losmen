@@ -67,7 +67,7 @@
     <!-- custom JS -->
     <script src="{{ asset('front/js/custom.js') }}"></script>
 
-    <script></script>
+    @yield('scripts')
 </body>
 
 </html>

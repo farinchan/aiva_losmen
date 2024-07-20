@@ -100,12 +100,13 @@ Created by Bellevue Theme
       padding: 0; 
       background: transparent;
     }
+    select:focus,
     button:focus,
     input:focus{
       outline: none;
       box-shadow:none !important;
     }
-    input,textarea {
+    select, input,textarea {
       font-family: 'Trirong', sans-serif;
       display: block; 
       font-size: 16px; 
@@ -117,6 +118,7 @@ Created by Bellevue Theme
     textarea{
         resize:none;
     }
+    select:focus,
     input:focus,
     textarea:focus,
     .form-select:focus,
@@ -775,7 +777,7 @@ Created by Bellevue Theme
            padding: 0 10px;
        }
        .datepick-ctrl .datepick-cmd:hover {
-           background-color: rgb(28 23 21 / 20%);s
+           background-color: rgb(28 23 21 / 20%);
            color: #1C1715;
        }
        .datepick-popup .datepick-nav .datepick-cmd-today,
@@ -2817,15 +2819,18 @@ Created by Bellevue Theme
             margin-top: 20px;
         }
         .thmv-contact-form form input,
+        .thmv-contact-form form select,
         .thmv-contact-form form textarea{
             height: 50px;
             border-radius:0;
         }
         .thmv-bg-dark .thmv-contact-form form input::placeholder,
+        .thmv-bg-dark .thmv-contact-form form select::placeholder,
         .thmv-bg-dark .thmv-contact-form form textarea::placeholder{
             color:#ffffff;
         }
         .thmv-bg-dark .thmv-contact-form form input,
+        .thmv-bg-dark .thmv-contact-form form select,
         .thmv-bg-dark .thmv-contact-form form textarea{
             border-color:#ffffff50;
             color:#ffffff;

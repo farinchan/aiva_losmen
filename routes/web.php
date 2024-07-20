@@ -1,11 +1,20 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::prefix('auth')->name('auth.')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register', [AuthController::class, 'registerProcess'])->name('register.process');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 Route::prefix('back')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
