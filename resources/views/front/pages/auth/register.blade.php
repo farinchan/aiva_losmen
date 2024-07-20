@@ -12,39 +12,71 @@
                     <div class="thmv-form-title">
                         <h2 class="text-capitalize thmv-title-effect">Register </h2>
                     </div>
-                    <form class="row g-3 has-validation">
+                    <form class="row g-3 has-validation" enctype="multipart/form-data" method="POST"
+                        action="{{ route('auth.register.process') }}">
+                        @csrf
                         <div class="col-md-12">
                             <img src="{{ asset('front/images/image_placeholder.jpg') }}"
-                                style="width: 200px; height: 200px; cursor: pointer;" class="img-thumbnail" id="image_placeholder">
+                                style="width: 200px; height: 200px; cursor: pointer;" class="img-thumbnail"
+                                id="image_placeholder">
                             <input type="file" name="foto" id="image" style="display: none;">
                             <p style="margin: 0; padding: 0">
-                                <small style="margin: 0; padding: 0" >*Klik gambar untuk mengganti foto, Ratio 1:1, Max 2MB
+                                <small style="margin: 0; padding: 0">*Klik gambar untuk mengganti foto, Ratio 1:1, Max 2MB
                                 </small>
                             </p>
 
                         </div>
                         <div class="col-md-12">
-                            <input name="name" required="" type="text" class="form-control"
-                                placeholder="*Nama Lengkap">
+                            <input name="name" required="" type="text"
+                                class="form-control @if ($errors->has('name')) is-invalid @endif"
+                                placeholder="*Nama Lengkap" value="{{ old('name') }}">
+                            @error('name')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="col-md-12">
-                            <select style="border: 1px solid #000000;"
-                             name="jenis_kelamin" id="" class="form-control">
+                            <select style="border: 1px solid #000000;" name="jenis_kelamin" id=""
+                                class="form-control @if ($errors->has('jenis_kelamin')) is-invalid @endif">
                                 <option selected disabled>*Pilih Jenis Kelamin</option>
-                                <option value="L">Laki - Laki</option>
-                                <option value="P">Perempuan</option>
+                                <option value="L" @if (old('jenis_kelamin') == 'L') selected @endif>Laki - Laki
+                                </option>
+                                <option value="P" @if (old('jenis_kelamin') == 'P') selected @endif>Perempuan</option>
                             </select>
+                            @error('jenis_kelamin')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="col-md-12">
-                            <input name="no_telp" required="" type="tel" class="form-control"
-                                placeholder="*Nomor Telephone">
+                            <input name="no_telp" required="" type="tel" class="form-control @if ($errors->has('no_telp')) is-invalid @endif"
+                                value="{{ old('no_telp') }}" placeholder="*Nomor Telephone">
+                            @error('no_telp')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="col-md-12">
-                            <input name="email" required="" type="email" class="form-control" placeholder="*Email">
+                            <input name="email" required="" type="email" class="form-control @if ($errors->has('email')) is-invalid @endif" placeholder="*Email"
+                                value="{{ old('email') }}">
+                            @error('email')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="col-md-12">
-                            <input name="password" required="" type="password" class="form-control"
-                                placeholder="*Password">
+                            <input name="password" required="" type="password" class="form-control @if ($errors->has('password')) is-invalid @endif"
+                                value="{{ old('password') }}" placeholder="*Password">
+                            @error('password')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
                         </div>
 
                         <div class="col-12">

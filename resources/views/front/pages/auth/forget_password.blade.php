@@ -12,14 +12,15 @@
                     <div class="thmv-form-title">
                         <h2 class="text-capitalize thmv-title-effect">Forget Password</h2>
                     </div>
-                    <form class="row g-3 has-validation">
+                    <form class="row g-3 has-validation" action="{{ route("auth.forget-password.process") }}" method="POST">
+                        @csrf
                         <div class="col-md-12">
                             <p>
                                 Masukkan email yang terdaftar, kami akan mengirimkan kode reset password ke email anda.
                             </p>
                         </div>
                         <div class="col-md-12">
-                            <input required="" type="email" class="form-control" id="youremail"
+                            <input required="" type="email" class="form-control" id="youremail" name="email" value="{{ old("email") }}"
                                 placeholder="*Email">
                         </div>
                         <div class="col-12">

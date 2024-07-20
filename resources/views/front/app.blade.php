@@ -60,14 +60,19 @@
 
 
     <!-- bootstrap JS -->
-
     <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
     <!-- Slick Slider JS -->
     <script src="{{ asset('front/plugin/slick/js/slick.min.js') }}"></script>
     <!-- custom JS -->
     <script src="{{ asset('front/js/custom.js') }}"></script>
+    <!-- Sweetalert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('scripts')
+
+    @include('sweetalert::alert')
+
+
 </body>
 
 </html>

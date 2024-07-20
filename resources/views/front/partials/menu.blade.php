@@ -73,16 +73,23 @@
                                 <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     <img style="width: 40px"
-                                        src="https://play-lh.googleusercontent.com/jInS55DYPnTZq8GpylyLmK2L2cDmUoahVacfN_Js_TsOkBEoizKmAl5-p8iFeLiNjtE=w526-h296-rw"
-                                        class="img-thumbnail me-3" alt="...">
-                                    Fajri Rinaldi Chan
+                                        src="@if (auth()->user()->foto) {{ Storage::url('uploads/pengguna/' . auth()->user()->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ auth()->user()->name }} @endif"
+                                        class="img-thumbnail me-3" alt="{{ auth()->user()->name }}">
+                                    {{ auth()->user()->name }}
                                 </button>
                             </div>
                         </li>
                         <li>
-                            <a class="text-light py-3" href="#" title="">
+                            <a class="text-light py-3 mt-3" href="#" title="">
                                 <i class="fas fa-ticket-alt me-2"></i>
                                 Pesanan Saya
+                            </a>
+
+                        </li>
+                        <li>
+                            <a class="text-light py-3" href="{{ route('auth.logout') }}" title="">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Logout
                             </a>
                         </li>
                     @else
