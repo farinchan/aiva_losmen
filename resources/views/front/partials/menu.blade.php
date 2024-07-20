@@ -6,7 +6,7 @@
                     data-bs-target="#offcanvasWithBothOptions">
                     <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
                 </a>
-                <div class="d-flex d-none d-md-block">
+                {{-- <div class="d-flex d-none d-md-block">
                     <ul class="navbar-nav flex-row align-items-center ml-3" data-sm-skip="true">
                         <li class="nav-item thmv-menu-drop thmv-language-select">
                             <select class="form-select" aria-label="Default select example">
@@ -16,7 +16,7 @@
                             </select>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
             <button class="navbar-toggler d-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -49,7 +49,7 @@
             <div class="thmv-leftside-menu">
                 <nav id="cd-lateral-nav">
                     <ul class="cd-navigation">
-                        <li><a class="active" href="#" title="">Beranda</a></li>
+                        <li><a class="@if (request()->is('/')) active  @endif" href="{{ route("home") }}" title="">Beranda</a></li>
                         <li><a href="#" title="">Semua Kamar</a></li>
                         <li class="item-has-children">
                             <a href="#">Tipe Kamar</a>
@@ -70,13 +70,12 @@
                     @auth
                         <li>
                             <div class="d-grid gap-2">
-                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                <a href="{{ route("profile") }}" class="btn btn-outline-light" >
                                     <img style="width: 40px"
                                         src="@if (auth()->user()->foto) {{ Storage::url('uploads/pengguna/' . auth()->user()->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ auth()->user()->name }} @endif"
                                         class="img-thumbnail me-3" alt="{{ auth()->user()->name }}">
                                     {{ auth()->user()->name }}
-                                </button>
+                                </a>
                             </div>
                         </li>
                         <li>

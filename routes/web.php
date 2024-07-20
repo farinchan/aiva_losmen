@@ -5,8 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::put('/my-profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+
 
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
