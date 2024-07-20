@@ -13,6 +13,8 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerProcess'])->name('register.process');
+    Route::get('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password');
+    Route::post('/forget-password', [AuthController::class, 'forgetPasswordProcess'])->name('forget-password.process');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

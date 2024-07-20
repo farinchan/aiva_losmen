@@ -10,26 +10,23 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-12 mx-auto thmv-contact-form my-5">
                     <div class="thmv-form-title">
-                        <h2 class="text-capitalize thmv-title-effect">Login </h2>
+                        <h2 class="text-capitalize thmv-title-effect">Forget Password</h2>
                     </div>
                     <form class="row g-3 has-validation">
+                        <div class="col-md-12">
+                            <p>
+                                Masukkan email yang terdaftar, kami akan mengirimkan kode reset password ke email anda.
+                            </p>
+                        </div>
                         <div class="col-md-12">
                             <input required="" type="email" class="form-control" id="youremail"
                                 placeholder="*Email">
                         </div>
-                        <div class="col-md-12">
-                            <input required="" type="password" class="form-control" id="yourpassword"
-                                placeholder="*Password">
-                        </div>
-                        <div class="col-md-12 text-end">
-                            <a href="{{ route("auth.forget-password") }}">Lupa Password?</a>
-                        </div>
-                        
                         <div class="col-12">
-                            <button type="submit" class="btn-full-filled btn btn-primary w-100">Login</button>
+                            <button type="submit" class="btn-full-filled btn btn-primary w-100">Send Reset Code</button>
                         </div>
                         <p class="text-center">
-                            Belum punya akun? <a href="{{ route('auth.register') }}">Register Disini</a>
+                            Sudah punya akun? <a href="{{ route('auth.login') }}">Login Disini</a>
                         </p>
                     </form>
                 </div>

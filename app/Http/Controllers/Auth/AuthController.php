@@ -16,4 +16,9 @@ class AuthController extends Controller
     {
         return view('front.pages.auth.register');
     }
+
+    public function forgetPassword()
+    {
+        return view('front.pages.auth.forget_password');
+    }
 }
