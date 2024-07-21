@@ -22,7 +22,7 @@
                             </i>
                             <input type="text" data-kt-user-table-filter="search"
                                 class="form-control form-control-solid w-250px ps-13"
-                                placeholder="Cari Metode Pembayaran" />
+                                placeholder="Cari Tipe Kamar" />
                         </div>
                         <!--end::Search-->
                     </div>
@@ -42,7 +42,7 @@
                             <!--begin::Add user-->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#kt_modal_add_user">
-                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Metode Pembayaran</button>
+                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Tipe Kamar</button>
                             <!--end::Add user-->
                         </div>
                         <!--end::Toolbar-->
@@ -150,7 +150,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header" id="kt_modal_add_user_header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bold">Tambah Metode Pembayaran</h2>
+                                        <h2 class="fw-bold">Tambah Tipe Kamar</h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -167,7 +167,7 @@
                                     <div class="modal-body px-5 my-7">
                                         <!--begin::Form-->
                                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                                            action="{{ route('back.metode-pembayaran.store') }}">
+                                            action="{{ route('back.tipe-kamar.store') }}">
                                             @csrf
                                             <!--begin::Scroll-->
                                             <div class="d-flex flex-column scroll-y px-5 px-lg-10"
@@ -178,12 +178,12 @@
                                                 data-kt-scroll-offset="300px">
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
-                                                    <label class="required fw-semibold fs-6 mb-2">Nama Rekening</label>
+                                                    <label class="required fw-semibold fs-6 mb-2">Nama Tipe Kamar</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="nama_rek"
+                                                    <input type="text" name="nama"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Nama Rekening" value="{{ old('nama_rek') }}"
+                                                        placeholder="Nama Tipe" value="{{ old('nama') }}"
                                                         required />
                                                     <!--end::Input-->
                                                 </div>
@@ -191,164 +191,10 @@
                                                 <!--begin::Input group-->
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
-                                                    <label class="required fw-semibold fs-6 mb-2">Nomor Rekening</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <input type="number" name="no_rek"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="No. Rekening" value="{{ old('no_rek') }}" required />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <div class="mb-5">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-semibold fs-6 mb-5">BANK</label>
-
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="bpd-aceh"
-                                                                id="kt_modal_update_role_option_0" checked='checked' />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/BPD-Aceh.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">Bank BPD Aceh</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank Pembangunan Daerah Aceh
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="bsi"
-                                                                id="kt_modal_update_role_option_0" />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/BSI.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">BSI</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank BSI
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="BRI"
-                                                                id="kt_modal_update_role_option_0" />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/BRI.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">BRI</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank BRI
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="BNI"
-                                                                id="kt_modal_update_role_option_0" />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/BNI.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">BNI</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank BNI
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="Mandiri"
-                                                                id="kt_modal_update_role_option_0" />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/Mandiri.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">Mandiri</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank Mandiri
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="BCA"
-                                                                id="kt_modal_update_role_option_0" />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/BCA.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">BCA</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank BCA
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="BTN"
-                                                                id="kt_modal_update_role_option_0" />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/BTN.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">BTN</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank BTN
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="bank"
-                                                                type="radio" value="BTPN"
-                                                                id="kt_modal_update_role_option_0" />
-                                                            <img class="w-45px me-3"
-                                                                src="{{ asset('front/bank_logo/BTPN.png') }}"
-                                                                alt="">
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">BTPN</div>
-                                                                <div class="text-gray-600">
-                                                                    Metode Pembayaran dengan Bank BTPN
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-
-
+                                                    <label class="required fw-semibold fs-6 mb-2">Deskripsi</label>
+                                                    <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="deskripsi" cols="30" rows="10" placeholder="Deskripsi" >
+                                                        {{ old("deskripsi") }}
+                                                    </textarea>
                                                 </div>
                                             </div>
                                             <!--end::Scroll-->
@@ -391,14 +237,13 @@
                                             data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                     </div>
                                 </th>
-                                <th class="min-w-125px">Nama Rekening</th>
-                                <th class="min-w-125px">Nomor Rekening</th>
-                                <th class="min-w-125px">Bank</th>
+                                <th class="min-w-125px">Nama Tipe kamar</th>
+                                <th class="min-w-125px">Deskripsi</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 fw-semibold">
-                            @foreach ($metode_pembayaran as $metode)
+                            @foreach ($tipe_kamar as $tipe)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -407,38 +252,11 @@
                                     </td>
                                     <td>
                                         <a href="apps/customers/view.html"
-                                            class="text-gray-800 text-hover-primary mb-1">{{ $metode->nama_rek }}</a>
+                                            class="text-gray-800 text-hover-primary mb-1">{{ $tipe->nama }}</a>
                                     </td>
                                     <td>
                                         <a href="#"
-                                            class="text-gray-600 text-hover-primary mb-1">{{ $metode->no_rek }}</a>
-                                    </td>
-                                    <td data-filter="mastercard">
-                                        @if ($metode->bank == 'bpd-aceh')
-                                            <img src="{{ asset('front/bank_logo/BPD-Aceh.png') }}" class="w-35px me-3"
-                                                alt="" />Bank {{ $metode->bank }}
-                                        @elseif ($metode->bank == 'BSI')
-                                            <img src="{{ asset('front/bank_logo/BSI.png') }}" class="w-35px me-3" alt="" />
-                                            Bank {{ $metode->bank }}
-                                        @elseif ($metode->bank == 'BRI')
-                                            <img src="{{ asset('front/bank_logo/BRI.png') }}" class="w-35px me-3" alt="" />
-                                            Bank {{ $metode->bank }}
-                                        @elseif ($metode->bank == 'BNI')
-                                            <img src="{{ asset('front/bank_logo/BNI.png') }}" class="w-35px me-3" alt="" />
-                                            Bank {{ $metode->bank }}
-                                        @elseif ($metode->bank == 'Mandiri')
-                                            <img src="{{ asset('front/bank_logo/Mandiri.png') }}" class="w-35px me-3"
-                                                alt="" />Bank {{ $metode->bank }}
-                                        @elseif ($metode->bank == 'BCA')
-                                            <img src="{{ asset('front/bank_logo/BCA.png') }}" class="w-35px me-3" alt="" />
-                                            Bank {{ $metode->bank }}
-                                        @elseif ($metode->bank == 'BTN')
-                                            <img src="{{ asset('front/bank_logo/BTN.png') }}" class="w-35px me-3" alt="" />
-                                            Bank {{ $metode->bank }}
-                                        @elseif ($metode->bank == 'BTPN')
-                                            <img src="{{ asset('front/bank_logo/BTPN.png') }}" class="w-35px me-3" alt="" />
-                                            Bank {{ $metode->bank }}
-                                        @endif
+                                            class="text-gray-600 text-hover-primary mb-1">{{ $tipe->deskripsi }}</a>
                                     </td>
                                     <td class="text-end">
                                         <a href="#"
@@ -451,13 +269,13 @@
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_edit_user{{ $metode->id }}">Edit</a>
+                                                    data-bs-target="#kt_modal_edit_user{{ $tipe->id }}">Edit</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_delete_user{{ $metode->id }}">Delete</a>
+                                                    data-bs-target="#kt_modal_delete_user{{ $tipe->id }}">Delete</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
@@ -477,8 +295,8 @@
     </div>
     <!--end::Content-->
 
-    @foreach ($metode_pembayaran as $metode)
-        <div class="modal fade" id="kt_modal_edit_user{{ $metode->id }}" tabindex="-1" aria-hidden="true">
+    @foreach ($tipe_kamar as $tipe)
+        <div class="modal fade" id="kt_modal_edit_user{{ $tipe->id }}" tabindex="-1" aria-hidden="true">
             <!--begin::Modal dialog-->
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <!--begin::Modal content-->
@@ -486,7 +304,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_add_user_header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bold">Edit Metode Pembayaran</h2>
+                        <h2 class="fw-bold">Edit Tipe Kamar</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
@@ -501,7 +319,7 @@
                     <div class="modal-body px-5 my-7">
                         <!--begin::Form-->
                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                            action="{{ route('back.metode-pembayaran.update', $metode->id) }}"
+                            action="{{ route('back.tipe-kamar.update', $tipe->id) }}"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
@@ -512,160 +330,21 @@
                                 data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                 <div class="fv-row mb-7">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Nama Rekening</label>
+                                    <label class="required fw-semibold fs-6 mb-2">Nama Tipe Kamar</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="text" name="nama_rek"
-                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nama Rekening"
-                                        value="{{ $metode->nama_rek }}" required />
+                                    <input type="text" name="nama"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        placeholder="Nama Tipe" value="{{ $tipe->nama }}"
+                                        required />
                                     <!--end::Input-->
                                 </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
                                 <div class="fv-row mb-7">
                                     <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-2">Nomor Rekening</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input type="number" name="no_rek"
-                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="No. Rekening"
-                                        value="{{ $metode->no_rek }}" required />
-                                    <!--end::Input-->
-                                </div>
-                                <div class="mb-5">
-                                    <!--begin::Label-->
-                                    <label class="required fw-semibold fs-6 mb-5">BANK</label>
-
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'bpd-aceh') checked='checked' @endif value="bpd-aceh"
-                                                id="kt_modal_update_role_option_0" checked='checked' />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/BPD-Aceh.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">Bank BPD Aceh</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank Pembangunan Daerah Aceh
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'BSI') checked='checked' @endif
-                                                value="BSI" id="kt_modal_update_role_option_0" />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/BSI.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">BSI</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank BSI
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'BRI') checked='checked' @endif
-                                                value="BRI" id="kt_modal_update_role_option_0" />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/BRI.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">BRI</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank BRI
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'BNI') checked='checked' @endif
-                                                value="BNI" id="kt_modal_update_role_option_0" />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/BNI.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">BNI</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank BNI
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'Mandiri') checked='checked' @endif
-                                                value="Mandiri" id="kt_modal_update_role_option_0" />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/Mandiri.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">Mandiri</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank Mandiri
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'BCA') checked='checked' @endif
-                                                value="BCA" id="kt_modal_update_role_option_0" />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/BCA.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">BCA</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank BCA
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'BTN') checked='checked' @endif
-                                                value="BTN" id="kt_modal_update_role_option_0" />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/BTN.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">BTN</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank BTN
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="bank" type="radio"
-                                                @if ($metode->bank == 'BTPN') checked='checked' @endif
-                                                value="BTPN" id="kt_modal_update_role_option_0" />
-                                            <img class="w-45px me-3" src="{{ asset('front/bank_logo/BTPN.png') }}"
-                                                alt="">
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">BTPN</div>
-                                                <div class="text-gray-600">
-                                                    Metode Pembayaran dengan Bank BTPN
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-
-
+                                    <label class="required fw-semibold fs-6 mb-2">Deskripsi</label>
+                                    <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="deskripsi" cols="30" rows="10" placeholder="Deskripsi" >
+                                        {{ $tipe->deskripsi }}
+                                    </textarea>
                                 </div>
                             </div>
                             <!--end::Scroll-->
@@ -687,7 +366,7 @@
             </div>
             <!--end::Modal dialog-->
         </div>
-        <div class="modal fade" id="kt_modal_delete_user{{ $metode->id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="kt_modal_delete_user{{ $tipe->id }}" tabindex="-1" aria-hidden="true">
             <!--begin::Modal dialog-->
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <!--begin::Modal content-->
@@ -695,7 +374,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_add_user_header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bold">Hapus Metode Pembayaran</h2>
+                        <h2 class="fw-bold">Hapus Tipe Kamar</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
@@ -710,11 +389,11 @@
                     <div class="modal-body px-5">
                         <!--begin::Form-->
                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                            action="{{ route('back.metode-pembayaran.destroy', $metode->id) }}">
+                            action="{{ route('back.tipe-kamar.destroy', $tipe->id) }}">
                             @method('DELETE')
                             @csrf
                             <h3 class="text-center">
-                                Apakah Anda Yakin Ingin Menghapus Metode Pembayaran {{ $metode->nama_rek }} ?
+                                Apakah Anda Yakin Ingin Menghapus Tipe Kamar {{ $tipe->nama_rek }} ?
                             </h3>
                             <div class="text-center pt-10">
                                 <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal"
@@ -741,4 +420,5 @@
     <script src="{{ asset('back/js/custom/apps/user-management/users/list/export-users.js') }}"></script>
     <script src="{{ asset('back/js/custom/apps/user-management/users/list/add.js') }}"></script>
     <!--end::Custom Javascript-->
+  
 @endsection

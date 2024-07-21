@@ -11,4 +11,5 @@ class Tipe extends Model
 
     protected $table = 'tipe';
     protected $guarded = ['id'];
+    public $timestamps = false;
 }

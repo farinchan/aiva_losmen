@@ -63,7 +63,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route("back.tipe-kamar.index") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>

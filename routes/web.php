@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\MetodePembayaranController;
+use App\Http\Controllers\Back\TipeKamarController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProfileController;
@@ -36,6 +37,13 @@ Route::prefix('back')->name('back.')->group(function () {
         Route::post('/store', [MetodePembayaranController::class, 'store'])->name('store');
         Route::put('/update/{id}', [MetodePembayaranController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [MetodePembayaranController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('tipe-kamar')->name('tipe-kamar.')->group(function () {
+        Route::get('/', [TipeKamarController::class, 'index'])->name('index');
+        Route::post('/store', [TipeKamarController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [TipeKamarController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [TipeKamarController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {
