@@ -11,5 +11,12 @@ class MetodePembayaran extends Model
 
     protected $table = 'metode_pembayaran';
     protected $guarded = ['id'];
+    public $timestamps = false;
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'metode_pembayaran_id', 'id');
+    }
+
     
 }

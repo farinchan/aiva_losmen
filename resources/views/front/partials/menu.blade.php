@@ -24,7 +24,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end show" id="navbarSupportedContent">
-                <a class="navbar-brand mx-auto d-none d-md-block" href="index.html">Logotype</a>
+                <a class="navbar-brand mx-auto d-none d-md-block" href="index.html">
+                    <img src="{{ asset("front/images/aiva_losmen_logo.png") }}" width="170px" alt="">
+                </a>
                 <div class="d-flex thmv-right-menu">
                     <ul class="thmv-social d-none d-lg-flex">
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -33,7 +35,7 @@
                     </ul>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn-outline" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">book now</button>
+                        data-bs-target="#exampleModal">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
@@ -43,7 +45,10 @@
         <div class="thmv-offcanvas-header">
             <a href="javascript:void(0)" title="" class="thmv-menu-officon" data-bs-dismiss="offcanvas"
                 aria-label="Close"><i class="fas fa-times"></i></a>
-            <h5 class="thmv-offcanvas-title" id="offcanvasExampleLabel">Logotype</h5>
+            <h5 class="thmv-offcanvas-title" id="offcanvasExampleLabel">
+                <img src="{{ asset("front/images/aiva_losmen_logo.png") }}" width="170px" alt="">
+
+            </h5>
         </div>
         <div class="offcanvas-body thmv-offcanvas-body">
             <div class="thmv-leftside-menu">

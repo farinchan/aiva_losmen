@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\DashboardController;
+use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProfileController;
@@ -29,6 +30,13 @@ Route::prefix('auth')->name('auth.')->group(function () {
 
 Route::prefix('back')->name('back.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::prefix('metode-pembayaran')->name('metode-pembayaran.')->group(function () {
+        Route::get('/', [MetodePembayaranController::class, 'index'])->name('index');
+        Route::post('/store', [MetodePembayaranController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [MetodePembayaranController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [MetodePembayaranController::class, 'destroy'])->name('destroy');
+    });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {
         Route::get('/pelanggan', [UserController::class, 'pelanggan'])->name('pelanggan');

@@ -19,9 +19,9 @@
                             <img src="{{ asset('front/images/image_placeholder.jpg') }}"
                                 style="width: 200px; height: 200px; cursor: pointer;" class="img-thumbnail"
                                 id="image_placeholder">
-                            <input type="file" name="foto" id="image" style="display: none;">
+                            <input type="file" name="foto" id="image" style="display: none;" accept="image/*">
                             <p style="margin: 0; padding: 0">
-                                <small style="margin: 0; padding: 0">*Klik gambar untuk mengganti foto, Ratio 1:1, Max 2MB
+                                <small style="margin: 0; padding: 0">*Klik gambar untuk Menambah foto, Ratio 1:1, Max 2MB
                                 </small>
                             </p>
 

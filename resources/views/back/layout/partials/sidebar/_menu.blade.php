@@ -100,7 +100,7 @@
                     </div><!--end:Menu content-->
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{ route("back.metode-pembayaran.index") }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-two-credit-cart fs-2">
                                 <span class="path1"></span>
