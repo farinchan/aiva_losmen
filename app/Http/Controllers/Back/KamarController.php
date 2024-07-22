@@ -100,7 +100,7 @@ class KamarController extends Controller
             'tipe_kamar' => Tipe::all(),
             'fasilitas_kamar' => Fasilitas::all(),
             'kamar' => Kamar::find($id),
-            'fasilitas' => FasilitasKamar::where('kamar_id', $id)->get(),
+            'fasilitas_detail' => FasilitasKamar::where('kamar_id', $id)->get(),
         ];
         return view('back.pages.kamar.edit_kamar', $data);
     }
@@ -133,7 +133,7 @@ class KamarController extends Controller
             return redirect()->back();
         }
         $kamar = Kamar::find($id);
-        $kamar->tip_id = $request->tipe_id;
+        $kamar->tipe_id = $request->tipe_id;
         $kamar->nomor_kamar = $request->nomor_kamar;
         $kamar->kapasitas = $request->kapasitas;
         $kamar->harga = $request->harga;
@@ -160,5 +160,13 @@ class KamarController extends Controller
         Alert::success('Berhasil', 'Data kamar berhasil diubah');
         return redirect()->route('back.kamar.index');
 
+    }
+
+    public function destroy($id)
+    {
+        FasilitasKamar::where('kamar_id', $id)->delete();
+        Kamar::find($id)->delete();
+        Alert::success('Berhasil', 'Data kamar berhasil dihapus');
+        return redirect()->route('back.kamar.index');
     }
 }
