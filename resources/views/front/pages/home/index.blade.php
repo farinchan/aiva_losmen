@@ -7,11 +7,11 @@
             <div class="row">
                 <div class="col-lg-8 col-md-12 ">
                     <div class="thmv-banner-title thmv-bg-glass">
-                        <h1>TRAVELLERS CHOICE <br>AWARD 2019</h1>
-                        <p class="opacity-full">Take a deep dive and try our list of over 40 unique generators, find
-                            placeholder images for your next design, or add a lorem ipsum plugin to the CMS or text editor
-                            of your choice.</p>
-                        <a href="#" class="btn-full-filled">Book Now</a>
+                        <h1>WELCOME TO<br>AIVA LOSMEN</h1>
+                        <p class="opacity-full"> Aiva Losmen adalah tempat penginapan yang nyaman dan aman untuk anda
+                            beristirahat dengan harga yang terjangkau dan fasilitas yang lengkap.
+                        </p>
+                        <a href="#" class="btn-full-filled">Booking</a>
                     </div>
                 </div>
             </div>
@@ -95,69 +95,22 @@
     </div>
     <!-- booking section End -->
     <!-- ======Banner Section End====== -->
-
     <!-- Header Section End -->
-    <!-- facilities section start -->
-    <section class="thmv-facilities-sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="thmv-facilities-img">
-                        <img src="{{ asset('front/images/facilities/residence-img.jpg') }}" alt="">
-                    </div>
-                    <div class="thmv-facilities-info">
-                        <h5><strong>R</strong>esidence</h5>
-                        <p class="thmv-p-light">32 spacious rooms and 4 cottages, made in the style of the unique New York,
-                            Stockholm and Paris, as well as a whole loft-style building.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="thmv-facilities-img">
-                        <img src="{{ asset('front/images/facilities/gastronomy-img.jpg') }}" alt="">
-                    </div>
-                    <div class="thmv-facilities-info">
-                        <h5><strong>G</strong>astronomy</h5>
-                        <p class="thmv-p-light">Our restaurants offer cuisine of the highest standard: Russian, European,
-                            barbecue menus and culinary delights with a touch of exotic from our chef.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="thmv-facilities-img">
-                        <img src="{{ asset('front/images/facilities/wellness-spa-img.jpg') }}" alt="">
-                    </div>
-                    <div class="thmv-facilities-info">
-                        <h5><strong>W</strong>ellness & SPA</h5>
-                        <p class="thmv-p-light">An oasis of peace and well-being! Great health and elated mood are born
-                            here, and sport turns into relaxation. Choose for the best!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="thmv-facilities-img">
-                        <img src="{{ asset('front/images/facilities/events-img.jpg') }}" alt="">
-                    </div>
-                    <div class="thmv-facilities-info">
-                        <h5><strong>E</strong>vents</h5>
-                        <p class="thmv-p-light">We have everything for organizing business events, weddings and outdoor
-                            activities: convenient transport links, fresh air, competent staff.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- facilities section End -->
+
     <!-- our hotel section start -->
     <section class="thmv-our-hotel container-fluid">
         <div class="row">
             <div class="container">
                 <div class="row">
                     <div class="thmv-sec-title text-center">
-                        <h2 class="thmv-title-effect-center text-uppercase">Our hotel</h2>
+                        <h2 class="thmv-title-effect-center text-uppercase">Tentang Losmen Kami</h2>
                     </div>
                     <div class="thmv-hotel-info w-75 mx-auto text-center">
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic
-                            or web designs. The passage is attributed to an unknown typesetter in the 15th century who is
-                            thought to have scrambled parts of Cicero's De Finibus</p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
+                        <p> Aiva Losmen Menjadi tempat penginapan yang menawarkan kenyamanan dan keamanan bagi para tamu
+                            yang menginap. Dengan harga yang terjangkau dan fasilitas yang lengkap, kami berkomitmen
+                            memberikan pelayanan terbaik bagi para tamu yang menginap di Aiva Losmen.
+                        </p>
+                        <a class="read-more-btn" href="#">Baca Lebih Lanjut <i class="fas fa-plus"></i></a>
                     </div>
                 </div>
             </div>
@@ -182,9 +135,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 thmv-wel-text">
-                    <h2 class="thmv-br-mob-none">Welcome to <br>Paradise!</h2>
+                    <h2 class="thmv-br-mob-none">Welcome to <br> Our Losment</h2>
                     <a href="#" class="btn-outline-light" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"><i class="fas fa-play"></i>&nbsp;&nbsp; Watch the video</a>
+                        data-bs-target="#staticBackdrop"><i class="fas fa-play"></i>&nbsp;&nbsp; nonton video Ini</a>
                     <!-- Modal Start -->
                     <div class="row thmv-video-sec">
                         <div class="col-lg-12 thmv-video-modal">
@@ -197,8 +150,8 @@
                                                 <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
                                                     aria-label="Close"><i class="fas fa-times"></i></button>
                                                 <div class="embed-container">
-                                                    <iframe src="https://www.youtube.com/embed/EngW7tLk6R8" allowfullscreen
-                                                        allow="autoplay;"></iframe>
+                                                    <iframe src="https://www.youtube.com/embed/pt63-ENyKjs?si=XcfgnlZZ4HdjTZoq" allowfullscreen
+                                                        allow="autoplay;" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,13 +164,13 @@
                 </div>
                 <div class="col-lg-6 offset-lg-1 thmv-wel-info">
                     <div class="thmv-paragraph">
-                        <p class="mb-4">Aenean hendrerit maximus aliquet. Pellentesque interdum odio dui, vitae eleifend
-                            nibh aliquet ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                            cubilia Curae; Nunc diam lorem, condimentum non justo. Etiam rhoncus finibus lorem sit amet
-                            ullamcorper.</p>
-                        <p>The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph,
-                            page, etc.) that doesn't distract from the layout. A practice not without controversy, laying
-                            out pages with meaningless.</p>
+                        <p class="mb-4">
+                            Ayo menginap di Aiva Losmen dan nikmati kenyamanan dan keamanan yang kami tawarkan.
+                        </p>
+                        <p>Kami percaya bahwa setiap tamu yang menginap di Aiva Losmen adalah bagian dari keluarga kami.
+                            Kami berkomitmen untuk memberikan pelayanan terbaik dan membuat tamu merasa nyaman selama
+                            menginap di Aiva Losmen. Kami berharap tamu yang menginap di Aiva Losmen dapat merasa seperti di
+                            rumah sendiri dan menikmati waktu yang menyenangkan selama menginap di Aiva Losmen.</p>
                     </div>
                     <div class="thmv-brand-logo">
                         <img src="{{ asset('front/images/brand-logo/travelweek-logo.png') }}" alt="">

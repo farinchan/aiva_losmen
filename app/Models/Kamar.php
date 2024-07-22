@@ -11,4 +11,14 @@ class Kamar extends Model
 
     protected $table = 'kamar';
     protected $guarded = ['id'];
+
+    public function tipe()
+    {
+        return $this->belongsTo(Tipe::class, 'tipe_id', 'id');
+    }
+
+    public function fasilitasKamar()
+    {
+        return $this->hasMany(FasilitasKamar::class, 'kamar_id', 'id');
+    }
 }

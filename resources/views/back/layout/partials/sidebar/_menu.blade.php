@@ -54,7 +54,7 @@
                         </span><span class="menu-title">Kamar</span><span class="menu-arrow"></span></span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route("back.kamar.create") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -72,7 +72,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route("back.kamar.index") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>

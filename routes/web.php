@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\FasilitasKamarController;
+use App\Http\Controllers\Back\KamarController;
 use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\TipeKamarController;
 use App\Http\Controllers\Back\UserController;
@@ -52,6 +53,14 @@ Route::prefix('back')->name('back.')->group(function () {
         Route::post('/store', [TipeKamarController::class, 'store'])->name('store');
         Route::put('/update/{id}', [TipeKamarController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [TipeKamarController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('kamar')->name('kamar.')->group(function () {
+        Route::get('/', [KamarController::class, 'index'])->name('index');
+        Route::get('/create', [KamarController::class, 'create'])->name('create');
+        Route::post('/store', [KamarController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [KamarController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [KamarController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {
