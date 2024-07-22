@@ -44,6 +44,37 @@ class TipeKamarController extends Controller
         return redirect()->back();
     }
 
+    public function update(Request $request, $id)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Gagal', 'Data tidak lengkap');
+            return redirect()->back();
+        }
+
+        $tipe_kamar = Tipe::find($id);
+        $tipe_kamar->nama = $request->nama;
+        $tipe_kamar->deskripsi = $request->deskripsi;
+        $tipe_kamar->save();
+
+        Alert::success('Berhasil', 'Data berhasil diubah');
+        return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $tipe_kamar = Tipe::find($id);
+        $tipe_kamar->delete();
+
+        Alert::success('Berhasil', 'Data berhasil dihapus');
+        return redirect()->back();
+    }
+
 
 }
  

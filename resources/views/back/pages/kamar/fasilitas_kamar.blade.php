@@ -13,20 +13,15 @@
                                 <span class="path2"></span>
                             </i>
                             <input type="text" data-kt-user-table-filter="search"
-                                class="form-control form-control-solid w-250px ps-13" placeholder="Cari Tipe Kamar" />
+                                class="form-control form-control-solid w-250px ps-13" placeholder="Cari Fasilitas Kamar" />
                         </div>
                     </div>
                     <div class="card-toolbar">
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                            <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
-                                data-bs-target="#kt_modal_export_users">
-                                <i class="ki-duotone ki-exit-up fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                </i>Export</button>
+
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#kt_modal_add_user">
-                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Tipe Kamar</button>
+                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Fasilitas Kamar</button>
                         </div>
                         <div class="d-flex justify-content-end align-items-center d-none" {{-- data-kt-user-table-toolbar="selected" --}}>
                             <div class="fw-bold me-5">
@@ -35,68 +30,11 @@
                             <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete
                                 Selected</button>
                         </div>
-                        <div class="modal fade" id="kt_modal_export_users" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered mw-650px">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h2 class="fw-bold">Export Users</h2>
-                                        <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                            data-kt-users-modal-action="close">
-                                            <i class="ki-duotone ki-cross fs-1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
-                                        </div>
-                                    </div>
-                                    <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                                        <form id="kt_modal_export_users_form" class="form" action="#">
-                                            <div class="fv-row mb-10">
-                                                <label class="fs-6 fw-semibold form-label mb-2">Pilih Bank:</label>
-                                                <select name="role" data-control="select2"
-                                                    data-placeholder="Select a role" data-hide-search="true"
-                                                    class="form-select form-select-solid fw-bold">
-                                                    <option selected value="">Semua</option>
-                                                    <option value="bpd-aceh">BPD-Aceh</option>
-                                                    <option value="BSI">BSI</option>
-                                                    <option value="BRI">BRI</option>
-                                                    <option value="BNI">BNI</option>
-                                                    <option value="Mandiri">Mandiri</option>
-                                                    <option value="BCA">BCA</option>
-                                                    <option value="BTN">BTN</option>
-                                                    <option value="BTPN">BTPN</option>
-                                                </select>
-                                            </div>
-                                            <div class="fv-row mb-10">
-                                                <label class="required fs-6 fw-semibold form-label mb-2">Pilih Format
-                                                    Export:</label>
-                                                <select name="format" data-control="select2"
-                                                    data-placeholder="Select a format" data-hide-search="true"
-                                                    class="form-select form-select-solid fw-bold">
-                                                    <option selected value="excel">Excel</option>
-                                                    <option value="pdf">PDF</option>
-                                                </select>
-                                            </div>
-                                            <div class="text-center">
-                                                <button type="reset" class="btn btn-light me-3"
-                                                    data-kt-users-modal-action="cancel">Discard</button>
-                                                <button type="submit" class="btn btn-primary"
-                                                    data-kt-users-modal-action="submit">
-                                                    <span class="indicator-label">Submit</span>
-                                                    <span class="indicator-progress">Please wait...
-                                                        <span
-                                                            class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered mw-650px">
                                 <div class="modal-content">
                                     <div class="modal-header" id="kt_modal_add_user_header">
-                                        <h2 class="fw-bold">Tambah Tipe Kamar</h2>
+                                        <h2 class="fw-bold">Tambah Fasilitas Kamar</h2>
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
                                             data-kt-users-modal-action="close">
                                             <i class="ki-duotone ki-cross fs-1">
@@ -107,7 +45,8 @@
                                     </div>
                                     <div class="modal-body px-5 my-7">
                                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                                            action="{{ route('back.tipe-kamar.store') }}">
+                                            action="{{ route('back.fasilitas-kamar.store') }}"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             <div class="d-flex flex-column scroll-y px-5 px-lg-10"
                                                 id="kt_modal_add_user_scroll" data-kt-scroll="true"
@@ -116,17 +55,22 @@
                                                 data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
                                                 data-kt-scroll-offset="300px">
                                                 <div class="fv-row mb-7">
-                                                    <label class="required fw-semibold fs-6 mb-2">Nama Tipe Kamar</label>
+                                                    <label class="required fw-semibold fs-6 mb-2">Nama Fasilitas
+                                                        Kamar</label>
                                                     <input type="text" name="nama"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
                                                         placeholder="Nama Tipe" value="{{ old('nama') }}" required />
                                                 </div>
                                                 <div class="fv-row mb-7">
-                                                    <label class="required fw-semibold fs-6 mb-2">Deskripsi</label>
-                                                    <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="deskripsi" cols="30" rows="10"
-                                                        placeholder="Deskripsi">
-                                                        {{ old('deskripsi') }}
-                                                    </textarea>
+                                                    <label class="required fw-semibold fs-6 mb-2">Detail</label>
+                                                    <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="detail" rows="3" placeholder="Detail">{{ old('detail') }}</textarea>
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <label class="required fw-semibold fs-6 mb-2">Icon</label>
+                                                    <input type="file" name="icon"
+                                                        accept="image/png, image/jpeg, image/jpg"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0" required />
+                                                    <span class="form-text text-muted">Icon disarankan berukuran < 128px</span>
                                                 </div>
                                             </div>
                                             <div class="text-center pt-10">
@@ -157,13 +101,14 @@
                                             data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                     </div>
                                 </th>
-                                <th class="min-w-125px">Nama Tipe kamar</th>
+                                <th class="min-w-125px">Nama Fasilitas kamar</th>
                                 <th class="min-w-125px">Deskripsi</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
+
                         </thead>
                         <tbody class="text-gray-600 fw-semibold">
-                            @foreach ($tipe_kamar as $tipe)
+                            @foreach ($fasilitas_kamar as $fasilitas)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -171,15 +116,19 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="ms-5">
-                                            <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold">
-                                                {{ $tipe->nama }}
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="symbol symbol-50px">
+                                                <span class="symbol-label"
+                                                    style="background-image:url(@if ($fasilitas->icon) {{ Storage::url('uploads/fasilitas/' . $fasilitas->icon) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $fasilitas->name }} @endif);"></span>
                                             </a>
+                                            <div class="ms-5">
+                                                <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold"
+                                                    data-kt-ecommerce-product-filter="product_name">{{ $fasilitas->nama }}</a>
+                                            </div>
                                         </div>
-
                                     </td>
-                                    <td>
-                                        {{ $tipe->deskripsi }}
+                                    <td class="pe-0">
+                                        <span class="fw-bold">{{ $fasilitas->detail }}</span>
                                     </td>
                                     <td class="text-end">
                                         <a href="#"
@@ -190,11 +139,11 @@
                                             data-kt-menu="true">
                                             <div class="menu-item px-3">
                                                 <a class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_edit_user{{ $tipe->id }}">Edit</a>
+                                                    data-bs-target="#kt_modal_edit_user{{ $fasilitas->id }}">Edit</a>
                                             </div>
                                             <div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_delete_user{{ $tipe->id }}">Delete</a>
+                                                    data-bs-target="#kt_modal_delete_user{{ $fasilitas->id }}">Delete</a>
                                             </div>
                                         </div>
                                     </td>
@@ -206,12 +155,12 @@
             </div>
         </div>
     </div>
-    @foreach ($tipe_kamar as $tipe)
-        <div class="modal fade" id="kt_modal_edit_user{{ $tipe->id }}" tabindex="-1" aria-hidden="true">
+    @foreach ($fasilitas_kamar as $fasilitas)
+        <div class="modal fade" id="kt_modal_edit_user{{ $fasilitas->id }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
                     <div class="modal-header" id="kt_modal_add_user_header">
-                        <h2 class="fw-bold">Edit Tipe Kamar</h2>
+                        <h2 class="fw-bold">Edit Fasilitas Kamar</h2>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span
@@ -220,7 +169,8 @@
                     </div>
                     <div class="modal-body px-5 my-7">
                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                            action="{{ route('back.tipe-kamar.update', $tipe->id) }}" enctype="multipart/form-data">
+                            action="{{ route('back.fasilitas-kamar.update', $fasilitas->id) }}"
+                            enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll"
@@ -228,17 +178,22 @@
                                 data-kt-scroll-dependencies="#kt_modal_add_user_header"
                                 data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Nama Tipe Kamar</label>
+                                    <label class="required fw-semibold fs-6 mb-2">Nama Fasilitas
+                                        Kamar</label>
                                     <input type="text" name="nama"
-                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nama Tipe"
-                                        value="{{ $tipe->nama }}" required />
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        placeholder="Nama Tipe" value="{{ $fasilitas->nama }}" required />
                                 </div>
                                 <div class="fv-row mb-7">
-                                    <label class="required fw-semibold fs-6 mb-2">Deskripsi</label>
-                                    <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="deskripsi" cols="30" rows="10"
-                                        placeholder="Deskripsi">
-                                        {{ $tipe->deskripsi }}
-                                    </textarea>
+                                    <label class="required fw-semibold fs-6 mb-2">Detail</label>
+                                    <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="detail" rows="3" placeholder="Detail">{{ $fasilitas->detail }}</textarea>
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <label class=" fw-semibold fs-6 mb-2">Icon</label>
+                                    <input type="file" name="icon"
+                                        accept="image/png, image/jpeg, image/jpg"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"  />
+                                    <span class="form-text text-muted">Icon disarankan berukuran < 128px</span>
                                 </div>
                             </div>
                             <div class="text-center pt-10">
@@ -253,11 +208,11 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="kt_modal_delete_user{{ $tipe->id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="kt_modal_delete_user{{ $fasilitas->id }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
                     <div class="modal-header" id="kt_modal_add_user_header">
-                        <h2 class="fw-bold">Hapus Tipe Kamar</h2>
+                        <h2 class="fw-bold">Hapus Fasilitas Kamar</h2>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span
@@ -266,11 +221,11 @@
                     </div>
                     <div class="modal-body px-5">
                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                            action="{{ route('back.tipe-kamar.destroy', $tipe->id) }}">
+                            action="{{ route('back.fasilitas-kamar.destroy', $fasilitas->id) }}">
                             @method('DELETE')
                             @csrf
                             <h3 class="text-center">
-                                Apakah Anda Yakin Ingin Menghapus Tipe Kamar {{ $tipe->nama }} ?
+                                Apakah Anda Yakin Ingin Menghapus Fasilitas Kamar {{ $fasilitas->nama }} ?
                             </h3>
                             <div class="text-center pt-10">
                                 <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal"
@@ -288,6 +243,5 @@
 @endsection
 @section('scripts')
     <script src="{{ asset('back/js/custom/apps/user-management/users/list/table.js') }}"></script>
-    <script src="{{ asset('back/js/custom/apps/user-management/users/list/export-users.js') }}"></script>
     <script src="{{ asset('back/js/custom/apps/user-management/users/list/add.js') }}"></script>
 @endsection

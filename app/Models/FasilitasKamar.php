@@ -11,4 +11,5 @@ class FasilitasKamar extends Model
 
     protected $table = 'fasilitas_kamar';
     protected $guarded = ['id'];
+    public $timestamps = false;
 }

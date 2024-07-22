@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\DashboardController;
+use App\Http\Controllers\Back\FasilitasKamarController;
 use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\TipeKamarController;
 use App\Http\Controllers\Back\UserController;
@@ -37,6 +38,13 @@ Route::prefix('back')->name('back.')->group(function () {
         Route::post('/store', [MetodePembayaranController::class, 'store'])->name('store');
         Route::put('/update/{id}', [MetodePembayaranController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [MetodePembayaranController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('fasilitas-kamar')->name('fasilitas-kamar.')->group(function () {
+        Route::get('/', [FasilitasKamarController::class, 'index'])->name('index');
+        Route::post('/store', [FasilitasKamarController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [FasilitasKamarController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [FasilitasKamarController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('tipe-kamar')->name('tipe-kamar.')->group(function () {
