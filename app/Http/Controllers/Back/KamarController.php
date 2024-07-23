@@ -169,4 +169,26 @@ class KamarController extends Controller
         Alert::success('Berhasil', 'Data kamar berhasil dihapus');
         return redirect()->route('back.kamar.index');
     }
+
+    public function detail($id)
+    {
+        $data = [
+            'title' => 'Kamar',
+            'menu' => 'Manajemen Kamar',
+            'submenu' => 'Kamar',
+            'kamar' => Kamar::with(['tipe', 'fasilitasKamar'])->find($id),
+        ];
+        return view('back.pages.kamar.detail_kamar', $data);
+    }
+
+    public function ulasan($id)
+    {
+        $data = [
+            'title' => 'Kamar',
+            'menu' => 'Manajemen Kamar',
+            'submenu' => 'Kamar',
+            'kamar' => Kamar::with(['tipe', 'fasilitasKamar', 'ulasan'])->find($id),
+        ];
+        return view('back.pages.kamar.ulasan_kamar', $data);
+    }
 }

@@ -62,6 +62,9 @@ Route::prefix('back')->name('back.')->group(function () {
         Route::get('/edit/{id}', [KamarController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [KamarController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [KamarController::class, 'destroy'])->name('destroy');
+
+        Route::get('/detail/{id}', [KamarController::class, 'detail'])->name('detail');
+        Route::get('/detail/{id}/ulasan', [KamarController::class, 'ulasan'])->name('ulasan');
     });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {
