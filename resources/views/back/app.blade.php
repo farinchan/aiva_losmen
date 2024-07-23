@@ -65,7 +65,6 @@ License: For each use you must have a valid license purchased only from above li
     data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true"
     data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
     @include('back/partials/theme-mode/_init')
-
     <!--begin::App-->
     <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
         <!--begin::Page-->
@@ -78,7 +77,12 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
                     <!--begin::Content wrapper-->
                     <div class="d-flex flex-column flex-column-fluid">
-                        @include('back/layout/partials/_toolbar')
+                        @if (request()->routeIs('back.dashboard'))
+                            @include('back/layout/partials/_toolbar')
+                        @else
+                            @include('back/layout/partials/_toolbar2')
+                        @endif
+
                         @yield('content')
                     </div>
                     <!--end::Content wrapper-->
@@ -91,17 +95,15 @@ License: For each use you must have a valid license purchased only from above li
         <!--end::Page-->
     </div>
     <!--end::App-->
-    @include('back/partials/_drawers')
-
+    {{-- @include('back/partials/_drawers') --}}
     @include('back/partials/_scrolltop')
-
     <!--begin::Modals-->
-    @include('back/partials/modals/_upgrade-plan')
+    {{-- @include('back/partials/modals/_upgrade-plan')
     @include('back/partials/modals/create-app/_main')
     @include('back/partials/modals/_new-target')
     @include('back/partials/modals/_view-users')
     @include('back/partials/modals/users-search/_main')
-    @include('back/partials/modals/_invite-friends')
+    @include('back/partials/modals/_invite-friends') --}}
     <!--end::Modals-->
     <!--begin::Javascript-->
     <script>
@@ -129,11 +131,11 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('back/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('back/js/custom/widgets.js') }}"></script>
-    <script src="{{ asset('back/js/custom/apps/chat/chat.js') }}"></script>
+    {{-- <script src="{{ asset('back/js/custom/apps/chat/chat.js') }}"></script>
     <script src="{{ asset('back/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
     <script src="{{ asset('back/js/custom/utilities/modals/create-app.js') }}"></script>
     <script src="{{ asset('back/js/custom/utilities/modals/new-target.js') }}"></script>
-    <script src="{{ asset('back/js/custom/utilities/modals/users-search.js') }}"></script>
+    <script src="{{ asset('back/js/custom/utilities/modals/users-search.js') }}"></script> --}}
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
     @yield('scripts')

@@ -39,7 +39,11 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (auth()->attempt($credentials)) {
-            return redirect()->route('home');
+            if (auth()->user()->role == 'pelanggan') {
+                return redirect()->route('home');
+            }else{
+                return redirect()->route('back.dashboard');
+            }
         }
 
         Alert::error('Error', 'Email atau password salah');
@@ -98,7 +102,12 @@ class AuthController extends Controller
             $message->subject('Registrasi Berhasil');
         });
 
-        return redirect()->route('home');
+        if (auth()->user()->role == 'pelanggan') {
+            return redirect()->route('home');
+        }else{
+            return redirect()->route('back.dashboard');
+        }
+
     }
 
     public function forgetPassword()
