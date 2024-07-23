@@ -170,7 +170,7 @@
 
                                     </td>
                                     <td>
-                                        {{ $data->harga }}
+                                        @money($data->harga)
                                     </td>
                                     <td>
                                         <div class="badge badge-light-success fw-bold ">{{ $data->kapasitas }}</div>

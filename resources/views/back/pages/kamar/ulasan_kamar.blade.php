@@ -72,7 +72,7 @@
                 <div class="card-header mt-5">
                     <div class="card-title flex-column">
                         <h3 class="fw-bold mb-1">Ulasan</h3>
-                        <div class="fs-6 text-gray-500">Total {{ $kamar->fasilitasKamar->count() }} Ulasan</div>
+                        <div class="fs-6 text-gray-500">Total {{ $kamar->ulasan->count() }} Ulasan</div>
                     </div>
                     <div class="card-toolbar my-1">
                         {{-- <div class="me-6 my-1">
@@ -124,7 +124,7 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="me-5 position-relative">
                                                     <div class="symbol symbol-35px symbol-circle">
-                                                        <img alt="Pic" src="@if ($ulasan->user->photo) {{ Storage::url("images/user".$ulasan->user->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $ulasan->user->name }} @endif" />
+                                                        <img alt="Pic" src="@if ($ulasan->user->foto) {{ Storage::url("uploads/pengguna".$ulasan->user->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $ulasan->user->name }} @endif" />
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
@@ -148,7 +148,10 @@
                                                 @endfor
                                             </div>
                                         </td>
-                                        <td>{{ $ulasan->review }}
+                                        <td> <div class="text-muted">
+
+                                            {{ $ulasan->komentar }}
+                                        </div>
                                         </td>
                                     </tr>
                                 @endforeach

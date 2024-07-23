@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kamar', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tipe_id')->constrained('tipe');
-            $table->string('nomor_kamar', 3)->unique();
+            $table->string('nomor_kamar', 3)->default('0');
             $table->integer('kapasitas')->length(2);
             $table->integer('harga')->length(10);
             $table->text('deskripsi');

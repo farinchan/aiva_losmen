@@ -7,6 +7,7 @@ use App\Http\Controllers\Back\FasilitasKamarController;
 use App\Http\Controllers\Back\KamarController;
 use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\TipeKamarController;
+use App\Http\Controllers\Back\UlasanController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProfileController;
@@ -65,6 +66,10 @@ Route::prefix('back')->name('back.')->group(function () {
 
         Route::get('/detail/{id}', [KamarController::class, 'detail'])->name('detail');
         Route::get('/detail/{id}/ulasan', [KamarController::class, 'ulasan'])->name('ulasan');
+    });
+
+    Route::prefix('ulasan')->name('ulasan.')->group(function () {
+        Route::get('/', [UlasanController::class, 'index'])->name('index');
     });
 
     Route::prefix('pengguna')->name('pengguna.')->group(function () {

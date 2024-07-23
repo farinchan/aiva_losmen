@@ -11,4 +11,14 @@ class Ulasan extends Model
 
     protected $table = 'ulasan';
     protected $guarded = ['id'];
+
+    public function kamar()
+    {
+        return $this->belongsTo(Kamar::class, 'kamar_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
