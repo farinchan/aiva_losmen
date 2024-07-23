@@ -196,7 +196,7 @@
                                                 <a href="{{ route("back.kamar.detail", $data->id) }}" class="menu-link px-3">Detail</a>
                                             </div>
                                             <div class="menu-item px-3">
-                                                <a class="menu-link px-3">Ulasan</a>
+                                                <a href="{{ route("back.kamar.ulasan",  $data->id) }}" class="menu-link px-3">Ulasan</a>
                                             </div>
                                             <div class="menu-item px-3">
                                                 <a href="{{ route('back.kamar.edit', $data->id) }}"

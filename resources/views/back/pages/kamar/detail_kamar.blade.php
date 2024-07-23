@@ -59,11 +59,11 @@
                         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary py-5 me-6 active"
-                                    href="#">Overview</a>
+                                    href="{{ route("back.kamar.detail", $kamar->id) }}">Overview</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary py-5 me-6"
-                                    href="#">Ulasan</a>
+                                    href="{{ route("back.kamar.ulasan", $kamar->id) }}">Ulasan</a>
                             </li>
                         </ul>
                 </div>
