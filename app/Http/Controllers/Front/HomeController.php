@@ -24,4 +24,28 @@ class HomeController extends Controller
         ];
         return view('front.pages.home.index', $data);
     }
+
+    public function about()
+    {
+        $data = [
+            'title' => 'About',
+            'metaTitle' => 'About',
+            'metaDescription' => 'About',
+            'metaKeywords' => 'About',
+            'url' => route('about'),
+        ];
+        return view('front.pages.home.about', $data);
+    }
+
+    public function contact()
+    {
+        $data = [
+            'title' => 'Contact',
+            'metaTitle' => 'Contact',
+            'metaDescription' => 'Contact',
+            'metaKeywords' => 'Contact',
+            'url' => route('contact'),
+        ];
+        return view('front.pages.home.contact', $data);
+    }
 }

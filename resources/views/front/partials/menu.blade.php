@@ -59,12 +59,16 @@
                         <li class="item-has-children">
                             <a href="#">Tipe Kamar</a>
                             <ul class="sub-menu">
-                                <li><a href="room-single-v3.html">Tipe 1</a></li>
-                                <li><a href="room-single-v4.html">Tipe 2</a></li>
+                                @php
+                                    $tipe_kamar = \App\Models\Tipe::all();
+                                @endphp
+                                @foreach ($tipe_kamar as $item)
+                                    <li><a href="" title="">{{ $item->nama }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li><a href="#" title="">Tentang Kami</a></li>
-                        <li><a href="#" title="">Hubungi Kami</a></li>
+                        <li><a href="{{ route("about") }}" title="">Tentang Kami</a></li>
+                        <li><a href="{{ route("contact") }}" title="">Hubungi Kami</a></li>
 
 
                     </ul>

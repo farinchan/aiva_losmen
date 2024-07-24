@@ -136,7 +136,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 thmv-wel-text">
-                    <h2 class="thmv-br-mob-none">Welcome to <br> Our Losment</h2>
+                    <h2 class="thmv-br-mob-none">Ayo Menginap di <br> Aiva Losmen</h2>
                     <a href="#" class="btn-outline-light" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"><i class="fas fa-play"></i>&nbsp;&nbsp; nonton video Ini</a>
                     <!-- Modal Start -->

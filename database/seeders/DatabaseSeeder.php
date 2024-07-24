@@ -112,6 +112,25 @@ class DatabaseSeeder extends Seeder
             'icon' => 'hotwater.png',
         ]);
 
+        Fasilitas::create([
+            'nama' => 'Parkir Gratis',
+            'detail' => 'Parkir gratis untuk tamu hotel.',
+            'icon' => 'parking.png',
+        ]);
+
+        Fasilitas::create([
+            'nama' => 'Keamanan',
+            'detail' => 'Keamanan 24 jam.',
+            'icon' => 'security.png',
+        ]);
+
+        Fasilitas::create([
+            'nama' => 'CCTV',
+            'detail' => 'CCTV di area publik.',
+            'icon' => 'cctv.png',
+        ]);
+
+
         For ($i = 1; $i <= 10; $i++) {
             FasilitasKamar::create([
                 'kamar_id' => $i,
