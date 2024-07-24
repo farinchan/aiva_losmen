@@ -1344,12 +1344,12 @@ Created by Bellevue Theme
     .thmv-backto-top-sticky i{
         font-size:32px;
     }
-    .thmv-messenger-sticky:hover i{
+    /* .thmv-messenger-sticky:hover i{
         transform:rotate(360deg);
-    }
+    } */
     .thmv-messenger-sticky i{
         font-size: 56px;
-        color: #4A78EF;
+        color: #25D366;
          transition: all 0.5s;
     }
     /*----------  Right side floting buttons Section Style  ----------*/

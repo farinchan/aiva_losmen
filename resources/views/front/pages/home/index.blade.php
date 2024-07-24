@@ -110,7 +110,8 @@
                             yang menginap. Dengan harga yang terjangkau dan fasilitas yang lengkap, kami berkomitmen
                             memberikan pelayanan terbaik bagi para tamu yang menginap di Aiva Losmen.
                         </p>
-                        <a class="read-more-btn" href="#">Baca Lebih Lanjut <i class="fas fa-plus"></i></a>
+                        <a class="read-more-btn" href="{{ route('about') }}">Baca Lebih Lanjut <i
+                                class="fas fa-plus"></i></a>
                     </div>
                 </div>
             </div>
@@ -150,8 +151,10 @@
                                                 <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"
                                                     aria-label="Close"><i class="fas fa-times"></i></button>
                                                 <div class="embed-container">
-                                                    <iframe src="https://www.youtube.com/embed/pt63-ENyKjs?si=XcfgnlZZ4HdjTZoq" allowfullscreen
-                                                        allow="autoplay;" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                                                    <iframe
+                                                        src="https://www.youtube.com/embed/pt63-ENyKjs?si=XcfgnlZZ4HdjTZoq"
+                                                        allowfullscreen allow="autoplay;"
+                                                        referrerpolicy="strict-origin-when-cross-origin"></iframe>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,242 +191,70 @@
             <div class="container">
                 <div class="row">
                     <div class="thmv-sec-title text-center">
-                        <h2 class="thmv-title-effect-center text-uppercase">Rooms & Suites</h2>
+                        <h2 class="thmv-title-effect-center text-uppercase">Kamar & Suite Kami</h2>
                     </div>
                     <div class="thmv-rooms-info w-50 mx-auto text-center">
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic
-                            or web designs. </p>
+                        <p>
+                            Aiva Losmen menawarkan berbagai pilihan kamar dan suite yang nyaman dan aman untuk anda
+                            beristirahat dengan ulasan tertinggi dari para tamu yang telah menginap di Aiva Losmen, kami
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row thmv-rooms-img-slider">
             <div class="slick-rooms-slider slider">
-                <div class="thmv-img-gray-hover">
-                    <div class="thmv-room-view">
-                        <img src="{{ asset('front/images/rooms-suites-img/room-1.jpg') }}" alt="Slider image">
-                        <div class="thmv-room-price thmv-bg-glass">
-                            <p>From 50$</p>
+                @foreach ($kamar as $kamar)
+                    <div class="thmv-img-gray-hover">
+                        <div class="thmv-room-view">
+                            <img src="{{ Storage::url("uploads/kamar/" . $kamar->foto ) }}" alt="Slider image">
+                            <div class="thmv-room-price thmv-bg-glass">
+                                <p>@money($kamar->harga )</p>
+                            </div>
+                        </div>
+                        <div class="thmv-room-info">
+                            <h5>{{ $kamar->tipe->nama }} - No. {{ $kamar->nomor_kamar }}</h5>
+                            <h6>⭐ {{ round($kamar->ulasan->avg("rating"), 2)  }}/5 ,Kapasitas {{ $kamar->kapasitas }} orang</h6>
+                            <p>
+                                {{ strip_tags(Str::limit($kamar->deskripsi, 200)) }}
+                            </p>
+                            <a class="read-more-btn" href="#">Lihat Kamar <i class="fas fa-plus"></i></a>
                         </div>
                     </div>
-                    <div class="thmv-room-info">
-                        <h5>SIGNATURE SUITE</h5>
-                        <h6>Sleeps 2, Queen Bed</h6>
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is text used in laying out print, graphic or web
-                            designs. </p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
-                <div class="thmv-img-gray-hover">
-                    <div class="thmv-room-view">
-                        <img src="{{ asset('front/images/rooms-suites-img/room-2.jpg') }}" alt="Slider image">
-                        <div class="thmv-room-price thmv-bg-glass">
-                            <p>From 50$</p>
-                        </div>
-                    </div>
-                    <div class="thmv-room-info">
-                        <h5>SIGNATURE SUITE</h5>
-                        <h6>Sleeps 2, Queen Bed</h6>
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is text used in laying out print, graphic or web
-                            designs. </p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
-                <div class="thmv-img-gray-hover">
-                    <div class="thmv-room-view">
-                        <img src="{{ asset('front/images/rooms-suites-img/room-3.jpg') }}" alt="Slider image">
-                        <div class="thmv-room-price thmv-bg-glass">
-                            <p>From 50$</p>
-                        </div>
-                    </div>
-                    <div class="thmv-room-info">
-                        <h5>SIGNATURE SUITE</h5>
-                        <h6>Sleeps 2, Queen Bed</h6>
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is text used in laying out print, graphic or web
-                            designs. </p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
-                <div class="thmv-img-gray-hover">
-                    <div class="thmv-room-view">
-                        <img src="{{ asset('front/images/rooms-suites-img/room-4.jpg') }}" alt="Slider image">
-                        <div class="thmv-room-price thmv-bg-glass">
-                            <p>From 50$</p>
-                        </div>
-                    </div>
-                    <div class="thmv-room-info">
-                        <h5>SIGNATURE SUITE</h5>
-                        <h6>Sleeps 2, Queen Bed</h6>
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is text used in laying out print, graphic or web
-                            designs. </p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
-                <div class="thmv-img-gray-hover">
-                    <div class="thmv-room-view">
-                        <img src="{{ asset('front/images/rooms-suites-img/room-1.jpg') }}" alt="Slider image">
-                        <div class="thmv-room-price thmv-bg-glass">
-                            <p>From 50$</p>
-                        </div>
-                    </div>
-                    <div class="thmv-room-info">
-                        <h5>SIGNATURE SUITE</h5>
-                        <h6>Sleeps 2, Queen Bed</h6>
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is text used in laying out print, graphic or web
-                            designs. </p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
-                <div class="thmv-img-gray-hover">
-                    <div class="thmv-room-view">
-                        <img src="{{ asset('front/images/rooms-suites-img/room-2.jpg') }}" alt="Slider image">
-                        <div class="thmv-room-price thmv-bg-glass">
-                            <p>From 50$</p>
-                        </div>
-                    </div>
-                    <div class="thmv-room-info">
-                        <h5>SIGNATURE SUITE</h5>
-                        <h6>Sleeps 2, Queen Bed</h6>
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is text used in laying out print, graphic or web
-                            designs. </p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!-- Rooms & Suites section end -->
-    <!-- about covid sec start -->
-    <section class="thmv-covid-sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="thmv-about-covid">
-                        <h2 class="thmv-br-mob-none">About <br>COVID-19</h2>
-                        <p class="thmv-br-none">Aenean hendrerit maximus aliquet. <br>Pellentesque interdum odio dui, vitae
-                            eleifend nibh aliquet ac. Vestibulum ante ipsum,</p>
-                        <a class="read-more-btn" href="#">Read More <i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="thmv-bg-dark thmv-rules-box h-100">
-                        <div class="thmv-border-box h-100">
-                            <h3 class="mb-3">Rules</h3>
-                            <p>Pellentesque interdum odio dui, vitae eleifend nibh aliquet ac. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="thmv-promotions-box h-100">
-                        <h3 class="mb-3">Promotions</h3>
-                        <p>Pellentesque interdum odio dui, vitae eleifend nibh aliquet ac. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- about covid sec start -->
+
     <!-- our service section start -->
     <section class="thmv-our-service">
         <div class="row">
             <div class="container">
                 <div class="row">
                     <div class="thmv-sec-title text-center">
-                        <h2 class="thmv-title-effect-center text-uppercase">At Your Service</h2>
+                        <h2 class="thmv-title-effect-center text-uppercase">Fasilitas Kami</h2>
                     </div>
                     <div class="thmv-service-info w-50 w-md-75 mx-auto text-center">
-                        <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic
-                            or web designs. </p>
+                        <p>
+                            Aiva Losmen menawarkan berbagai fasilitas yang lengkap dan nyaman untuk anda beristirahat
+                            dengan harga yang terjangkau. Fasilitas yang kami tawarkan diantaranya adalah:
+                        </p>
                     </div>
                 </div>
                 <div class="row thmv-services col-lg-9 mx-auto">
                     <ul>
+                        @foreach ($fasilitas as $fasilitas)
+                            
                         <li>
                             <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/fast-wiFi.svg') }}" alt="">
-                                <p>Fast WiFi</p>
+                                <img src="{{ Storage::url("uploads/fasilitas/" . $fasilitas->icon ) }}" alt="">
+                                <p>{{ $fasilitas->nama }}</p>
                             </div>
                         </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/bath.svg') }}" alt="">
-                                <p>Bath</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/coffee.svg') }}" alt="">
-                                <p>Coffee</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/safe.svg') }}" alt="">
-                                <p>Safe</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/alarm.svg') }}" alt="">
-                                <p>Alarm</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/fast-wiFi.svg') }}" alt="">
-                                <p>Fast WiFi</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/bath.svg') }}" alt="">
-                                <p>Bath</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/coffee.svg') }}" alt="">
-                                <p>Coffee</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/safe.svg') }}" alt="">
-                                <p>Safe</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ asset('front/images/icons/alarm.svg') }}" alt="">
-                                <p>Alarm</p>
-                            </div>
-                        </li>
+                        @endforeach
+                       
                     </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row thmv-slick-img-slider">
-            <div class="slick-image-center slider thmv-img-gray-hover">
-                <div>
-                    <img src="{{ asset('front/images/slider-img/slid-1.jpg') }}" alt="Slider image">
-                    <div class="thmv-bg-glass text-center thmv-slider-service-box">
-                        <h5>Included in the Room Rate</h5>
-                        <p>International breakfast from 07 to 11</p>
-                    </div>
-                </div>
-                <div>
-                    <img src="{{ asset('front/images/slider-img/slid-2.jpg') }}" alt="Slider image">
-                    <div class="thmv-bg-glass text-center thmv-slider-service-box">
-                        <h5>Included in the Room Rate</h5>
-                        <p>International breakfast from 07 to 11</p>
-                    </div>
-                </div>
-                <div>
-                    <img src="{{ asset('front/images/slider-img/slid-3.jpg') }}" alt="Slider image">
-                    <div class="thmv-bg-glass text-center thmv-slider-service-box">
-                        <h5>Included in the Room Rate</h5>
-                        <p>International breakfast from 07 to 11</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -435,7 +266,7 @@
     </section>
     <!-- our service section end -->
     <!-- What's nearby section start -->
-    <section class="thmv-nearby">
+    {{-- <section class="thmv-nearby">
         <div class="container">
             <div class="row align-items-end">
                 <div class="col-lg-5 col-md-12 thmv-nearby-img">
@@ -493,22 +324,64 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- What's nearby section End -->
     <!-- review section start -->
     <section class="thmv-review-sec">
         <div class="container">
             <div class="row">
                 <div class="thmv-sec-title text-center">
-                    <h2 class="thmv-title-effect-center text-uppercase">Review</h2>
+                    <h2 class="thmv-title-effect-center text-uppercase">Ulasan Tamu Kami</h2>
                 </div>
                 <div class="thmv-review-info w-50 mx-auto text-center">
-                    <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or
-                        web designs.</p>
+                    <p>
+                        Aiva Losmen mendapatkan ulasan tertinggi dari para tamu yang telah menginap di Aiva Losmen. Berikut adalah ulasan dari para tamu yang telah menginap di Aiva Losmen.
+                    </p>
                 </div>
             </div>
             <div class="row thmv-service">
-                <div class="col-lg-4 col-md-6">
+                @foreach ($ulasan as $ulasan)
+                    
+                <div class="col-lg-4 col-md-6 my-3">
+                    <div class="thmv-service-box">
+                        <div class="thmv-rating">
+                            {{-- <img src="{{ asset('front/images/brand-logo/tripadvisor.svg') }}" alt=""> --}}
+                            <div class="row px-3">
+                                <div class="col-lg-3">
+                                    <img src="@if ($ulasan->user->photo) {{ Storage::url('images/user' . $ulasan->user->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $ulasan->user->name }} @endif" alt="">
+                                </div>
+                                <div class="col-lg-9">
+                                    <h6>{{ $ulasan->user->name }}</h6>
+                                    <p>{{ $ulasan->created_at->format('d/m/Y') }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <ul class="d-flex justify-content-center">
+                                @for ($i = 0; $i < $ulasan->rating; $i++)
+                                    <li><i class="fas fa-star"></i></li>
+                                @endfor
+                                @for ($i = 0; $i < 5 - $ulasan->rating; $i++)
+                                    <li><i class="far fa-star"></i></li>
+                                @endfor
+                            </ul>
+                            <p class="thmv-service-text">
+                                {{ $ulasan->komentar }}
+                            </p>
+                        </div>
+                        <div class="thmv-user-info thmv-bg-dark text-center">
+                            <p>Kamar</p>
+                            <a href="">
+
+                                <h6>
+                                     {{ $ulasan->kamar->tipe->nama }} - No. {{ $ulasan->kamar->nomor_kamar }}
+                                </h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                
+                {{-- <div class="col-lg-4 col-md-6 d-block d-lg-block d-md-none">
                     <div class="thmv-service-box">
                         <div class="thmv-rating">
                             <img src="{{ asset('front/images/brand-logo/tripadvisor.svg') }}" alt="">
@@ -529,51 +402,7 @@
                             <p>01/02/2021</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="thmv-service-box">
-                        <div class="thmv-rating">
-                            <img src="{{ asset('front/images/brand-logo/tripadvisor.svg') }}" alt="">
-                            <hr>
-                            <ul class="d-flex justify-content-center">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                            <p class="thmv-service-text">Take a deep dive and try our list of over 40 unique generators,
-                                find placeholder images for your next design, or add a lorem ipsum plugin to the CMS or text
-                                editor of your choice.</p>
-                        </div>
-                        <div class="thmv-user-info thmv-bg-dark text-center">
-                            <h6>Marii Brown</h6>
-                            <p>01/02/2021</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-block d-lg-block d-md-none">
-                    <div class="thmv-service-box">
-                        <div class="thmv-rating">
-                            <img src="{{ asset('front/images/brand-logo/tripadvisor.svg') }}" alt="">
-                            <hr>
-                            <ul class="d-flex justify-content-center">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                            <p class="thmv-service-text">Take a deep dive and try our list of over 40 unique generators,
-                                find placeholder images for your next design, or add a lorem ipsum plugin to the CMS or text
-                                editor of your choice.</p>
-                        </div>
-                        <div class="thmv-user-info thmv-bg-dark text-center">
-                            <h6>Marii Brown</h6>
-                            <p>01/02/2021</p>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
