@@ -18,28 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Fajri',
-            'email' => 'fajri@gariskode.com',
-            'jenis_kelamin' => 'L',
-            'no_telp' => "089613390766",
-            'role' => 'admin',
-            'email_verified_at' => now(),
-            'password' => bcrypt('password'),
-        ]);
-
-        User::create([
-            'name' => 'Owner Aiva Losmen',
-            'email' => 'owner@gariskode.com',
-            'jenis_kelamin' => 'L',
-            'no_telp' => "081234567890",
-            'role' => 'owner',
-            'email_verified_at' => now(),
-            'password' => bcrypt('password'),
-        ]);
-
-        User::factory(10)->create();
-
         Tipe::create([
             'nama' => 'Single Room',
             'deskripsi' => 'Single Room adalah kamar dengan satu tempat tidur ukuran single, cocok untuk satu orang.',
@@ -63,12 +41,34 @@ class DatabaseSeeder extends Seeder
         Kamar::factory(10)->create()->each(function ($kamar) {
             $kamar->nomor_kamar = str_pad($kamar->id, 3, '0', STR_PAD_LEFT);
             $kamar->save();
-        });
+        });  
+
+        User::factory(10)->create();
 
         Ulasan::factory(30)->create()->each(function ($ulasan) {
             $ulasan->komentar = 'ini adalah komentar palsu yang di-generate oleh factory, ini komentar dengan ID-' . $ulasan->id . ' dari user ' . $ulasan->user_id . ' untuk kamar ' . $ulasan->kamar_id . ' dengan rating ' . $ulasan->rating . ' bintang.';
             $ulasan->save();
         });
+
+        User::create([
+            'name' => 'Fajri',
+            'email' => 'fajri@gariskode.com',
+            'jenis_kelamin' => 'L',
+            'no_telp' => "089613390766",
+            'role' => 'admin',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]);
+
+        User::create([
+            'name' => 'Owner Aiva Losmen',
+            'email' => 'owner@gariskode.com',
+            'jenis_kelamin' => 'L',
+            'no_telp' => "081234567890",
+            'role' => 'owner',
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+        ]);
 
         Fasilitas::create([
             'nama' => 'Wi-fi',
@@ -92,6 +92,24 @@ class DatabaseSeeder extends Seeder
             'nama' => 'TV',
             'detail' => 'TV dengan channel kabel.',
             'icon' => 'tv.png',
+        ]);
+
+        Fasilitas::create([
+            'nama' => 'Coffee Maker',
+            'detail' => 'Coffee maker dengan kopi dan teh gratis.',
+            'icon' => 'coffee.png',
+        ]);
+
+        Fasilitas::create([
+            'nama' => 'Room Service',
+            'detail' => 'Room service 24 jam.',
+            'icon' => 'roomservice.png',
+        ]);
+
+        Fasilitas::create([
+            'nama' => 'Air Panas',
+            'detail' => 'Air panas untuk mandi.',
+            'icon' => 'hotwater.png',
         ]);
 
         For ($i = 1; $i <= 10; $i++) {
