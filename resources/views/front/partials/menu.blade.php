@@ -55,7 +55,7 @@
                 <nav id="cd-lateral-nav">
                     <ul class="cd-navigation">
                         <li><a class="@if (request()->is('/')) active  @endif" href="{{ route("home") }}" title="">Beranda</a></li>
-                        <li><a href="#" title="">Semua Kamar</a></li>
+                        <li><a href="{{ route('kamar') }}" title="">Semua Kamar</a></li>
                         <li class="item-has-children">
                             <a href="#">Tipe Kamar</a>
                             <ul class="sub-menu">
@@ -63,7 +63,7 @@
                                     $tipe_kamar = \App\Models\Tipe::all();
                                 @endphp
                                 @foreach ($tipe_kamar as $item)
-                                    <li><a href="" title="">{{ $item->nama }}</a></li>
+                                    <li><a href="{{ route('kamar', ['tipe' => $item->id ]) }}" title="">{{ $item->nama }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

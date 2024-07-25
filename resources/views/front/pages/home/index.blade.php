@@ -176,9 +176,8 @@
                             rumah sendiri dan menikmati waktu yang menyenangkan selama menginap di Aiva Losmen.</p>
                     </div>
                     <div class="thmv-brand-logo">
-                        <img src="{{ asset('front/images/brand-logo/travelweek-logo.png') }}" alt="">
-                        <img src="{{ asset('front/images/brand-logo/tower-homes-logo.png') }}" alt="">
-                        <img src="{{ asset('front/images/brand-logo/aero-logo.png') }}" alt="">
+                        <img width="200px" src="{{ asset('front/images/brand-logo/traveloka.webp') }}" alt="">
+                        <img width="200px" src="{{ asset('front/images/brand-logo/tiket_com.png') }}" alt="">
                     </div>
                 </div>
             </div>

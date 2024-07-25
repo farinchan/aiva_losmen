@@ -1787,7 +1787,7 @@ Created by Bellevue Theme
     =            Room Listing Card One Columns Section Style            =
     ===================================================================*/
     .thmv-room-card .thmv-listimg img{
-        height: 440px;
+        height: 340px;
         object-fit:cover;
     }
     .thmv-room-card  .thmv-listimg-from h4{

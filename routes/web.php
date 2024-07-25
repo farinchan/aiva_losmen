@@ -11,6 +11,7 @@ use App\Http\Controllers\Back\UlasanController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Front\KamarController as FrontKamarController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
@@ -19,6 +20,8 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
 Route::put('/my-profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
+Route::get('/kamar', [FrontKamarController::class, 'listKamar'])->name('kamar');
+Route::get('/kamar/{id}', [FrontKamarController::class, 'detailKamar'])->name('kamar.detail');
 
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
