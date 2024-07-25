@@ -71,74 +71,42 @@
                     <div class="modal_form_title">
                         <h4>Booking</h4>
                     </div>
-                    <form class="thmv-search-form-tour">
+                    <form class="thmv-search-form-tour" action="{{ route('kamar') }}">
                         <div class="thmv-field-search">
                             <div class="row thmv-mo-tour-row justify-content-center">
                                 <div class="col-lg-12 col-md-12 thmv-mo-date-col">
                                     <div class="thmv-mo-check-form">
                                         <div class="form-group">
                                             <input type="text" class="form-control check-in-out"
-                                                id="popupDatepickerfrom1Modal" placeholder="Check-in Date"
+                                                id="popupDatepickerfrom1Modal" placeholder="Tanggal Check-in"
                                                 name="dates">
                                             <i class="fas fa-calendar-day"></i>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control check-in-out"
-                                                id="popupDatepickerto1Modal" placeholder="Check-out Date"
+                                                id="popupDatepickerto1Modal" placeholder="Tanggal Check-out"
                                                 name="dates">
                                             <i class="fas fa-calendar-day"></i>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 dropdown form-select-guests thmv-mo-guest-col">
-                                    <div class="form-group">
-                                        <div class="form-content dropdown-toggle" data-toggle="dropdown">
-                                            <div class="wrapper-more">
-                                                <div class="render">
-                                                    <span class="adults"><span class="one d-none">2 adults</span> <span
-                                                            class="multi" data-html=":count Adults">2
-                                                            adults</span></span>,
-                                                    <span class="children">
-                                                        <span class="one d-none" data-html=":count Child">1 Child</span>
-                                                        <span class="multi" data-html=":count Children">0
-                                                            children</span>
-                                                    </span>
-                                                    <i class="fas fa-user-friends thmv-mo-peoples-icon"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-menu select-guests-dropdown"
-                                            style="display: none; position: absolute; transform: translate3d(5px, 82px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                            <input type="hidden" name="adults" value="4">
-                                            <input type="hidden" name="children" value="5">
-                                            <div class="dropdown-item-row">
-                                                <div class="label">adults</div>
-                                                <div class="val">
-                                                    <span class="btn-minus" data-input="adults"><i
-                                                            class="fas fa-minus"></i></span>
-                                                    <span class="count-display">4</span>
-                                                    <span class="btn-add" data-input="adults"><i
-                                                            class="fas fa-plus"></i></span>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-item-row m-0">
-                                                <div class="label">children</div>
-                                                <div class="val">
-                                                    <span class="btn-minus" data-input="children"><i
-                                                            class="fas fa-minus"></i></span>
-                                                    <span class="count-display">5</span>
-                                                    <span class="btn-add" data-input="children"><i
-                                                            class="fas fa-plus"></i></span>
-                                                </div>
-                                            </div>
+                                        <div class="form-group">
+                                            <select class="form-select" name="tipe"
+                                                style="background-color: transparent; color: #fff; border: 1px solid #333333; border-radius: 0px; padding: 10px; width: 100%; margin-bottom: 20px;">
+                                                <option style="color: #333333" value="">Semua</option>
+                                                @foreach ($tipe_kamar as $tipe)
+                                                    <option style="color: #333333"
+                                                        @if (request()->get('tipe') == $tipe->id) selected @endif
+                                                        value="{{ $tipe->id }}">{{ $tipe->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-12 col-md-12">
                                     <div class="thmv-promo-box">
                                         <div class="form-group">
-                                            <button class="thmv-tour-search btn_mo_search"
-                                                type="submit">Search</button>
+                                            <button class="thmv-tour-search btn_mo_search" type="submit">Cari
+                                                Kamar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +124,7 @@
         </a>
         <button type="button" class="thmv-calendar-sticky" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                 class="fas fa-calendar-day"></i></button>
-        <a href="" class="thmv-messenger-sticky" title="Perlu Bantuan?" >
+        <a href="" class="thmv-messenger-sticky" title="Perlu Bantuan?">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>

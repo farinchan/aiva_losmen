@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Fasilitas;
 use App\Models\Kamar;
+use App\Models\Tipe;
 use App\Models\Ulasan;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,7 @@ class HomeController extends Controller
             'kamar' => Kamar::latest()->limit(6)->get(),
             'fasilitas' => Fasilitas::all(),
             'ulasan' => Ulasan::where('rating', '>', 4)->latest()->limit(6)->get(),
+            'tipe_kamar' => Tipe::all(),
         ];
         return view('front.pages.home.index', $data);
     }

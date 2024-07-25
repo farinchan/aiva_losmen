@@ -55,20 +55,18 @@
                 <nav id="cd-lateral-nav">
                     <ul class="cd-navigation">
                         <li><a class="@if (request()->is('/')) active  @endif" href="{{ route("home") }}" title="">Beranda</a></li>
-                        <li><a href="{{ route('kamar') }}" title="">Semua Kamar</a></li>
+                        <li><a class="@if (request()->routeIs('kamar') || request()->routeIs('kamar.detail')) active  @endif" href="{{ route('kamar') }}" title="">Semua Kamar</a></li>
                         <li class="item-has-children">
                             <a href="#">Tipe Kamar</a>
                             <ul class="sub-menu">
-                                @php
-                                    $tipe_kamar = \App\Models\Tipe::all();
-                                @endphp
+                                
                                 @foreach ($tipe_kamar as $item)
                                     <li><a href="{{ route('kamar', ['tipe' => $item->id ]) }}" title="">{{ $item->nama }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
-                        <li><a href="{{ route("about") }}" title="">Tentang Kami</a></li>
-                        <li><a href="{{ route("contact") }}" title="">Hubungi Kami</a></li>
+                        <li><a class="@if (request()->routeIs('about')) active  @endif" href="{{ route("about") }}" title="">Tentang Kami</a></li>
+                        <li><a class="@if (request()->routeIs('contact')) active  @endif" href="{{ route("contact") }}" title="">Hubungi Kami</a></li>
 
 
                     </ul>

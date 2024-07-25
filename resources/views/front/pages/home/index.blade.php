@@ -21,7 +21,7 @@
     <div class="thmv-search-form border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
-                <form class="thmv-search-form-tour">
+                <form class="thmv-search-form-tour" action="{{ route('kamar') }}">
                     <div class="thmv-field-search">
                         <div class="row thmv-tour-row justify-content-center">
                             <div class="ps-0 col-lg-6 col-md-12 thmv-date-col">
@@ -36,46 +36,13 @@
                                             placeholder="Check-out Date" name="dates">
                                         <i class="fas fa-calendar-day"></i>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 dropdown form-select-guests thmv-guest-col">
-                                <div class="form-group">
-                                    <div class="form-content dropdown-toggle" data-toggle="dropdown">
-                                        <div class="wrapper-more">
-                                            <div class="render">
-                                                <span class="adults"><span class="one d-none">2 adults</span> <span
-                                                        class="multi" data-html=":count Adults">2 adults</span></span>,
-                                                <span class="children">
-                                                    <span class="one d-none" data-html=":count Child">1 Child</span>
-                                                    <span class="multi" data-html=":count Children">0 children</span>
-                                                </span>
-                                                <i class="fas fa-user-friends thmv-peoples-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown-menu select-guests-dropdown"
-                                        style="display: none; position: absolute; transform: translate3d(5px, 82px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <input type="hidden" name="adults" value="4">
-                                        <input type="hidden" name="children" value="5">
-                                        <div class="dropdown-item-row">
-                                            <div class="label">adults</div>
-                                            <div class="val">
-                                                <span class="btn-minus" data-input="adults"><i
-                                                        class="fas fa-minus"></i></span>
-                                                <span class="count-display">4</span>
-                                                <span class="btn-add" data-input="adults"><i class="fas fa-plus"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-item-row m-0">
-                                            <div class="label">children</div>
-                                            <div class="val">
-                                                <span class="btn-minus" data-input="children"><i
-                                                        class="fas fa-minus"></i></span>
-                                                <span class="count-display">5</span>
-                                                <span class="btn-add" data-input="children"><i
-                                                        class="fas fa-plus"></i></span>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <select class="form-select" name="tipe">
+                                            <option selected value="">Semua</option>
+                                            @foreach ($tipe_kamar as $tipe)
+                                                <option value="{{ $tipe->id }}">{{ $tipe->nama }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +50,7 @@
                                 <div class="thmv-promo-box d-flex">
                                     <div class="form-group p-0">
                                         <button class="thmv-tour-search btn-full-filled border-0"
-                                            type="submit">Search</button>
+                                            type="submit">Cari</button>
                                     </div>
                                 </div>
                             </div>
@@ -137,8 +104,8 @@
             <div class="row">
                 <div class="col-lg-5 thmv-wel-text">
                     <h2 class="thmv-br-mob-none">Ayo Menginap di <br> Aiva Losmen</h2>
-                    <a href="#" class="btn-outline-light" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"><i class="fas fa-play"></i>&nbsp;&nbsp; nonton video Ini</a>
+                    <a href="#" class="btn-outline-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                            class="fas fa-play"></i>&nbsp;&nbsp; nonton video Ini</a>
                     <!-- Modal Start -->
                     <div class="row thmv-video-sec">
                         <div class="col-lg-12 thmv-video-modal">
@@ -206,14 +173,15 @@
                 @foreach ($kamar as $kamar)
                     <div class="thmv-img-gray-hover">
                         <div class="thmv-room-view">
-                            <img src="{{ Storage::url("uploads/kamar/" . $kamar->foto ) }}" alt="Slider image">
+                            <img src="{{ Storage::url('uploads/kamar/' . $kamar->foto) }}" alt="Slider image">
                             <div class="thmv-room-price thmv-bg-glass">
-                                <p>@money($kamar->harga )</p>
+                                <p>@money($kamar->harga)</p>
                             </div>
                         </div>
                         <div class="thmv-room-info">
                             <h5>{{ $kamar->tipe->nama }} - No. {{ $kamar->nomor_kamar }}</h5>
-                            <h6>⭐ {{ round($kamar->ulasan->avg("rating"), 2)  }}/5 ,Kapasitas {{ $kamar->kapasitas }} orang</h6>
+                            <h6>⭐ {{ round($kamar->ulasan->avg('rating'), 2) }}/5 ,Kapasitas {{ $kamar->kapasitas }} orang
+                            </h6>
                             <p>
                                 {{ strip_tags(Str::limit($kamar->deskripsi, 200)) }}
                             </p>
@@ -244,15 +212,15 @@
                 <div class="row thmv-services col-lg-9 mx-auto">
                     <ul>
                         @foreach ($fasilitas as $fasilitas)
-                            
-                        <li>
-                            <div class="thmv-services-box">
-                                <img src="{{ Storage::url("uploads/fasilitas/" . $fasilitas->icon ) }}" alt="">
-                                <p>{{ $fasilitas->nama }}</p>
-                            </div>
-                        </li>
+                            <li>
+                                <div class="thmv-services-box">
+                                    <img src="{{ Storage::url('uploads/fasilitas/' . $fasilitas->icon) }}"
+                                        alt="">
+                                    <p>{{ $fasilitas->nama }}</p>
+                                </div>
+                            </li>
                         @endforeach
-                       
+
                     </ul>
                 </div>
             </div>
@@ -334,52 +302,53 @@
                 </div>
                 <div class="thmv-review-info w-50 mx-auto text-center">
                     <p>
-                        Aiva Losmen mendapatkan ulasan tertinggi dari para tamu yang telah menginap di Aiva Losmen. Berikut adalah ulasan dari para tamu yang telah menginap di Aiva Losmen.
+                        Aiva Losmen mendapatkan ulasan tertinggi dari para tamu yang telah menginap di Aiva Losmen. Berikut
+                        adalah ulasan dari para tamu yang telah menginap di Aiva Losmen.
                     </p>
                 </div>
             </div>
             <div class="row thmv-service">
                 @foreach ($ulasan as $ulasan)
-                    
-                <div class="col-lg-4 col-md-6 my-3">
-                    <div class="thmv-service-box">
-                        <div class="thmv-rating">
-                            {{-- <img src="{{ asset('front/images/brand-logo/tripadvisor.svg') }}" alt=""> --}}
-                            <div class="row px-3">
-                                <div class="col-lg-3">
-                                    <img src="@if ($ulasan->user->photo) {{ Storage::url('images/user' . $ulasan->user->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $ulasan->user->name }} @endif" alt="">
+                    <div class="col-lg-4 col-md-6 my-3">
+                        <div class="thmv-service-box">
+                            <div class="thmv-rating">
+                                {{-- <img src="{{ asset('front/images/brand-logo/tripadvisor.svg') }}" alt=""> --}}
+                                <div class="row px-3">
+                                    <div class="col-lg-3">
+                                        <img src="@if ($ulasan->user->photo) {{ Storage::url('images/user' . $ulasan->user->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $ulasan->user->name }} @endif"
+                                            alt="">
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <h6>{{ $ulasan->user->name }}</h6>
+                                        <p>{{ $ulasan->created_at->format('d/m/Y') }}</p>
+                                    </div>
                                 </div>
-                                <div class="col-lg-9">
-                                    <h6>{{ $ulasan->user->name }}</h6>
-                                    <p>{{ $ulasan->created_at->format('d/m/Y') }}</p>
-                                </div>
+                                <hr>
+                                <ul class="d-flex justify-content-center">
+                                    @for ($i = 0; $i < $ulasan->rating; $i++)
+                                        <li><i class="fas fa-star"></i></li>
+                                    @endfor
+                                    @for ($i = 0; $i < 5 - $ulasan->rating; $i++)
+                                        <li><i class="far fa-star"></i></li>
+                                    @endfor
+                                </ul>
+                                <p class="thmv-service-text">
+                                    {{ $ulasan->komentar }}
+                                </p>
                             </div>
-                            <hr>
-                            <ul class="d-flex justify-content-center">
-                                @for ($i = 0; $i < $ulasan->rating; $i++)
-                                    <li><i class="fas fa-star"></i></li>
-                                @endfor
-                                @for ($i = 0; $i < 5 - $ulasan->rating; $i++)
-                                    <li><i class="far fa-star"></i></li>
-                                @endfor
-                            </ul>
-                            <p class="thmv-service-text">
-                                {{ $ulasan->komentar }}
-                            </p>
-                        </div>
-                        <div class="thmv-user-info thmv-bg-dark text-center">
-                            <p>Kamar</p>
-                            <a href="">
+                            <div class="thmv-user-info thmv-bg-dark text-center">
+                                <p>Kamar</p>
+                                <a href="{{ route("kamar.detail", $ulasan->kamar->id) }}">
 
-                                <h6>
-                                     {{ $ulasan->kamar->tipe->nama }} - No. {{ $ulasan->kamar->nomor_kamar }}
-                                </h6>
-                            </a>
+                                    <h6>
+                                        {{ $ulasan->kamar->tipe->nama }} - No. {{ $ulasan->kamar->nomor_kamar }}
+                                    </h6>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
-                
+
                 {{-- <div class="col-lg-4 col-md-6 d-block d-lg-block d-md-none">
                     <div class="thmv-service-box">
                         <div class="thmv-rating">

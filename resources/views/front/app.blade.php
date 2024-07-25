@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+    $tipe_kamar = \App\Models\Tipe::all();
+@endphp
 
 <head>
     <!-- Meta -->

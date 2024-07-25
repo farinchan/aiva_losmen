@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button class="thmv-tour-search btn-full-filled" type="submit">Search</button>
+                                <button class="thmv-tour-search btn-full-filled" type="submit">Cari kamar</button>
                             </div>
                         </form>
                     </div>
