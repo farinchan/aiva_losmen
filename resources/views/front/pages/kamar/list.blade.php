@@ -47,7 +47,7 @@
                                     <p>
                                         {{ Str::limit(strip_tags($data->deskripsi), 200) }}
                                     </p>
-                                    <a class="read-more-btn me-3" href="{{ route("kamar.detail", $data->id) }}">
+                                    <a class="read-more-btn me-3" href="{{ route("kamar.detail", [$data->id, 'tipe' => request()->tipe, 'check_in' => request()->check_in, 'check_out' => request()->check_out]) }}">
                                         Lihat
                                         <i class="far fa-eye"></i>
                                     </a>
@@ -80,7 +80,7 @@
                                 @else
                                     <li class="page-item">
                                         <a class="page-link"
-                                            href="{{ route('kamar', ['page' => $kamar->currentPage() - 1, 'tipe' => request()->tipe]) }}">Sebelumnya</a>
+                                            href="{{ route('kamar', ['page' => $kamar->currentPage() - 1, 'tipe' => request()->tipe, 'check_in' => request()->check_in, 'check_out' => request()->check_out]) }}">Sebelumnya</a>
                                     </li>
                                 @endif
 
@@ -107,7 +107,7 @@
                                         </li>
                                     @else
                                         <li class="page-item"><a class="page-link"
-                                                href="{{ route('kamar', ['page' => $page, 'tipe' => request()->tipe]) }}">{{ $page }}</a>
+                                                href="{{ route('kamar', ['page' => $page, 'tipe' => request()->tipe, 'check_in' => request()->check_in, 'check_out' => request()->check_out]) }}">{{ $page }}</a>
                                         </li>
                                     @endif
                                 @endforeach
@@ -122,7 +122,7 @@
                                 @if ($kamar->hasMorePages())
                                     <li class="page-item">
                                         <a class="page-link"
-                                            href="{{ route('kamar', ['page' => $kamar->currentPage() + 1, 'tipe' => request()->tipe]) }}">Selanjutnya</a>
+                                            href="{{ route('kamar', ['page' => $kamar->currentPage() + 1, 'tipe' => request()->tipe, 'check_in' => request()->check_in, 'check_out' => request()->check_out]) }}">Selanjutnya</a>
                                     </li>
                                 @else
                                     <li class="page-item disabled">
@@ -146,12 +146,12 @@
                             <div class="thmv-mo-check-form">
                                 <div class="form-group">
                                     <input type="text" class="form-control check-in-out" id="popupDatepickerfrom1"
-                                        placeholder="Tanggal Check-in" name="dates">
+                                        placeholder="Tanggal Check-in" name="check_in" value="{{ request()->check_in }}">
                                     <i class="fas fa-calendar-day"></i>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control check-in-out" id="popupDatepickerto1"
-                                        placeholder="Tanggal Check-out" name="dates">
+                                        placeholder="Tanggal Check-out" name="check_out" value="{{ request()->check_out }}">
                                     <i class="fas fa-calendar-day"></i>
                                 </div>
                             </div>

@@ -66,8 +66,8 @@
         <!--begin::Menu wrapper-->
         <div class="cursor-pointer symbol symbol-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
             data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-            <img src="@if (Auth::user()->foto ) {{ Storage::url('uploads/pengguna/' . Auth::user()->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ Auth::user()->name }} @endif"
-            alt="{{ Auth::user()->name }}" class="rounded-3" />
+            <img src="{{ Auth::user()->pegawai?->getFoto() }}"
+            alt="{{ Auth::user()->pegawai?->nama }}" class="rounded-3" />
         </div>
         @include('back/partials/menus/_user-account-menu')
         <!--end::Menu wrapper-->

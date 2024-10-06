@@ -13,7 +13,7 @@
                                 <span class="path2"></span>
                             </i>
                             <input type="text" data-kt-user-table-filter="search"
-                                class="form-control form-control-solid w-250px ps-13" placeholder="Cari Admin" />
+                                class="form-control form-control-solid w-250px ps-13" placeholder="Cari Pegawai" />
                         </div>
                     </div>
                     <div class="card-toolbar">
@@ -31,13 +31,15 @@
                                 <div class="separator border-gray-200"></div>
                                 <div class="px-7 py-5" data-kt-user-table-filter="form">
                                     <div class="mb-10">
-                                        <label class="form-label fs-6 fw-semibold">Jenis Kelamin:</label>
+                                        <label class="form-label fs-6 fw-semibold">Role:</label>
                                         <select class="form-select form-select-solid fw-bold" data-kt-select2="true"
                                             data-placeholder="Select option" data-allow-clear="true"
                                             data-kt-user-table-filter="jenis_kelamin" data-hide-search="true">
                                             <option></option>
-                                            <option value="Laki-Laki">Laki-Laki</option>
-                                            <option value="Perempuan">Perempuan</option>
+                                            <option value="pegawai">Pegawai</option>
+                                            <option value="admin super">Admin Super</option>
+                                            <option value="admin hotel">Admin Hotel</option>
+                                            <option value="admin pegawai">Admin Pegawai</option>
                                         </select>
                                     </div>
                                     <div class="d-flex justify-content-end">
@@ -57,11 +59,9 @@
                                 </i>Export</button>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#kt_modal_add_user">
-                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Admin</button>
+                                <i class="ki-duotone ki-plus fs-2"></i>Tambah Pegawai</button>
                         </div>
-                        <div class="d-flex justify-content-end align-items-center d-none"
-                            {{-- data-kt-user-table-toolbar="selected" --}}
-                            >
+                        <div class="d-flex justify-content-end align-items-center d-none" {{-- data-kt-user-table-toolbar="selected" --}}>
                             <div class="fw-bold me-5">
                                 <span class="me-2" data-kt-user-table-select="selected_count"></span>Selected
                             </div>
@@ -89,7 +89,7 @@
                                                     data-placeholder="Select a role" data-hide-search="true"
                                                     class="form-select form-select-solid fw-bold">
                                                     <option></option>
-                                                    <option value="Administrator">Administrator</option>
+                                                    <option value="Pegawaiistrator">Pegawaiistrator</option>
                                                     <option value="Analyst">Analyst</option>
                                                     <option value="Developer">Developer</option>
                                                     <option value="Support">Support</option>
@@ -127,7 +127,7 @@
                             <div class="modal-dialog modal-dialog-centered mw-650px">
                                 <div class="modal-content">
                                     <div class="modal-header" id="kt_modal_add_user_header">
-                                        <h2 class="fw-bold">Tambah Admin</h2>
+                                        <h2 class="fw-bold">Tambah Pegawai</h2>
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
                                             data-kt-users-modal-action="close">
                                             <i class="ki-duotone ki-cross fs-1">
@@ -138,7 +138,7 @@
                                     </div>
                                     <div class="modal-body px-5 my-7">
                                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                                            action="{{ route('back.pengguna.admin.store') }}"
+                                            action="{{ route('back.pengguna.pegawai.store') }}"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="d-flex flex-column scroll-y px-5 px-lg-10"
@@ -192,46 +192,103 @@
                                                     <label class="required fw-semibold fs-6 mb-2">Nama Lengkap</label>
                                                     <input type="text" name="name"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Nama Admin" value="{{ old('name') }}"
+                                                        placeholder="Nama Pegawai" value="{{ old('name') }}" required />
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <label class="required fw-semibold fs-6 mb-2">Jabatan</label>
+                                                    <input type="text" name="jabatan"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="Jabatan Pegawai" value="{{ old('jabatan') }}"
                                                         required />
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <label class="required fw-semibold fs-6 mb-2">Jenis Kelamin</label>
+                                                    <select name="jenis_kelamin" data-control="select2"
+                                                        data-placeholder="Pilih Jenis Kelamin"
+                                                        class="form-select form-select-solid fw-bold" required>
+                                                        <option></option>
+                                                        <option value="L"
+                                                            @if (old('jenis_kelamin') == 'L') selected @endif>Laki-Laki
+                                                        </option>
+                                                        <option value="P"
+                                                            @if (old('jenis_kelamin') == 'P') selected @endif>Perempuan
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <label class=" fw-semibold fs-6 mb-2">Alamat</label>
+                                                    <textarea name="alamat" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Alamat Pegawai">{{ old('alamat') }}</textarea>
+                                                </div>
+
+                                                <div class="mb-5">
+                                                    <label class="required fw-semibold fs-6 mb-5">Role</label>
+                                                    <div class="d-flex fv-row">
+
+                                                        <div class="form-check form-check-custom ">
+                                                            <input class="form-check-input me-3" name="role_pegawai"
+                                                                type="checkbox" value="pegawai"
+                                                                id="kt_modal_update_role_option_0" checked='checked' />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="kt_modal_update_role_option_0">
+                                                                <div class="fw-bold text-gray-800">Pegawai</div>
+                                                                <div class="text-gray-600">Pegawai dengan role pegawai
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class='separator separator-dashed my-5'></div>
+                                                    <div class="d-flex fv-row">
+                                                        <div class="form-check form-check-custom form-check-solid">
+                                                            <input class="form-check-input me-3" name="role_admin_super"
+                                                                type="checkbox" value="admin super"
+                                                                id="kt_modal_update_role_option_1" />
+                                                            <label class="form-check-label"
+                                                                for="kt_modal_update_role_option_1">
+                                                                <div class="fw-bold text-gray-800">Admin Super</div>
+                                                                <div class="text-gray-600">Pegawai dengan role admin
+                                                                    super</div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class='separator separator-dashed my-5'></div>
+                                                    <div class="d-flex fv-row">
+                                                        <div class="form-check form-check-custom form-check-solid">
+                                                            <input class="form-check-input me-3" name="role_admin_hotel"
+                                                                type="checkbox" value="admin hotel"
+                                                                id="kt_modal_update_role_option_2" />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="kt_modal_update_role_option_2">
+                                                                <div class="fw-bold text-gray-800">Admin Hotel</div>
+                                                                <div class="text-gray-600">Pegawai dengan role admin
+                                                                    hotel</div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class='separator separator-dashed my-5'></div>
+                                                    <div class="d-flex fv-row">
+                                                        <div class="form-check form-check-custom form-check-solid">
+                                                            <input class="form-check-input me-3" name="role_admin_pegawai"
+                                                                type="checkbox" value="admin pegawai"
+                                                                id="kt_modal_update_role_option_3" />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="kt_modal_update_role_option_3">
+                                                                <div class="fw-bold text-gray-800">Admin Pegawai</div>
+                                                                <div class="text-gray-600">Pegawai dengan role admin
+                                                                    pegawai</div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class='separator separator-dashed my-5'></div>
                                                 </div>
                                                 <div class="fv-row mb-7">
                                                     <label class="required fw-semibold fs-6 mb-2">Email</label>
                                                     <input type="email" name="email"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="emailAdmin@domain.com"
-                                                        value="{{ old('email') }}" required />
-                                                </div>
-                                                <div class="mb-5">
-                                                    <label class="required fw-semibold fs-6 mb-5">Jenis Kelamin</label>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="jenis_kelamin"
-                                                                type="radio" value="L"
-                                                                id="kt_modal_update_role_option_0" checked='checked' />
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">Laki-Laki</div>
-                                                                <div class="text-gray-600">Admin dengan jenis kelamin
-                                                                    laki-laki</div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <div class="d-flex fv-row">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input me-3" name="jenis_kelamin"
-                                                                type="radio" value="P"
-                                                                id="kt_modal_update_role_option_1" />
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_1">
-                                                                <div class="fw-bold text-gray-800">Perempuan</div>
-                                                                <div class="text-gray-600">Admin dengan jenis kelamin
-                                                                    perempuan</div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class='separator separator-dashed my-5'></div>
+                                                        placeholder="emailPegawai@domain.com" value="{{ old('email') }}"
+                                                        required />
                                                 </div>
                                                 <div class="fv-row mb-7">
                                                     <label class="fw-semibold fs-6 mb-2">Nomor Telephone</label>
@@ -274,9 +331,9 @@
                                             data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                     </div>
                                 </th>
-                                <th class="min-w-125px">pengguna</th>
-                                <th class="min-w-125px">jenis Kelamin</th>
-                                <th class="min-w-125px">Nomor Telepon</th>
+                                <th class="min-w-125px">Pegawai</th>
+                                <th class="min-w-125px">Jabatan</th>
+                                <th class="min-w-125px">Info</th>
                                 <th class="min-w-125px">Role</th>
                                 <th class="min-w-125px">Waktu Bergabung</th>
                                 <th class="text-end min-w-100px">Actions</th>
@@ -294,29 +351,51 @@
                                         <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                             <a href="#">
                                                 <div class="symbol-label">
-                                                    <img src="@if ($user->foto) {{ Storage::url('uploads/pengguna/' . $user->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $user->name }} @endif"
-                                                        alt="{{ $user->name }}" />
+                                                    <img src="{{ $user->pegawai?->getFoto() }}"
+                                                        alt="{{ $user->pegawai?->nama }}" />
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="d-flex flex-column">
                                             <a href="apps/user-management/users/view.html"
-                                                class="text-gray-800 text-hover-primary mb-1">{{ $user->name }}</a>
+                                                class="text-gray-800 text-hover-primary mb-1">{{ $user->pegawai->nama }}</a>
                                             <span>{{ $user->email }}</span>
                                         </div>
                                     </td>
                                     <td>
-                                        @if ($user->jenis_kelamin == 'L')
-                                            <span class="badge badge-light-primary">Laki-Laki</span>
-                                        @else
-                                            <span class="badge badge-light-danger">Perempuan</span>
-                                        @endif
+                                        {{ $user->pegawai?->jabatan }}
                                     </td>
                                     <td>
-                                        {{ $user->no_telp }}
+                                        <ul>
+                                            <li><strong>Jenis Kelamin: </strong>
+                                                @if ($user->pegawai?->jenis_kelamin == 'L')
+                                                    Laki-Laki
+                                                @else
+                                                    Perempuan
+                                                @endif
+
+                                            </li>
+                                            <li><strong>Nomor Telepon: </strong>{{ $user->pegawai?->no_telp }}</li>
+                                            <li><strong>Alamat: </strong>{{ $user->pegawai?->alamat }}</li>
+                                        </ul>
                                     </td>
                                     <td>
-                                        <div class="badge badge-light-success fw-bold">{{ $user->role }}</div>
+                                        @foreach ($user->getRoleNames() as $role)
+                                            @if ($role == 'admin super')
+                                                <span class="badge badge-light-danger fw-bold fs-8 px-2 py-1 ms-2">Admin
+                                                    Super</span>
+                                            @elseif ($role == 'admin hotel')
+                                                <span class="badge badge-light-primary fw-bold fs-8 px-2 py-1 ms-2">Admin
+                                                    Hotel</span>
+                                            @elseif ($role == 'admin pegawai')
+                                                <span class="badge badge-light-warning fw-bold fs-8 px-2 py-1 ms-2">Admin
+                                                    Pegawai</span>
+                                            @elseif ($role == 'pegawai')
+                                                <span
+                                                    class="badge badge-light-info fw-bold fs-8 px-2 py-1 ms-2">Pegawai</span>
+                                            @endif
+                                        @endforeach
+
                                     </td>
                                     <td>{{ $user->created_at->diffForHumans() }}</td>
                                     <td class="text-end">
@@ -331,8 +410,7 @@
                                                     data-bs-target="#kt_modal_edit_user{{ $user->id }}">Edit</a>
                                             </div>
                                             <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                data-bs-toggle="modal"
+                                                <a href="#" class="menu-link px-3" data-bs-toggle="modal"
                                                     data-bs-target="#kt_modal_delete_user{{ $user->id }}">Delete</a>
                                             </div>
                                         </div>
@@ -350,7 +428,7 @@
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
                     <div class="modal-header" id="kt_modal_add_user_header">
-                        <h2 class="fw-bold">Edit Admin</h2>
+                        <h2 class="fw-bold">Edit Pegawai</h2>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span
@@ -359,7 +437,7 @@
                     </div>
                     <div class="modal-body px-5 my-7">
                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                            action="{{ route('back.pengguna.admin.update', $user->id) }}"
+                            action="{{ route('back.pengguna.pegawai.update', $user->id) }}"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
@@ -372,7 +450,7 @@
                                     <div class="image-input image-input-outline image-input-empty"
                                         data-kt-image-input="true">
                                         <div class="image-input-wrapper w-125px h-125px"
-                                            style="background-image: url(@if ($user->foto) {{ Storage::url('uploads/pengguna/' . $user->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $user->name }} @endif);">
+                                            style="background-image: url({{ $user->pegawai?->getFoto() }});">
                                         </div>
                                         <label
                                             class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
@@ -410,42 +488,91 @@
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Nama Lengkap</label>
                                     <input type="text" name="name"
-                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nama Admin"
-                                        value="{{ $user->name }}" required />
+                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nama Pegawai"
+                                        value="{{ $user->pegawai?->nama }}" required />
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <label class="required fw-semibold fs-6 mb-2">Jabatan</label>
+                                    <input type="text" name="jabatan"
+                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Jabatan Pegawai"
+                                        value="{{ $user->pegawai?->jabatan }}" required />
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <label class="required fw-semibold fs-6 mb-2">Jenis Kelamin</label>
+                                    <select name="jenis_kelamin" data-control="select2"
+                                        data-placeholder="Pilih Jenis Kelamin"
+                                        class="form-select form-select-solid fw-bold" required>
+                                        <option></option>
+                                        <option value="L"
+                                            @if ($user->pegawai?->jenis_kelamin == 'L') selected @endif>Laki-Laki
+                                        </option>
+                                        <option value="P"
+                                            @if ($user->pegawai?->jenis_kelamin == 'P') selected @endif>Perempuan
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <label class=" fw-semibold fs-6 mb-2">Alamat</label>
+                                    <textarea name="alamat" class="form-control form-control-solid mb-3 mb-lg-0"
+                                        placeholder="Alamat Pegawai">{{ $user->pegawai?->alamat }}</textarea>
+                                </div>
+                                <div class="mb-5">
+                                    <label class="required fw-semibold fs-6 mb-5">Role</label>
+                                    <div class="d-flex fv-row">
+
+                                        <div class="form-check form-check-custom ">
+                                            <input class="form-check-input me-3" name="role_pegawai" type="checkbox"
+                                                value="pegawai" id="kt_modal_update_role_option_0"
+                                                @if ($user->hasRole('pegawai')) checked @endif />
+                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
+                                                <div class="fw-bold text-gray-800">Pegawai</div>
+                                                <div class="text-gray-600">Pegawai dengan role pegawai</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class='separator separator-dashed my-5'></div>
+                                    <div class="d-flex fv-row">
+                                        <div class="form-check form-check-custom form-check-solid">
+                                            <input class="form-check-input me-3" name="role_admin_super" type="checkbox"
+                                                value="admin super" id="kt_modal_update_role_option_1"
+                                                @if ($user->hasRole('admin super')) checked @endif />
+                                            <label class="form-check-label" for="kt_modal_update_role_option_1">
+                                                <div class="fw-bold text-gray-800">Admin Super</div>
+                                                <div class="text-gray-600">Pegawai dengan role admin super</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class='separator separator-dashed my-5'></div>
+                                    <div class="d-flex fv-row">
+                                        <div class="form-check form-check-custom form-check-solid">
+                                            <input class="form-check-input me-3" name="role_admin_hotel" type="checkbox"
+                                                value="admin hotel" id="kt_modal_update_role_option_2"
+                                                @if ($user->hasRole('admin hotel')) checked @endif />
+                                            <label class="form-check-label" for="kt_modal_update_role_option_2">
+                                                <div class="fw-bold text-gray-800">Admin Hotel</div>
+                                                <div class="text-gray-600">Pegawai dengan role admin hotel</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class='separator separator-dashed my-5'></div>
+                                    <div class="d-flex fv-row">
+                                        <div class="form-check form-check-custom form-check-solid">
+                                            <input class="form-check-input me-3" name="role_admin_pegawai" type="checkbox"
+                                                value="admin pegawai" id="kt_modal_update_role_option_3"
+                                                @if ($user->hasRole('admin pegawai')) checked @endif />
+                                            <label class="form-check-label" for="kt_modal_update_role_option_3">
+                                                <div class="fw-bold text-gray-800">Admin Pegawai</div>
+                                                <div class="text-gray-600">Pegawai dengan role admin pegawai</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class='separator separator-dashed my-5'></div>
                                 </div>
                                 <div class="fv-row mb-7">
                                     <label class="required fw-semibold fs-6 mb-2">Email</label>
                                     <input type="email" name="email"
                                         class="form-control form-control-solid mb-3 mb-lg-0"
-                                        placeholder="emailAdmin@domain.com" value="{{ $user->email }}" required />
-                                </div>
-                                <div class="mb-5">
-                                    <label class="required fw-semibold fs-6 mb-5">Jenis Kelamin</label>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="jenis_kelamin" type="radio"
-                                                value="L" id="kt_modal_update_role_option_0"
-                                                @if ($user->jenis_kelamin == 'L') checked='checked' @endif />
-                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                <div class="fw-bold text-gray-800">Laki-Laki</div>
-                                                <div class="text-gray-600">Admin dengan jenis kelamin
-                                                    laki-laki</div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
-                                    <div class="d-flex fv-row">
-                                        <div class="form-check form-check-custom form-check-solid">
-                                            <input class="form-check-input me-3" name="jenis_kelamin" type="radio"
-                                                value="P" id="kt_modal_update_role_option_1"
-                                                @if ($user->jenis_kelamin == 'P') checked='checked' @endif />
-                                            <label class="form-check-label" for="kt_modal_update_role_option_1">
-                                                <div class="fw-bold text-gray-800">Perempuan</div>
-                                                <div class="text-gray-600">Admin dengan jenis kelamin perempuan</div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class='separator separator-dashed my-5'></div>
+                                        placeholder="emailPegawai@domain.com" value="{{ $user->email }}" required />
                                 </div>
                                 <div class="fv-row mb-7">
                                     <label class="fw-semibold fs-6 mb-2">Nomor Telephone</label>
@@ -476,7 +603,7 @@
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <div class="modal-content">
                     <div class="modal-header" id="kt_modal_add_user_header">
-                        <h2 class="fw-bold">Hapus Admin</h2>
+                        <h2 class="fw-bold">Hapus Pegawai</h2>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span
@@ -485,11 +612,11 @@
                     </div>
                     <div class="modal-body px-5">
                         <form id="kt_modal_add_user_form" class="form" method="POST"
-                            action="{{ route('back.pengguna.admin.destroy', $user->id) }}">
+                            action="{{ route('back.pengguna.pegawai.destroy', $user->id) }}">
                             @method('DELETE')
                             @csrf
                             <h3 class="text-center">
-                                Apakah Anda Yakin Ingin Menghapus Admin {{ $user->name }} ?
+                                Apakah Anda Yakin Ingin Menghapus Pegawai {{ $user->pegawai?->nama }} ?
                             </h3>
                             <div class="text-center pt-10">
                                 <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal"

@@ -442,29 +442,29 @@
 
                                             <a href="#">
                                                 <div class="symbol-label">
-                                                    <img src="@if ($user->foto) {{ Storage::url('uploads/pengguna/' . $user->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $user->name }} @endif"
-                                                        alt="{{ $user->name }}" />
+                                                    <img src="{{ $user->pelanggan?->getFoto() }}"
+                                                        alt="{{ $user->pelanggan?->nama }}" />
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="d-flex flex-column">
                                             <a href="apps/user-management/users/view.html"
-                                                class="text-gray-800 text-hover-primary mb-1">{{ $user->name }}</a>
+                                                class="text-gray-800 text-hover-primary mb-1">{{ $user->pelanggan?->nama }}</a>
                                             <span>{{ $user->email }}</span>
                                         </div>
                                     </td>
                                     <td>
-                                        @if ($user->jenis_kelamin == 'L')
+                                        @if ($user->pelanggan?->jenis_kelamin == 'L')
                                             <span class="badge badge-light-primary">Laki-Laki</span>
                                         @else
                                             <span class="badge badge-light-danger">Perempuan</span>
                                         @endif
                                     </td>
                                     <td>
-                                        {{ $user->no_telp }}
+                                        {{ $user->pelanggan?->no_telp }}
                                     </td>
                                     <td>
-                                        <div class="badge badge-light-success fw-bold">{{ $user->role }}</div>
+                                        <div class="badge badge-light-success fw-bold">{{ $user->getRoleNames()[0] }}</div>
                                     </td>
                                     <td>{{ $user->created_at->diffForHumans() }}</td>
                                     <td class="text-end">
@@ -550,7 +550,7 @@
                                         data-kt-image-input="true">
                                         <!--begin::Preview existing avatar-->
                                         <div class="image-input-wrapper w-125px h-125px"
-                                            style="background-image: url(@if ($user->foto) {{ Storage::url('uploads/pengguna/' . $user->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $user->name }} @endif);">
+                                            style="background-image: url({{ $user->pelanggan?->getFoto() }});">
                                         </div>
                                         <!--end::Preview existing avatar-->
                                         <!--begin::Label-->
@@ -606,7 +606,7 @@
                                     <!--begin::Input-->
                                     <input type="text" name="name"
                                         class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Nama Pelanggan"
-                                        value="{{ $user->name }}" required />
+                                        value="{{ $user->pelanggan?->nama }}" required />
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->
@@ -633,7 +633,7 @@
                                             <!--begin::Input-->
                                             <input class="form-check-input me-3" name="jenis_kelamin" type="radio"
                                                 value="L" id="kt_modal_update_role_option_0"
-                                                @if ($user->jenis_kelamin == 'L') checked='checked' @endif />
+                                                @if ($user->pelanggan?->jenis_kelamin == 'L') checked='checked' @endif />
                                             <!--end::Input-->
                                             <!--begin::Label-->
                                             <label class="form-check-label" for="kt_modal_update_role_option_0">
@@ -654,7 +654,7 @@
                                             <!--begin::Input-->
                                             <input class="form-check-input me-3" name="jenis_kelamin" type="radio"
                                                 value="P" id="kt_modal_update_role_option_1"
-                                                @if ($user->jenis_kelamin == 'P') checked='checked' @endif />
+                                                @if ($user->pelanggan?->jenis_kelamin == 'P') checked='checked' @endif />
                                             <!--end::Input-->
                                             <!--begin::Label-->
                                             <label class="form-check-label" for="kt_modal_update_role_option_1">
@@ -676,7 +676,7 @@
                                     <!--begin::Input-->
                                     <input type="tel" name="no_telp"
                                         class="form-control form-control-solid mb-3 mb-lg-0" placeholder="08xxxx"
-                                        value="{{ $user->no_telp }}" />
+                                        value="{{ $user->pelanggan?->no_telp }}" />
                                     <!--end::Input-->
                                 </div>
                                 <div class="fv-row mb-7">

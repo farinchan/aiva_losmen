@@ -25,7 +25,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end show" id="navbarSupportedContent">
                 <a class="navbar-brand mx-auto d-none d-md-block" href="index.html">
-                    <img src="{{ asset("front/images/aiva_losmen_logo.png") }}" width="170px" alt="">
+                    <img src="{{ asset('front/images/aiva_losmen_logo.png') }}" width="170px" alt="">
                 </a>
                 <div class="d-flex thmv-right-menu">
                     <ul class="thmv-social d-none d-lg-flex">
@@ -46,7 +46,7 @@
             <a href="javascript:void(0)" title="" class="thmv-menu-officon" data-bs-dismiss="offcanvas"
                 aria-label="Close"><i class="fas fa-times"></i></a>
             <h5 class="thmv-offcanvas-title" id="offcanvasExampleLabel">
-                <img src="{{ asset("front/images/aiva_losmen_logo.png") }}" width="170px" alt="">
+                <img src="{{ asset('front/images/aiva_losmen_logo.png') }}" width="170px" alt="">
 
             </h5>
         </div>
@@ -54,19 +54,24 @@
             <div class="thmv-leftside-menu">
                 <nav id="cd-lateral-nav">
                     <ul class="cd-navigation">
-                        <li><a class="@if (request()->is('/')) active  @endif" href="{{ route("home") }}" title="">Beranda</a></li>
-                        <li><a class="@if (request()->routeIs('kamar') || request()->routeIs('kamar.detail')) active  @endif" href="{{ route('kamar') }}" title="">Semua Kamar</a></li>
+                        <li><a class="@if (request()->is('/')) active @endif" href="{{ route('home') }}"
+                                title="">Beranda</a></li>
+                        <li><a class="@if (request()->routeIs('kamar') || request()->routeIs('kamar.detail')) active @endif" href="{{ route('kamar') }}"
+                                title="">Semua Kamar</a></li>
                         <li class="item-has-children">
                             <a href="#">Tipe Kamar</a>
                             <ul class="sub-menu">
-                                
+
                                 @foreach ($tipe_kamar as $item)
-                                    <li><a href="{{ route('kamar', ['tipe' => $item->id ]) }}" title="">{{ $item->nama }}</a></li>
+                                    <li><a href="{{ route('kamar', ['tipe' => $item->id]) }}"
+                                            title="">{{ $item->nama }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
-                        <li><a class="@if (request()->routeIs('about')) active  @endif" href="{{ route("about") }}" title="">Tentang Kami</a></li>
-                        <li><a class="@if (request()->routeIs('contact')) active  @endif" href="{{ route("contact") }}" title="">Hubungi Kami</a></li>
+                        <li><a class="@if (request()->routeIs('about')) active @endif" href="{{ route('about') }}"
+                                title="">Tentang Kami</a></li>
+                        <li><a class="@if (request()->routeIs('contact')) active @endif" href="{{ route('contact') }}"
+                                title="">Hubungi Kami</a></li>
 
 
                     </ul>
@@ -77,11 +82,21 @@
                     @auth
                         <li>
                             <div class="d-grid gap-2">
-                                <a href="{{ route("profile") }}" class="btn btn-outline-light" >
+                                <a href="{{ route('profile') }}" class="btn btn-outline-light">
                                     <img style="width: 40px"
-                                        src="@if (auth()->user()->foto) {{ Storage::url('uploads/pengguna/' . auth()->user()->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ auth()->user()->name }} @endif"
+                                        src="
+                                        @role('pelanggan')
+                                        {{ auth()->user()->pelanggan->getFoto() }}
+                                        @else
+                                        {{ auth()->user()?->pegawai?->getFoto() }}
+                                        @endrole
+                                        "
                                         class="img-thumbnail me-3" alt="{{ auth()->user()->name }}">
-                                    {{ auth()->user()->name }}
+                                    @role('pelanggan')
+                                        {{ auth()->user()->pelanggan?->nama }}
+                                    @else
+                                        {{ auth()->user()->pegawai?->nama }}
+                                    @endrole
                                 </a>
                             </div>
                         </li>

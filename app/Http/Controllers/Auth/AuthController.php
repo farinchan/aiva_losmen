@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pelanggan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Nonstandard\Uuid;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 
 class AuthController extends Controller
@@ -21,6 +24,8 @@ class AuthController extends Controller
 
     public function loginProcess(Request $request)
     {
+        $request->session()->put('url.intended', $request->url());
+
         // dd($request->all());
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email',
@@ -38,10 +43,10 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (auth()->attempt($credentials)) {
-            if (auth()->user()->role == 'pelanggan') {
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->hasRole('pelanggan')) {
                 return redirect()->route('home');
-            }else{
+            } else {
                 return redirect()->route('back.dashboard');
             }
         }
@@ -81,32 +86,34 @@ class AuthController extends Controller
 
         $data = $request->all();
         $user = new User();
-        $user->name = $data['name'];
-        $user->jenis_kelamin = $data['jenis_kelamin'];
-        $user->no_telp = $data['no_telp'];
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
-
-        if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('uploads/pengguna/', $fileName, 'public');
-            $user->foto = $fileName;
-        }
         $user->save();
 
-        auth()->loginUsingId($user->id);
+        $user->assignRole('pelanggan');
+
+        $pelanggan = new Pelanggan();
+        $pelanggan->nama = $data['name'];
+        $pelanggan->jenis_kelamin = $data['jenis_kelamin'];
+        $pelanggan->no_telp = $data['no_telp'];
+        $pelanggan->user_id = $user->id;
+
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $path = $foto->storeAs('uploads/pelanggan', time() .'-'. Str::slug($data['name']) . '.' . $foto->getClientOriginalExtension(), 'public');
+            $pelanggan->foto = $path;
+        }
+        $pelanggan->save();
+
+        Auth::loginUsingId($user->id);
 
         Mail::send('email.register_mail', ['user' => $user], function ($message) use ($user) {
             $message->to($user->email);
             $message->subject('Registrasi Berhasil');
         });
 
-        if (auth()->user()->role == 'pelanggan') {
-            return redirect()->route('home');
-        }else{
-            return redirect()->route('back.dashboard');
-        }
+        Alert::success('Success', 'Registrasi berhasil, selamat datang ' . $pelanggan->nama);
+        return redirect()->route('home');
 
     }
 
@@ -192,7 +199,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        auth()->logout();
+        Auth::logout();
         return redirect()->route('home');
     }
 }

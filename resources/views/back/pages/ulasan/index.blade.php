@@ -47,12 +47,12 @@
                                             <div class="me-5 position-relative">
                                                 <div class="symbol symbol-35px symbol-circle">
                                                     <img alt="Pic"
-                                                        src="@if ($data->user->photo) {{ Storage::url('images/user' . $data->user->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $data->user->name }} @endif" />
+                                                        src="{{ $data->pelanggan?->getFoto() }}" />
                                                 </div>
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <a href=""
-                                                    class="fs-6 text-gray-800 text-hover-primary">{{ $data->user->name }}</a>
+                                                    class="fs-6 text-gray-800 text-hover-primary">{{ $data->pelanggan?->nama }}</a>
                                                 <span
                                                     class="fs-7 text-gray-500">{{ $data->created_at->diffForHumans() }}</span>
                                             </div>
@@ -60,7 +60,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route("back.kamar.detail", $data->kamar->id ) }}"
-                                            class="fs-6 text-gray-800 text-hover-primary">No Kamar: {{ $data->kamar->nomor_kamar }} 
+                                            class="fs-6 text-gray-800 text-hover-primary">No Kamar: {{ $data->kamar->nomor_kamar }}
                                             <br>
                                             <span class="fs-7 text-gray-500">{{ $data->kamar->tipe->nama }}</span>
                                         </a>
@@ -90,10 +90,10 @@
                                             <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                             data-kt-menu="true">
-                                            <div class="menu-item px-3">
+                                            {{-- <div class="menu-item px-3">
                                                 <a class="menu-link px-3" data-bs-toggle="modal"
                                                     data-bs-target="#kt_modal_edit_user{{ $data->id }}">Edit</a>
-                                            </div>
+                                            </div> --}}
                                             <div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3" data-bs-toggle="modal"
                                                     data-bs-target="#kt_modal_delete_user{{ $data->id }}">Delete</a>

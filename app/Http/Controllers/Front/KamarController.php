@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kamar;
 use App\Models\Tipe;
 use App\Models\Ulasan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class KamarController extends Controller
@@ -16,7 +17,15 @@ class KamarController extends Controller
         $checkIn = $request->get('check_in');
         $checkOut = $request->get('check_out');
 
-        $kamar = Kamar::with(['tipe', 'fasilitasKamar', 'ulasan'])
+        if ($checkIn) {
+            $checkIn = Carbon::createFromFormat('m/d/Y', $checkIn)->format('Y-m-d');
+        }
+
+        if ($checkOut) {
+            $checkOut = Carbon::createFromFormat('m/d/Y', $checkOut)->format('Y-m-d');
+        }
+
+        $kamar = Kamar::with(['tipe', 'fasilitasKamar', 'ulasan', 'transaksi'])
 
             ->when($tipe, function ($query) use ($tipe) {
                 return $query->where('tipe_id', $tipe);

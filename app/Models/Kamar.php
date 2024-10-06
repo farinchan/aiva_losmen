@@ -26,4 +26,9 @@ class Kamar extends Model
     {
         return $this->hasMany(Ulasan::class, 'kamar_id', 'id');
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'kamar_id', 'id');
+    }
 }

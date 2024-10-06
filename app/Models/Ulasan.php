@@ -17,8 +17,8 @@ class Ulasan extends Model
         return $this->belongsTo(Kamar::class, 'kamar_id', 'id');
     }
 
-    public function user()
+    public function pelanggan()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(Pelanggan::class, 'pelanggan_id', 'id_pelanggan');
     }
 }

@@ -315,11 +315,10 @@
                                 {{-- <img src="{{ asset('front/images/brand-logo/tripadvisor.svg') }}" alt=""> --}}
                                 <div class="row px-3">
                                     <div class="col-lg-3">
-                                        <img src="@if ($ulasan->user->photo) {{ Storage::url('images/user' . $ulasan->user->photo) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $ulasan->user->name }} @endif"
-                                            alt="">
+                                        <img src="{{ $ulasan->pelanggan?->getFoto() }}" alt="">
                                     </div>
                                     <div class="col-lg-9">
-                                        <h6>{{ $ulasan->user->name }}</h6>
+                                        <h6>{{ $ulasan->pelanggan?->name }}</h6>
                                         <p>{{ $ulasan->created_at->format('d/m/Y') }}</p>
                                     </div>
                                 </div>
@@ -338,7 +337,7 @@
                             </div>
                             <div class="thmv-user-info thmv-bg-dark text-center">
                                 <p>Kamar</p>
-                                <a href="{{ route("kamar.detail", $ulasan->kamar->id) }}">
+                                <a href="{{ route('kamar.detail', $ulasan->kamar->id) }}">
 
                                     <h6>
                                         {{ $ulasan->kamar->tipe->nama }} - No. {{ $ulasan->kamar->nomor_kamar }}

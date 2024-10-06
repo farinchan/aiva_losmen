@@ -18,7 +18,7 @@ class UlasanFactory extends Factory
     {
         return [
             'kamar_id' => $this->faker->numberBetween(1, 10),
-            'user_id' => $this->faker->numberBetween(1, 10),
+            'pelanggan_id' => $this->faker->numberBetween(1, 10),
             'rating' => $this->faker->numberBetween(1, 5),
         ];
     }

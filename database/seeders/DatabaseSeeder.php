@@ -5,11 +5,14 @@ namespace Database\Seeders;
 use App\Models\Fasilitas;
 use App\Models\FasilitasKamar;
 use App\Models\Kamar;
+use App\Models\Pegawai;
+use App\Models\Pelanggan;
 use App\Models\Tipe;
 use App\Models\Ulasan;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +21,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        Role::create(['name' => 'admin super']);
+        Role::create(['name' => 'admin hotel']);
+        Role::create(['name' => 'admin pegawai']);
+        Role::create(['name' => 'pelanggan']);
+        Role::create(['name' => 'pegawai']);
+
         Tipe::create([
             'nama' => 'Single Room',
             'deskripsi' => 'Single Room adalah kamar dengan satu tempat tidur ukuran single, cocok untuk satu orang.',
@@ -41,33 +51,74 @@ class DatabaseSeeder extends Seeder
         Kamar::factory(10)->create()->each(function ($kamar) {
             $kamar->nomor_kamar = str_pad($kamar->id, 3, '0', STR_PAD_LEFT);
             $kamar->save();
-        });  
+        });
 
-        User::factory(10)->create();
+        $user = User::factory(10)->create();
+        $user->each(function ($user) {
+            $user->assignRole('pelanggan');
+            $user->save();
+        });
+
+        Pelanggan::factory(10)->create();
 
         Ulasan::factory(30)->create()->each(function ($ulasan) {
             $ulasan->komentar = 'ini adalah komentar palsu yang di-generate oleh factory, ini komentar dengan ID-' . $ulasan->id . ' dari user ' . $ulasan->user_id . ' untuk kamar ' . $ulasan->kamar_id . ' dengan rating ' . $ulasan->rating . ' bintang.';
             $ulasan->save();
         });
 
+        User::factory(10)->create()->each(function ($user) {
+            $user->assignRole('pegawai');
+            $user->save();
+        });
+
+        Pegawai::factory(10)->create();
+
         User::create([
-            'name' => 'Fajri',
+            'username' => 'fajri_chan',
             'email' => 'fajri@gariskode.com',
-            'jenis_kelamin' => 'L',
-            'no_telp' => "089613390766",
-            'role' => 'admin',
-            'email_verified_at' => now(),
             'password' => bcrypt('password'),
+        ])->assignRole(['pegawai', 'admin super']);
+
+        Pegawai::create([
+            'nama' => 'Fajri Rinaldi Chan',
+            'jenis_kelamin' => 'L',
+            'no_telp' => '089613390766',
+            'jabatan' => 'Managers',
+            'alamat' => 'Medan, Sumatera Utara',
+            'tanggal_lahir' => '2002-04-06',
+            'user_id' => 21,
         ]);
 
         User::create([
-            'name' => 'Owner Aiva Losmen',
-            'email' => 'owner@gariskode.com',
-            'jenis_kelamin' => 'L',
-            'no_telp' => "081234567890",
-            'role' => 'owner',
-            'email_verified_at' => now(),
+            'username' => 'admin_hotel',
+            'email' => 'adminhotel@gariskode.me',
             'password' => bcrypt('password'),
+        ])->assignRole(['pegawai', 'admin hotel']);
+
+        Pegawai::create([
+            'nama' => 'Admin Hotel',
+            'jenis_kelamin' => 'L',
+            'no_telp' => '089613390766',
+            'jabatan' => 'Admin Hotel',
+            'alamat' => 'Aceh, Indonesia',
+            'tanggal_lahir' => '2000-01-01',
+            'user_id' => 22,
+        ]);
+
+        User::create([
+            'username' => 'admin_pegawai',
+            'email' => 'adminpegawai@gariskode.me',
+            'password' => bcrypt('password'),
+        ])->assignRole(['pegawai', 'admin pegawai']);
+
+        Pegawai::create([
+            'nama' => 'Admin Pegawai',
+            'jenis_kelamin' => 'P',
+            'no_telp' => '089613390766',
+            'jabatan' => 'Admin Pegawai',
+            'alamat' => 'Jakarta, Indonesia',
+            'tanggal_lahir' => '2000-01-01',
+            'user_id' => 23,
         ]);
 
         Fasilitas::create([
@@ -145,6 +196,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        
+
     }
 }

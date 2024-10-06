@@ -184,26 +184,14 @@
                     </div><!--end:Menu content-->
                 </div><!--end:Menu item--><!--begin:Menu item-->
                 <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.pengguna.owner')) active @endif" href="{{ route('back.pengguna.owner') }}">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-user-tick fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                            </i>
-                        </span><span class="menu-title">Owner
-                        </span>
-                    </a>
-                </div>
-                <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.pengguna.admin')) active @endif" href="{{ route('back.pengguna.admin') }}">
+                    <a class="menu-link @if (request()->routeIs('back.pengguna.pegawai')) active @endif" href="{{ route('back.pengguna.pegawai') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-user-edit fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
                             </i>
-                        </span><span class="menu-title">Admin
+                        </span><span class="menu-title">Pegawai
                         </span>
                     </a>
                 </div>

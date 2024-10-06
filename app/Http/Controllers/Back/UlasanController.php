@@ -14,7 +14,7 @@ class UlasanController extends Controller
             'title' => 'Ulasan',
             'menu' => 'Manajemen Ulasan',
             'submenu' => 'Ulasan',
-            'ulasan' => Ulasan::with(['kamar', 'user'])->get(),
+            'ulasan' => Ulasan::with(['kamar', 'pelanggan'])->get(),
         ];
         return view('back.pages.ulasan.index', $data);
     }

@@ -116,7 +116,7 @@
                             </div>
                             <hr class="thmv-separate">
                             <div class="thmv-reviews-sec">
-                                <h5 >Ulasan</h5>
+                                <h5>Ulasan</h5>
                                 <div class="row thmv-review-row align-items-center" id="ulasanCuy">
                                     <div class="col-md-3 col-12 thmv-rating-col">
                                         <div class="thmv-all-rating">
@@ -195,12 +195,11 @@
                                             </div>
                                             <div class="thmv-user-data">
                                                 <div class="thmv-user-img">
-                                                    <img class="rounded-circle"
-                                                        src="@if ($ulasan->user->foto) {{ Storage::url('uploads/pengguna/' . $ulasan->user->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $ulasan->user->name }} @endif"
+                                                    <img class="rounded-circle" src="{{ $ulasan->pelanggan?->getFoto() }}"
                                                         alt="">
                                                 </div>
                                                 <div class="thmv-user-name">
-                                                    <h6>{{ $ulasan->user->name }}</h6>
+                                                    <h6>{{ $ulasan->pelanggan?->nama }}</h6>
                                                     <p class="thmv-p-light m-0">{{ $ulasan->created_at->diffForHumans() }}
                                                     </p>
                                                 </div>
@@ -219,7 +218,7 @@
                                         @else
                                             <li class="page-item">
                                                 <a class="page-link"
-                                                    href="{{  $ulasan_pagination->previousPageUrl() }}#ulasanCuy">Sebelumnya</a>
+                                                    href="{{ $ulasan_pagination->previousPageUrl() }}#ulasanCuy">Sebelumnya</a>
                                             </li>
                                         @endif
 
@@ -282,20 +281,24 @@
                                     <div class="thmv-form-availability">
                                         <h5 style="font-size: 18px">Reservasi Kamar</h5>
                                     </div>
-                                    <form class="thmv-availability-check">
+                                    <form class="thmv-availability-check" action="{{ route('front.booking') }}"
                                         <div class="thmv-mo-check-form">
                                             <div class="form-group">
                                                 <input type="text" class="form-control check-in-out"
-                                                    id="popupDatepickerfrom1" placeholder="Tanggal Check-in" name="dates">
+                                                    id="popupDatepickerfrom1" placeholder="Tanggal Check-in"
+                                                    name="check_in" value="{{ request()->check_in }}" autocomplete="off"
+                                                    required>
                                                 <i class="fas fa-calendar-day"></i>
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control check-in-out"
-                                                    id="popupDatepickerto1" placeholder="Tanggal Check-out" name="dates">
+                                                    id="popupDatepickerto1" placeholder="Tanggal Check-out"
+                                                    name="check_out" value="{{ request()->check_out }}"
+                                                    autocomplete="off" required>
                                                 <i class="fas fa-calendar-day"></i>
                                             </div>
                                         </div>
-                                        <div class="thmv-extra-services">
+                                        {{-- <div class="thmv-extra-services">
                                             <h5 style="font-size: 16px">Pelayanan Ekstra</h5>
                                             <ul class="thmv-extra-services-list">
                                                 <li>
@@ -316,12 +319,13 @@
                                             <hr class="thmv-separate">
                                             <div class="thmv-your-price">
                                                 <h5 style="font-size: 14px">Total Harga:</h5>
-                                                <h5 style="font-size: 14px">@money($kamar->harga)</h5>
+                                                <h5 style="font-size: 14px" id="totalHarga">Rp. 0</h5>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group">
-                                            <button class="thmv-tour-search btn-full-filled"
-                                                type="submit">Booking sekarang</button>
+                                            <button class="thmv-tour-search btn-full-filled" type="submit"
+                                                id="btnBooking">Booking
+                                                sekarang</button>
                                         </div>
                                     </form>
                                 </div>
@@ -335,4 +339,49 @@
         </div>
     </section>
     <!-- Room Listing End -->
+@endsection
+
+@section('scripts')
+    <script>
+        var kamar = @json($kamar);
+        console.log("Harga Kamar :", kamar.harga);
+
+
+        var check_in = ""
+        var check_out = ""
+
+
+        setInterval(() => {
+            check_in = $('#popupDatepickerfrom1').val()
+            check_out = $('#popupDatepickerto1').val()
+            checkDate()
+        }, 500);
+
+        function checkDate() {
+            if (check_in == "" || check_out == "") {
+                console.log("Tanggal Check In dan Check Out harus diisi");
+                $('#totalHarga').text("Rp. 0")
+            } else {
+                var checkinDate = new Date(check_in);
+                var checkoutDate = new Date(check_out);
+
+                var timeDiff = Math.abs(checkoutDate.getTime() - checkinDate.getTime());
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                console.log("Selisih Hari :", diffDays);
+
+                if (diffDays == 0) {
+                    diffDays = 1
+                }
+                var totalHarga = diffDays * kamar.harga
+                console.log("Total Harga :", totalHarga);
+                $('#totalHarga').text("Rp. " + new Intl.NumberFormat('id-ID').format(totalHarga))
+            }
+        }
+
+        $('btnBooking').click(function(e) {
+            e.preventDefault()
+            console.log("Booking Sekarang");
+        })
+    </script>
 @endsection

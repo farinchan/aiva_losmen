@@ -6,27 +6,35 @@
         <div class="menu-content d-flex align-items-center px-3">
             <!--begin::Avatar-->
             <div class="symbol symbol-50px me-5">
-                <img alt="Logo"
-                    src="@if (Auth::user()->foto ) {{ Storage::url('uploads/pengguna/' . Auth::user()->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ Auth::user()->name }} @endif"
-                    alt="{{ Auth::user()->name }}" />
+                <img alt="Logo" src="{{ Auth::user()->pegawai?->getFoto() }}"
+                    alt="{{ Auth::user()->pegawai?->nama }}" />
             </div>
             <!--end::Avatar-->
             <!--begin::Username-->
             <div class="d-flex
                     flex-column">
                 <div class="fw-bold d-flex align-items-center fs-5">
-                    {{ Auth::user()->name }}
-                    @if (Auth::user()->role == 'admin')
-                        <span class="badge badge-light-danger fw-bold fs-8 px-2 py-1 ms-2">Admin</span>
-                    @elseif (Auth::user()->role == 'owner')
-                        <span class="badge badge-light-primary fw-bold fs-8 px-2 py-1 ms-2">Owner</span>
-                    @else
-                        <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pelanggan</span>
-                    @endif
+                    {{ Auth::user()->pegawai?->nama }}
+
                 </div>
+
                 <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">
                     {{ Auth::user()->email }}
                 </a>
+                <div class="fw-bold d-flex align-items-center ">
+                    @foreach (Auth::user()->getRoleNames() as $role)
+                        @if ($role == 'admin super')
+                            <span class="badge badge-light-danger fw-bold fs-8 px-2 py-1 ms-2">Admin Super</span>
+                        @elseif ($role == 'admin hotel')
+                            <span class="badge badge-light-warning fw-bold fs-8 px-2 py-1 ms-2">Admin Hotel</span>
+                        @elseif ($role == 'admin pegawai')
+                            <span class="badge badge-light-warning fw-bold fs-8 px-2 py-1 ms-2">Admin Pegawai</span>
+                        @elseif ($role == 'pegawai')
+                            <span class="badge badge-light-primary fw-bold fs-8 px-2 py-1 ms-2">Pegawai</span>
+                        @endif
+                    @endforeach
+
+                </div>
             </div>
             <!--end::Username-->
         </div>
@@ -37,7 +45,7 @@
     <!--end::Menu separator-->
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="{{ route("profile") }}" class="menu-link px-5">
+        <a href="{{ route('profile') }}" class="menu-link px-5">
             My Profile
         </a>
     </div>

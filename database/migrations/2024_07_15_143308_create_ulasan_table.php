@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('ulasan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kamar_id')->constrained('kamar');
-            $table->foreignId('user_id')->constrained('users');
+            $table->unsignedBigInteger('pelanggan_id');
+            $table->foreign('pelanggan_id')->references('id_pelanggan')->on('pelanggan')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('rating')->length(1);
             $table->text('komentar')->nullable();
             $table->string('foto')->nullable();
