@@ -17,7 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+            'redirectIfNotAuthenticated' => \App\Http\Middleware\RedirectIfNotAuthenticated::class,
         ]);
+        $middleware->redirectGuestsTo('auth/login');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

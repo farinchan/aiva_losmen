@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('konfirmasi_pembayaran', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pengirim', 50);
-            $table->string('no_rek', 20);
-            $table->date('tanggal_transfer');
-            $table->string('bukti_transfer', 50);
+            $table->string('nama_pengirim', 50)->nullable();
+            $table->string('no_rek', 20)->nullable();
+            $table->date('tanggal_transfer')->nullable();
+            $table->string('bukti_transfer');
             $table->foreignId('transaksi_id')->constrained('transaksi');
             $table->timestamp('waktu_konfirmasi')->nullable();
             $table->boolean('status')->default(false);

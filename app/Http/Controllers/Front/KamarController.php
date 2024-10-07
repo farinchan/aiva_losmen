@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kamar;
+use App\Models\MetodePembayaran;
 use App\Models\Tipe;
 use App\Models\Ulasan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KamarController extends Controller
 {
@@ -80,4 +84,23 @@ class KamarController extends Controller
 
         return view('front.pages.kamar.detail', $data);
     }
+
+    public function ulasanStore(Request $request, $id)
+    {
+        $request->validate([
+            'rating' => 'required|numeric|min:1|max:5',
+            'komentar' => 'required',
+        ]);
+
+        Ulasan::create([
+            'kamar_id' => $id,
+            'pelanggan_id' => auth()->guard('pelanggan')->user()->id_pelanggan,
+            'rating' => $request->rating,
+            'komentar' => $request->komentar,
+        ]);
+
+        return redirect()->back()->with('success', 'Ulasan berhasil ditambahkan');
+    }
+
+    
 }

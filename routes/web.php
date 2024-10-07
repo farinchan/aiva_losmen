@@ -12,6 +12,7 @@ use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\KamarController as FrontKamarController;
+use App\Http\Controllers\Front\TransaksiController as FrontTransaksiController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
@@ -22,6 +23,12 @@ Route::put('/my-profile/update', [ProfileController::class, 'update'])->name('pr
 
 Route::get('/kamar', [FrontKamarController::class, 'listKamar'])->name('kamar');
 Route::get('/kamar/{id}', [FrontKamarController::class, 'detailKamar'])->name('kamar.detail');
+
+Route::get('/booking/{id}', [FrontTransaksiController::class, 'bookingDetail'])->name('booking')->middleware([ 'role:pelanggan', 'redirectIfNotAuthenticated']);
+Route::post('/booking/{id}', [FrontTransaksiController::class, 'bookingProcess'])->name('booking.process')->middleware([ 'role:pelanggan', 'redirectIfNotAuthenticated']);
+
+Route::get('/pembayaran/{id}', [FrontTransaksiController::class, 'pembayaranDetail'])->name('pembayaran')->middleware(['auth', 'role:pelanggan']);
+Route::post('/pembayaran/{id}', [FrontTransaksiController::class, 'pembayaranProcess'])->name('pembayaran.process')->middleware(['auth', 'role:pelanggan']);
 
 
 Route::prefix('auth')->name('auth.')->group(function () {

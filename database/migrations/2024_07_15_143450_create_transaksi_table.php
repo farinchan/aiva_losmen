@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kamar_id')->constrained('kamar');
-            $table->foreignId('user_id')->constrained('users');
-            $table->date('tanggal_reservasi');
+            $table->unsignedBigInteger('pelanggan_id');
+            $table->foreign('pelanggan_id')->references('id_pelanggan')->on('pelanggan')->onDelete('no action')->onUpdate('cascade');
+            $table->date('tanggal_reservasi')->nullable();
             $table->timestamp('check_in');
             $table->timestamp('check_out');
-            $table->enum('status', ['belum bayar', 'sudah bayar', 'digunakan', 'selesai']);
+            $table->enum('status', ['belum bayar', 'sudah bayar', 'digunakan', 'selesai'])->default('belum bayar');
             $table->integer('total_hari')->length(2);
             $table->integer('total_pembayaran')->length(10);
             $table->foreignId('metode_pembayaran_id')->constrained('metode_pembayaran');

@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="col-12">
-                            <button type="submit" class="btn-full-filled btn btn-primary w-100">Login</button>
+                            <button type="submit" class="btn-full-filled btn btn-primary w-100">Register</button>
                         </div>
                         <p class="text-center">
                             Sudah Punya akun? <a href="{{ route('auth.login') }}">Login Disini</a>

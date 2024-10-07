@@ -281,7 +281,7 @@
                                     <div class="thmv-form-availability">
                                         <h5 style="font-size: 18px">Reservasi Kamar</h5>
                                     </div>
-                                    <form class="thmv-availability-check" action="{{ route('front.booking') }}"
+                                    <form class="thmv-availability-check" action="{{ route('booking', $kamar->id) }}" method="GET">
                                         <div class="thmv-mo-check-form">
                                             <div class="form-group">
                                                 <input type="text" class="form-control check-in-out"
@@ -298,8 +298,8 @@
                                                 <i class="fas fa-calendar-day"></i>
                                             </div>
                                         </div>
-                                        {{-- <div class="thmv-extra-services">
-                                            <h5 style="font-size: 16px">Pelayanan Ekstra</h5>
+                                        <div class="thmv-extra-services">
+                                            {{-- <h5 style="font-size: 16px">Pelayanan Ekstra</h5>
                                             <ul class="thmv-extra-services-list">
                                                 <li>
                                                     <div class="thmv-services-checkbox">
@@ -315,13 +315,13 @@
                                                         <h6>Rp. 40.000/potong</h6>
                                                     </div>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                             <hr class="thmv-separate">
                                             <div class="thmv-your-price">
                                                 <h5 style="font-size: 14px">Total Harga:</h5>
                                                 <h5 style="font-size: 14px" id="totalHarga">Rp. 0</h5>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <div class="form-group">
                                             <button class="thmv-tour-search btn-full-filled" type="submit"
                                                 id="btnBooking">Booking

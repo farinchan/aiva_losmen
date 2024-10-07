@@ -27,8 +27,8 @@
                             Foto Profile
                         </div>
                         <img class="p-3"
-                            src="@if ($user->foto) {{ Storage::url('uploads/pengguna/' . $user->foto) }} @else https://ui-avatars.com/api/?background=000C32&color=fff&name={{ $user->name }} @endif"
-                            class="card-img-top img-thumbnail" alt="{{ $user->name }}" id="image_preview">
+                            src="{{ $user->pelanggan?->getFoto()}}"
+                            class="card-img-top img-thumbnail" alt="{{ $user->pelanggan?->nama }}" id="image_preview">
                         <input type="file" id="image" name="foto" class="d-none" accept="image/*">
 
                         <div class="card-body">
@@ -47,7 +47,7 @@
                                 <label class="form-label">Nama Lengkap</label>
                                 <input style="border: 1px solid #000000; padding: 10px"  name="name" required="" type="text"
                                     class="form-control @if ($errors->has('name')) is-invalid @endif"
-                                    placeholder="*Nama Lengkap" value="{{ $user->name }}">
+                                    placeholder="*Nama Lengkap" value="{{ $user->pelanggan?->nama }}">
                                 @error('name')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -59,9 +59,9 @@
                                 <select style="border: 1px solid #000000; padding: 10px" name="jenis_kelamin" id=""
                                     class="form-control @if ($errors->has('jenis_kelamin')) is-invalid @endif">
                                     <option selected disabled>*Pilih Jenis Kelamin</option>
-                                    <option value="L" @if ($user->jenis_kelamin == 'L') selected @endif>Laki - Laki
+                                    <option value="L" @if ($user->pelanggan?->jenis_kelamin == 'L') selected @endif>Laki - Laki
                                     </option>
-                                    <option value="P" @if ($user->jenis_kelamin == 'P') selected @endif>Perempuan
+                                    <option value="P" @if ($user->pelanggan?->jenis_kelamin == 'P') selected @endif>Perempuan
                                     </option>
                                 </select>
                                 @error('jenis_kelamin')
@@ -74,7 +74,7 @@
                                 <label class="form-label">Nomor Telepon</label>
                                 <input style="border: 1px solid #000000; padding: 10px"  name="no_telp" required="" type="tel"
                                     class="form-control @if ($errors->has('no_telp')) is-invalid @endif"
-                                    value="{{ $user->no_telp }}" placeholder="*Nomor Telephone">
+                                    value="{{ $user->pelanggan?->no_telp }}" placeholder="*Nomor Telephone">
                                 @error('no_telp')
                                     <div class="text-danger">
                                         {{ $message }}

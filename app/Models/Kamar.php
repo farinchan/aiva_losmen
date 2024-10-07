@@ -31,4 +31,9 @@ class Kamar extends Model
     {
         return $this->hasMany(Transaksi::class, 'kamar_id', 'id');
     }
+
+    public function getFoto()
+    {
+        return $this->foto ? asset('storage/' . $this->foto) : asset('images/no-image.jpg');
+    }
 }
