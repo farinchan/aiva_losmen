@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class KonfirmasiPembayaran extends Model
 {
@@ -16,5 +17,10 @@ class KonfirmasiPembayaran extends Model
     public function transaksi()
     {
         return $this->belongsTo(Transaksi::class, 'transaksi_id', 'id');
+    }
+
+    public function getBuktiTransfer()
+    {
+        return Storage::url($this->bukti_transfer);
     }
 }

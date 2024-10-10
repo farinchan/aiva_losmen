@@ -116,7 +116,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link @if (request()->routeIs('back.transaksi.konfirmasi-pembayaran')) active @endif" href="{{route("back.transaksi.konfirmasi-pembayaran")}}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-bill fs-2">
                                 <span class="path1"></span>
@@ -130,7 +130,7 @@
                         </span>
                     </a>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion"><span class="menu-link"><span
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if (request()->routeIs('back.transaksi.*') ) here show @endif"><span class="menu-link"><span
                             class="menu-icon">
                             <i class="ki-duotone ki-price-tag fs-2">
                                 <span class="path1"></span>
@@ -140,7 +140,7 @@
                         </span><span class="menu-title">Pemesanan</span><span class="menu-arrow"></span></span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi')) active @endif" href="{{route("back.transaksi.reservasi")}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -149,7 +149,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.check-in')) active @endif" href="{{route("back.transaksi.reservasi.check-in")}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -158,12 +158,21 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.check-out')) active @endif" href="{{route("back.transaksi.reservasi.check-out")}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
                                 </span>
                                 <span class="menu-title">Selesai</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.cancel')) active @endif" href="{{route("back.transaksi.reservasi.cancel")}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot">
+                                    </span>
+                                </span>
+                                <span class="menu-title">Dibatalkan</span>
                             </a>
                         </div>
 

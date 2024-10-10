@@ -9,6 +9,7 @@ use App\Http\Controllers\Back\MetodePembayaranController;
 use App\Http\Controllers\Back\TipeKamarController;
 use App\Http\Controllers\Back\UlasanController;
 use App\Http\Controllers\Back\UserController;
+use App\Http\Controllers\Back\TransaksiController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Front\KamarController as FrontKamarController;
@@ -24,8 +25,8 @@ Route::put('/my-profile/update', [ProfileController::class, 'update'])->name('pr
 Route::get('/kamar', [FrontKamarController::class, 'listKamar'])->name('kamar');
 Route::get('/kamar/{id}', [FrontKamarController::class, 'detailKamar'])->name('kamar.detail');
 
-Route::get('/booking/{id}', [FrontTransaksiController::class, 'bookingDetail'])->name('booking')->middleware([ 'role:pelanggan', 'redirectIfNotAuthenticated']);
-Route::post('/booking/{id}', [FrontTransaksiController::class, 'bookingProcess'])->name('booking.process')->middleware([ 'role:pelanggan', 'redirectIfNotAuthenticated']);
+Route::get('/booking/{id}', [FrontTransaksiController::class, 'bookingDetail'])->name('booking')->middleware(['redirectIfNotAuthenticated', 'role:pelanggan', ]);
+Route::post('/booking/{id}', [FrontTransaksiController::class, 'bookingProcess'])->name('booking.process')->middleware(['redirectIfNotAuthenticated', 'role:pelanggan']);
 
 Route::get('/pembayaran/{id}', [FrontTransaksiController::class, 'pembayaranDetail'])->name('pembayaran')->middleware(['auth', 'role:pelanggan']);
 Route::post('/pembayaran/{id}', [FrontTransaksiController::class, 'pembayaranProcess'])->name('pembayaran.process')->middleware(['auth', 'role:pelanggan']);
@@ -55,6 +56,25 @@ Route::prefix('back')->name('back.')->middleware('auth')->group(function () {
         Route::post('/store', [MetodePembayaranController::class, 'store'])->name('store');
         Route::put('/update/{id}', [MetodePembayaranController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [MetodePembayaranController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('transaksi')->name('transaksi.')->middleware('role:admin super')->group(function () {
+        Route::get('/{id}/detail', [TransaksiController::class, 'detail'])->name('detail');
+        Route::get('/{id}/invoice', [TransaksiController::class, 'invoice'])->name('invoice');
+
+        Route::get('/konfirmasi-pembayaran', [TransaksiController::class, 'konfirmasiPembayaran'])->name('konfirmasi-pembayaran');
+        Route::post('/konfirmasi-pembayaran/{id_konfirmasi}/approve', [TransaksiController::class, 'konfirmasiPembayaranApprove'])->name('konfirmasi-pembayaran.approve');
+        Route::post('/konfirmasi-pembayaran/{id_konfirmai}/reject', [TransaksiController::class, 'konfirmasiPembayaranReject'])->name('konfirmasi-pembayaran.reject');
+
+        Route::get('/reservasi', [TransaksiController::class, 'reservasi'])->name('reservasi');
+        Route::get('/reservasi/check-in', [TransaksiController::class, 'reservasiCheckIn'])->name('reservasi.check-in');
+        Route::get('/reservasi/check-out', [TransaksiController::class, 'reservasiCheckOut'])->name('reservasi.check-out');
+        Route::get('/reservasi/cancel', [TransaksiController::class, 'reservasiCancel'])->name('reservasi.cancel');
+
+        Route::post('/{id}/check-in', [TransaksiController::class, 'checkIn'])->name('check-in');
+        Route::post('/{id}/check-out', [TransaksiController::class, 'checkOut'])->name('check-out');
+        Route::post('/{id}/cancel', [TransaksiController::class, 'cancel'])->name('cancel');
+
     });
 
     Route::prefix('fasilitas-kamar')->name('fasilitas-kamar.')->middleware('role:admin super')->group(function () {

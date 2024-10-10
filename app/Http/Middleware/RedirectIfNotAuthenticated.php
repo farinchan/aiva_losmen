@@ -19,7 +19,7 @@ class RedirectIfNotAuthenticated
         if (!Auth::check()) {
             // Simpan URL halaman yang ingin diakses sebelum login
             session(['url.intended' => url()->current()]);
-            return redirect('/login'); // Arahkan ke halaman login
+            return redirect('/auth/login'); // Arahkan ke halaman login
         }
 
         return $next($request);

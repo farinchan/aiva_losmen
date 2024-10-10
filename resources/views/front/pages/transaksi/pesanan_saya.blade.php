@@ -18,7 +18,7 @@
 
     <div class="container">
         <div class="row mb-5">
-            @foreach ($transaksi as $transaksi)
+            @forelse ($transaksi as $transaksi)
                 <div class="col-md-12 mb-3">
                     <div class="card shadow " style=" border: 1px solid #000000;">
 
@@ -107,7 +107,7 @@
                                                 Batalkan pemesanan
                                             </a>
                                         </p>
-                                    @else
+                                    @elseif ($transaksi->status !== 'dibatalkan')
                                         <a href="{{ route('transaksi.receipt', $transaksi->id) }}">
                                             <i class="fas fa-receipt"></i>&nbsp;
                                             Cetak Invoice
@@ -116,6 +116,8 @@
 
 
                                 </div>
+                                @if ($transaksi->status == 'selesaikan pembayaran')
+
                                 <div class="col-md-12 mt-3">
                                     <div class="card mt-3" style="border: 1px solid #000000;">
                                         <div class="card-body">
@@ -155,11 +157,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @empty
+                <div class="col-md-12" style="height: 300px">
+                    <p class="text text-center">Belum ada transaksi</p>
+
+                </div>
+            @endforelse
 
         </div>
     </div>

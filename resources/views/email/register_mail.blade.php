@@ -23,7 +23,7 @@
 						<br>Manajemen Aiva Losmen
 						<tr>
 							<td align="center" valign="center" style="font-size: 13px; text-align:center;padding: 20px; color: #6d6e7c;">
-								<p>Jl. Nasional Jl. Swadaya No.Simpang, Rundeng, Kec. Johan Pahlawan<br>Kabupaten Aceh Barat, Aceh
+								<p>Jl. Nasional, Rundeng, Kec. Johan Pahlawan<br>Kabupaten Aceh Barat, Aceh
 								<p>Copyright ©
 								<a href="https://aivalosmen.com/" rel="noopener" target="_blank">Aiva Losmen</a>.</p>
 							</td>
