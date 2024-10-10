@@ -50,6 +50,7 @@ Route::prefix('auth')->name('auth.')->group(function () {
 
 Route::prefix('back')->name('back.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('role:admin super')->name('dashboard');
+    Route::get('/dashboard/statistik', [DashboardController::class, 'statistik'])->middleware('role:admin super')->name('dashboard.statistik');
 
     Route::prefix('metode-pembayaran')->name('metode-pembayaran.')->middleware('role:admin super')->group(function () {
         Route::get('/', [MetodePembayaranController::class, 'index'])->name('index');
