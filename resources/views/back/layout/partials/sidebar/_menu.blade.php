@@ -10,13 +10,16 @@
             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6" id="#kt_app_sidebar_menu"
                 data-kt-menu="true" data-kt-menu-expand="false">
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if (request()->routeIs('back.dashboard')) here show @endif"><!--begin:Menu link--><span
-                        class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-element-11 fs-2"><span
-                                    class="path1"></span><span class="path2"></span><span class="path3"></span><span
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion @if (request()->routeIs('back.dashboard')) here show @endif">
+                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
+                                class="ki-duotone ki-element-11 fs-2"><span class="path1"></span><span
+                                    class="path2"></span><span class="path3"></span><span
                                     class="path4"></span></i></span><span class="menu-title">Dashboards</span><span
                             class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
                     <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link @if (request()->routeIs('back.dashboard')) here show @endif"
+                        <div class="menu-item"><!--begin:Menu link--><a
+                                class="menu-link @if (request()->routeIs('back.dashboard')) here show @endif"
                                 href="{{ route('back.dashboard') }}"><span class="menu-bullet"><span
                                         class="bullet bullet-dot"></span></span><span
                                     class="menu-title">Default</span></a>
@@ -24,6 +27,17 @@
                         </div>
 
                     </div><!--end:Menu sub-->
+                    <div class="menu-item">
+                        <a class="menu-link" href="{{ route('back.fasilitas-kamar.index') }}">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-security-user fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </span><span class="menu-title">Profil Saya
+                            </span>
+                        </a>
+                    </div>
                 </div><!--end:Menu item--><!--begin:Menu item-->
                 <div class="menu-item pt-5"><!--begin:Menu content-->
                     <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Manajemen
@@ -65,7 +79,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link @if (request()->routeIs('back.tipe-kamar.index')) active @endif" href="{{ route('back.tipe-kamar.index') }}">
+                            <a class="menu-link @if (request()->routeIs('back.tipe-kamar.index')) active @endif"
+                                href="{{ route('back.tipe-kamar.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -74,7 +89,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link @if (request()->routeIs('back.kamar.index')) active @endif" href="{{ route('back.kamar.index') }}">
+                            <a class="menu-link @if (request()->routeIs('back.kamar.index')) active @endif"
+                                href="{{ route('back.kamar.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -86,7 +102,8 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.ulasan.index')) active @endif" href="{{ route('back.ulasan.index') }}">
+                    <a class="menu-link @if (request()->routeIs('back.ulasan.index')) active @endif"
+                        href="{{ route('back.ulasan.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-like-shapes fs-2">
                                 <span class="path1"></span>
@@ -102,7 +119,8 @@
                     </div><!--end:Menu content-->
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.metode-pembayaran.index')) active @endif" href="{{ route('back.metode-pembayaran.index') }}">
+                    <a class="menu-link @if (request()->routeIs('back.metode-pembayaran.index')) active @endif"
+                        href="{{ route('back.metode-pembayaran.index') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-two-credit-cart fs-2">
                                 <span class="path1"></span>
@@ -116,7 +134,8 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.transaksi.konfirmasi-pembayaran')) active @endif" href="{{route("back.transaksi.konfirmasi-pembayaran")}}">
+                    <a class="menu-link @if (request()->routeIs('back.transaksi.konfirmasi-pembayaran')) active @endif"
+                        href="{{ route('back.transaksi.konfirmasi-pembayaran') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-bill fs-2">
                                 <span class="path1"></span>
@@ -130,8 +149,9 @@
                         </span>
                     </a>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if (request()->routeIs('back.transaksi.*') ) here show @endif"><span class="menu-link"><span
-                            class="menu-icon">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion @if (request()->routeIs('back.transaksi.*')) here show @endif"><span
+                        class="menu-link"><span class="menu-icon">
                             <i class="ki-duotone ki-price-tag fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
@@ -140,7 +160,8 @@
                         </span><span class="menu-title">Pemesanan</span><span class="menu-arrow"></span></span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi')) active @endif" href="{{route("back.transaksi.reservasi")}}">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi')) active @endif"
+                                href="{{ route('back.transaksi.reservasi') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -149,7 +170,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.check-in')) active @endif" href="{{route("back.transaksi.reservasi.check-in")}}">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.check-in')) active @endif"
+                                href="{{ route('back.transaksi.reservasi.check-in') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -158,7 +180,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.check-out')) active @endif" href="{{route("back.transaksi.reservasi.check-out")}}">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.check-out')) active @endif"
+                                href="{{ route('back.transaksi.reservasi.check-out') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -167,7 +190,8 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.cancel')) active @endif" href="{{route("back.transaksi.reservasi.cancel")}}">
+                            <a class="menu-link @if (request()->routeIs('back.transaksi.reservasi.cancel')) active @endif"
+                                href="{{ route('back.transaksi.reservasi.cancel') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot">
                                     </span>
@@ -185,7 +209,8 @@
                     </div><!--end:Menu content-->
                 </div><!--end:Menu item--><!--begin:Menu item-->
                 <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.pengguna.pegawai')) active @endif" href="{{ route('back.pengguna.pegawai') }}">
+                    <a class="menu-link @if (request()->routeIs('back.pengguna.pegawai')) active @endif"
+                        href="{{ route('back.pengguna.pegawai') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-user-edit fs-2">
                                 <span class="path1"></span>
@@ -197,7 +222,8 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link @if (request()->routeIs('back.pengguna.pelanggan')) active @endif" href="{{ route('back.pengguna.pelanggan') }}">
+                    <a class="menu-link @if (request()->routeIs('back.pengguna.pelanggan')) active @endif"
+                        href="{{ route('back.pengguna.pelanggan') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-people fs-2">
                                 <span class="path1"></span>
