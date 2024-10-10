@@ -30,6 +30,10 @@ Route::post('/booking/{id}', [FrontTransaksiController::class, 'bookingProcess']
 Route::get('/pembayaran/{id}', [FrontTransaksiController::class, 'pembayaranDetail'])->name('pembayaran')->middleware(['auth', 'role:pelanggan']);
 Route::post('/pembayaran/{id}', [FrontTransaksiController::class, 'pembayaranProcess'])->name('pembayaran.process')->middleware(['auth', 'role:pelanggan']);
 
+Route::get('/transaksi', [FrontTransaksiController::class, 'myTransaction'])->name('transaksi')->middleware(['auth', 'role:pelanggan']);
+Route::get('/transaksi/{id}/cancel', [FrontTransaksiController::class, 'myTransactionCancel'])->name('transaksi.cancel')->middleware(['auth', 'role:pelanggan']);
+Route::get('/transaksi/{id}/receipt', [FrontTransaksiController::class, 'receipt'])->name('transaksi.receipt')->middleware(['auth', 'role:pelanggan']);
+
 
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');

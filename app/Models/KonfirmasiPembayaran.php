@@ -11,4 +11,10 @@ class KonfirmasiPembayaran extends Model
 
     protected $table = 'konfirmasi_pembayaran';
     protected $guarded = ['id'];
+    public $timestamps = false;
+
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class, 'transaksi_id', 'id');
+    }
 }

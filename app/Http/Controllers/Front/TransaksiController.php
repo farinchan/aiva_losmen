@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Kamar;
 use App\Models\KonfirmasiPembayaran;
 use App\Models\MetodePembayaran;
+use App\Models\Transaksi;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -86,12 +89,13 @@ class TransaksiController extends Controller
         $total_hari = Carbon::parse($request->check_in)->diffInDays(Carbon::parse($request->check_out));
         $total_pembayaran = $total_hari * $kamar->harga;
 
+
         $transaksi = $kamar->transaksi()->create([
             'pelanggan_id' => Auth::user()->pelanggan->id_pelanggan,
             'tanggal_reservasi' => now(),
             'check_in' => $request->check_in,
             'check_out' => $request->check_out,
-            'status' => 'belum bayar',
+            // 'status' => 'belum bayar',
             'total_hari' => $total_hari,
             'total_pembayaran' => $total_pembayaran,
             'metode_pembayaran_id' => $request->metode_pembayaran_id,
@@ -107,7 +111,7 @@ class TransaksiController extends Controller
 
         $transaksi = Auth::user()->pelanggan->transaksi()->findOrFail($id);
 
-        if ($transaksi->status != 'belum bayar') {
+        if ($transaksi->status != 'selesaikan pembayaran') {
             Alert::error('Transaksi sudah dibayar');
             return redirect()->back()->with('error', 'Transaksi sudah dibayar');
         }
@@ -127,6 +131,7 @@ class TransaksiController extends Controller
 
     public function pembayaranProcess(Request $request, $id)
     {
+        // dd($request->all());
         $validator = Validator::make(
             $request->all(),
             [
@@ -148,7 +153,7 @@ class TransaksiController extends Controller
         $transaksi = Auth::user()->pelanggan->transaksi()->findOrFail($id);
 
         $file = $request->file('bukti_pembayaran');
-        $filePath = $file->storeAs('uploads/bukti_pembayaran', time() . '_' . $transaksi->id . '_' . time() . '.' . $file->getClientOriginalExtension(), 'public');
+        $filePath = $file->storeAs('uploads/bukti_pembayaran',  $transaksi->id . '_' . time() . '.' . $file->getClientOriginalExtension(), 'public');
 
         // $transaksi->update([
         //     'status' => 'sudah bayar',
@@ -156,12 +161,64 @@ class TransaksiController extends Controller
 
         KonfirmasiPembayaran::create([
             'transaksi_id' => $transaksi->id,
-            'bukti_pembayaran' => $filePath,
-            'status' => false,
+            'bukti_transfer' => $filePath,
+            'tanggal_transfer' => now(),
         ]);
 
         Alert::success('Berhasil', 'Pembayaran berhasil ditambahkan');
         return redirect()->route('transaksi');
+    }
+
+    public function myTransaction()
+    {
+        $transaksi = Transaksi::with(['kamar', 'metodePembayaran', 'konfirmasiPembayaran'])
+            ->where('pelanggan_id', Auth::user()->pelanggan->id_pelanggan)
+            ->latest()
+            ->get();
+
+        $data = [
+            'title' => 'Transaksi Saya',
+            'metaTitle' => 'Transaksi Saya',
+            'metaDescription' => 'Transaksi Saya',
+            'metaKeywords' => 'Transaksi Saya',
+            'url' => route('transaksi'),
+            'transaksi' => $transaksi,
+        ];
+
+        // dd($data);
+        // return response()->json($data);
+        return view('front.pages.transaksi.pesanan_saya', $data);
+
+    }
+
+    public function myTransactionCancel($id)
+    {
+        $transaksi = Auth::user()->pelanggan->transaksi()->findOrFail($id);
+
+        if ($transaksi->status != 'selesaikan pembayaran') {
+            Alert::error('Transaksi sudah dibayar');
+            return redirect()->back()->with('error', 'Transaksi sudah dibayar');
+        }
+
+        $transaksi->delete();
+
+        Alert::success('Berhasil', 'Transaksi berhasil dibatalkan');
+        return redirect()->route('transaksi');
+    }
+
+    public function receipt($id)
+    {
+        $transaksi = Auth::user()->pelanggan->transaksi()->findOrFail($id);
+
+        $data = [
+            'transaksi' => $transaksi,
+            'user' => Auth::user(),
+        ];
+
+        $pdf = Pdf::loadView('front.pages.transaksi.receipt_pdf', $data);
+
+        return $pdf->download('receipt-' . $transaksi->id .' (' . Auth::user()->pelanggan?->nama . ').pdf');
+
     }
 
 

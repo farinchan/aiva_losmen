@@ -26,4 +26,9 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Pelanggan::class, 'pelanggan_id', 'id_pelanggan');
     }
+
+    public function konfirmasiPembayaran()
+    {
+        return $this->hasMany(konfirmasiPembayaran::class, 'transaksi_id', 'id');
+    }
 }

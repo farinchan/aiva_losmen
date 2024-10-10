@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal_reservasi')->nullable();
             $table->timestamp('check_in');
             $table->timestamp('check_out');
-            $table->enum('status', ['belum bayar', 'sudah bayar', 'digunakan', 'selesai'])->default('belum bayar');
+            $table->enum('status', ['selesaikan pembayaran', 'reservasi', 'digunakan', 'selesai'])->default('selesaikan pembayaran');
             $table->integer('total_hari')->length(2);
             $table->integer('total_pembayaran')->length(10);
             $table->foreignId('metode_pembayaran_id')->constrained('metode_pembayaran');

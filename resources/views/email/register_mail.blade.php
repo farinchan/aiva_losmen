@@ -4,7 +4,7 @@
 		<tbody>
 			<tr>
 				<td align="center" valign="center" style="text-align:center; padding: 40px">
-					<img alt="Logo" style="height: 100px" src="https://res.cloudinary.com/do8klrf5z/image/upload/v1715317527/logo_sipar_kierhm.png" class="h-45px" />
+					<img alt="Logo" style="height: 100px" src="https://res.cloudinary.com/duuawbwih/image/upload/v1728535892/aiva_losmen_logo_slx5of.png" class="h-45px" />
 				</td>
 			</tr>
 			<tr>

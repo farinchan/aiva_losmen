@@ -115,6 +115,21 @@
                         </span>
                     </a>
                 </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="#">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-bill fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                                <span class="path5"></span>
+                                <span class="path6"></span>
+                            </i>
+                        </span><span class="menu-title">Konfirmasi Pemesanan
+                        </span>
+                    </a>
+                </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion"><span class="menu-link"><span
                             class="menu-icon">
                             <i class="ki-duotone ki-price-tag fs-2">
@@ -130,16 +145,7 @@
                                     <span class="bullet bullet-dot">
                                     </span>
                                 </span>
-                                <span class="menu-title">Belum Bayar</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="#">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot">
-                                    </span>
-                                </span>
-                                <span class="menu-title">Sudah Bayar</span>
+                                <span class="menu-title">Reservasi</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -163,21 +169,7 @@
 
                     </div>
                 </div>
-                <div class="menu-item">
-                    <a class="menu-link" href="#">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-bill fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
-                            </i>
-                        </span><span class="menu-title">Konfirmasi Pemesanan
-                        </span>
-                    </a>
-                </div>
+
                 <div class="menu-item pt-5"><!--begin:Menu content-->
                     <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Manajemen
                             Pengguna</span>

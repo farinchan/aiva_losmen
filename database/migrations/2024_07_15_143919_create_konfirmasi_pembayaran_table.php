@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('bukti_transfer');
             $table->foreignId('transaksi_id')->constrained('transaksi');
             $table->timestamp('waktu_konfirmasi')->nullable();
-            $table->boolean('status')->default(false);
-            $table->foreignId('admin_id')->constrained('users')->nullable();
+            $table->enum('status', ['Menunggu Konfirmasi', 'Diterima', 'Ditolak'])->default('Menunggu Konfirmasi');
+            $table->integer('admin_id')->nullable();
         });
     }
 

@@ -51,7 +51,7 @@
                                         Lihat
                                         <i class="far fa-eye"></i>
                                     </a>
-                                    <a class="read-more-btn" href="#">
+                                    <a class="read-more-btn" href="{{ route('booking', [$data->id, 'check_in' => request()->check_in, 'check_out' => request()->check_out]) }}">
                                         Pesan Sekarang
                                         <i class="fas fa-ticket-alt"></i>
                                     </a>

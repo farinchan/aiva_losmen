@@ -100,13 +100,14 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
-                            <a class="text-light py-3 mt-3" href="#" title="">
-                                <i class="fas fa-ticket-alt me-2"></i>
-                                Pesanan Saya
-                            </a>
-
-                        </li>
+                        @role('pelanggan')
+                            <li>
+                                <a class="text-light py-3 mt-3" href="{{ route('transaksi') }}" title="">
+                                    <i class="fas fa-ticket-alt me-2"></i>
+                                    Pesanan Saya
+                                </a>
+                            </li>
+                        @endrole
                         <li>
                             <a class="text-light py-3" href="{{ route('auth.logout') }}" title="">
                                 <i class="fas fa-sign-out-alt me-2"></i>
