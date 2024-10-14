@@ -45,8 +45,8 @@
     <!--end::Menu separator-->
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="{{ route('profile') }}" class="menu-link px-5">
-            My Profile
+        <a href="{{ route('profile.update') }}" class="menu-link px-5">
+            Profil Saya
         </a>
     </div>
     <!--end::Menu item-->

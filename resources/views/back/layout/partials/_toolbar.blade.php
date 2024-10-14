@@ -5,7 +5,7 @@
         @include('back/layout/partials/_page-title')
         <!--begin::Actions-->
         <div class="d-flex align-items-center gap-2 gap-lg-3">
-            <!--begin::Secondary button-->
+            {{-- <!--begin::Secondary button-->
             <a href="#" class="btn btn-sm fw-bold btn-secondary" data-bs-toggle="modal"
                 data-bs-target="#kt_modal_create_app">
                 Rollover </a>
@@ -14,7 +14,7 @@
             <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
                 data-bs-target="#kt_modal_new_target">
                 Add Target </a>
-            <!--end::Primary button-->
+            <!--end::Primary button--> --}}
         </div>
         <!--end::Actions-->
     </div>

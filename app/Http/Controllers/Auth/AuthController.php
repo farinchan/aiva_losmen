@@ -46,8 +46,11 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             if (Auth::user()->hasRole('pelanggan')) {
                 return redirect()->intended(route('home'));
+            }
+            elseif (Auth::user()->hasRole('admin super')) {
+                return redirect()->route("back.dashboard");
             } else {
-                return redirect()->route('back.dashboard');
+                return redirect()->route("back.profile");
             }
         }
 
