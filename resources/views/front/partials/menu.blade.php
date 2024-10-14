@@ -82,7 +82,7 @@
                     @auth
                         <li>
                             <div class="d-grid gap-2">
-                                <a href="{{ route('profile') }}" class="btn btn-outline-light">
+                                <a href="@role('pelanggan') {{ route('profile') }} @else {{ route('back.profile') }} @endrole" class="btn btn-outline-light">
                                     <img style="width: 40px"
                                         src="
                                         @role('pelanggan')

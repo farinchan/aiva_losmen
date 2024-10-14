@@ -112,6 +112,11 @@
                                             <i class="fas fa-receipt"></i>&nbsp;
                                             Cetak Invoice
                                         </a>
+                                        &nbsp; | &nbsp;
+                                        <a href="{{ route('transaksi.receipt', $transaksi->id) }}">
+                                            <i class="fas fa-receipt"></i>&nbsp;
+                                            Buat Ulasan
+                                        </a>
                                     @endif
 
 

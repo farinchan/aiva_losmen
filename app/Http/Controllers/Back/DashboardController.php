@@ -24,10 +24,10 @@ class DashboardController extends Controller
             'title' => 'Dashboard',
             'menu' => 'Dashboard',
             'submenu' => '',
-            'transaksi_hari_ini' => Transaksi::whereDate('created_at', date('Y-m-d'))->count(),
-            'total_transaksi' => Transaksi::count(),
-            'pendapatan_hari_ini' => Transaksi::whereDate('created_at', date('Y-m-d'))->sum('total_pembayaran'),
-            'total_pendapatan' => Transaksi::sum('total_pembayaran'),
+            'transaksi_hari_ini' => Transaksi::whereDate('created_at', date('Y-m-d'))->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')->count(),
+            'total_transaksi' => Transaksi::where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')->count(),
+            'pendapatan_hari_ini' => Transaksi::whereDate('created_at', date('Y-m-d'))->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')->sum('total_pembayaran'),
+            'total_pendapatan' => Transaksi::where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')->sum('total_pembayaran'),
             'jumlah_reservasi' => Transaksi::where('status', 'reservasi')->count(),
             'jumlah_digunakan' => Transaksi::where('status', 'digunakan')->count(),
             'jumlah_selesai' => Transaksi::where('status', 'selesai')->count(),
@@ -46,23 +46,31 @@ class DashboardController extends Controller
         $data = [
             'transaksi_bulanan' => DB::table('transaksi')
                 ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'), DB::raw('count(*) as total'))
+                ->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')
                 ->groupBy('month')
                 ->get(),
             'pendapatan_bulanan' => DB::table('transaksi')
                 ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'), DB::raw('sum(total_pembayaran) as total'))
+                ->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')
                 ->groupBy('month')
                 ->get(),
-            'pendapatan_sebulan_terakhir' => DB::table('transaksi')->select(DB::raw('Date(created_at) as date'), DB::raw('sum(total_pembayaran) as total'))->limit(30)
+            'pendapatan_sebulan_terakhir' => DB::table('transaksi')->select(DB::raw('Date(created_at) as date'), DB::raw('sum(total_pembayaran) as total'))
+            ->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')
+                ->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')
+                ->limit(30)
                 ->groupBy('date')
                 ->get(),
 
             'transaksi_tahunan' => DB::table('transaksi')->select(DB::raw('YEAR(created_at) as year'), DB::raw('count(*) as total'))
+            ->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')
                 ->groupBy('year')
                 ->get(),
             'pendapatan_tahunan' => DB::table('transaksi')->select(DB::raw('YEAR(created_at) as year'), DB::raw('sum(total_pembayaran) as total'))
+            ->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')
                 ->groupBy('year')
                 ->get(),
             'pendapatan_bulanan_tahun_ini' => DB::table('transaksi')->select(DB::raw('MONTH(created_at) as month'), DB::raw('sum(total_pembayaran) as total'))
+            ->where('status', '!=', 'dibatalkan')->where('status', '!=', 'selesaikan pembayaran')
                 ->whereYear('created_at', date('Y'))
                 ->groupBy('month')
                 ->get(),
@@ -72,7 +80,8 @@ class DashboardController extends Controller
         return response()->json($data);
     }
 
-    public function profileEdit() {
+    public function profileEdit()
+    {
 
         $data = [
             'title' => 'Edit Profile',
@@ -83,7 +92,8 @@ class DashboardController extends Controller
         return view('back.pages.dashboard.profile_edit', $data);
     }
 
-    public function profileUpdate(Request $request) {
+    public function profileUpdate(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
@@ -92,9 +102,9 @@ class DashboardController extends Controller
             'no_telp' => 'required|string|max:15',
             'alamat' => 'required|string',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'email' => 'required|email|max:255|unique:users,email,'.Auth::user()->id,
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::user()->id,
             'password' => 'nullable|string|min:8',
-        ],[
+        ], [
             'required' => ':attribute tidak boleh kosong',
             'max' => ':attribute maksimal :max karakter',
             'in' => ':attribute harus L atau P',

@@ -79,13 +79,13 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control check-in-out"
                                                 id="popupDatepickerfrom1Modal" placeholder="Tanggal Check-in"
-                                                name="dates">
+                                                name="check_in">
                                             <i class="fas fa-calendar-day"></i>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control check-in-out"
                                                 id="popupDatepickerto1Modal" placeholder="Tanggal Check-out"
-                                                name="dates">
+                                                name="check_out">
                                             <i class="fas fa-calendar-day"></i>
                                         </div>
                                         <div class="form-group">
