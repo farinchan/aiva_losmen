@@ -107,67 +107,71 @@
                                                 Batalkan pemesanan
                                             </a>
                                         </p>
-                                    @elseif ($transaksi->status !== 'dibatalkan')
+                                    @elseif ($transaksi->status == 'selesai')
                                         <a href="{{ route('transaksi.receipt', $transaksi->id) }}">
                                             <i class="fas fa-receipt"></i>&nbsp;
                                             Cetak Invoice
                                         </a>
                                         &nbsp; | &nbsp;
+                                        <a href="#">
+                                            <i class="fas fa-receipt"></i>&nbsp;
+                                            Tambah Ulasan
+                                        </a>
+                                    @elseif ($transaksi->status !== 'dibatalkan')
                                         <a href="{{ route('transaksi.receipt', $transaksi->id) }}">
                                             <i class="fas fa-receipt"></i>&nbsp;
-                                            Buat Ulasan
+                                            Cetak Invoice
                                         </a>
                                     @endif
 
 
                                 </div>
                                 @if ($transaksi->status == 'selesaikan pembayaran')
+                                    <div class="col-md-12 mt-3">
+                                        <div class="card mt-3" style="border: 1px solid #000000;">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-3">History Pembayaran</h5>
+                                                <table style="width: 100%;" class="table table-bordered">
+                                                    <thead>
+                                                        <th>ID Pembayaran</th>
+                                                        <th>Tanggal Transfer</th>
+                                                        <th>Status</th>
+                                                        <th>Bukti Pembayaran</th>
+                                                    </thead>
+                                                    @foreach ($transaksi->konfirmasiPembayaran as $pembayaran)
+                                                        <tr>
+                                                            <td># {{ $pembayaran->id }}</td>
+                                                            <td>{{ $pembayaran->tanggal_transfer }}</td>
+                                                            <td>
+                                                                @if ($pembayaran->status == 'Menunggu Konfirmasi')
+                                                                    <span
+                                                                        class="badge bg-warning text-dark">{{ $pembayaran->status }}</span>
+                                                                @elseif ($pembayaran->status == 'Diterima')
+                                                                    <span
+                                                                        class="badge bg-success">{{ $pembayaran->status }}</span>
+                                                                @else
+                                                                    <span
+                                                                        class="badge bg-danger">{{ $pembayaran->status }}</span>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <a href="{{ Storage::url($pembayaran->bukti_transfer) }}"
+                                                                    target="_blank"> <i class="fas fa-file-image"></i> Lihat
+                                                                    Bukti</a> <br>
+                                                            </td>
 
-                                <div class="col-md-12 mt-3">
-                                    <div class="card mt-3" style="border: 1px solid #000000;">
-                                        <div class="card-body">
-                                            <h5 class="card-title mb-3">History Pembayaran</h5>
-                                            <table style="width: 100%;" class="table table-bordered">
-                                                <thead>
-                                                    <th>ID Pembayaran</th>
-                                                    <th>Tanggal Transfer</th>
-                                                    <th>Status</th>
-                                                    <th>Bukti Pembayaran</th>
-                                                </thead>
-                                                @foreach ($transaksi->konfirmasiPembayaran as $pembayaran)
-                                                    <tr>
-                                                        <td># {{ $pembayaran->id }}</td>
-                                                        <td>{{ $pembayaran->tanggal_transfer }}</td>
-                                                        <td>
-                                                            @if ($pembayaran->status == 'Menunggu Konfirmasi')
-                                                                <span
-                                                                    class="badge bg-warning text-dark">{{ $pembayaran->status }}</span>
-                                                            @elseif ($pembayaran->status == 'Diterima')
-                                                                <span
-                                                                    class="badge bg-success">{{ $pembayaran->status }}</span>
-                                                            @else
-                                                                <span
-                                                                    class="badge bg-danger">{{ $pembayaran->status }}</span>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            <a href="{{ Storage::url($pembayaran->bukti_transfer) }}"
-                                                                target="_blank"> <i class="fas fa-file-image"></i> Lihat
-                                                                Bukti</a> <br>
-                                                        </td>
-
-                                                    </tr>
-                                                @endforeach
-                                            </table>
+                                                        </tr>
+                                                    @endforeach
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                @empty
+            @empty
                 <div class="col-md-12" style="height: 300px">
                     <p class="text text-center">Belum ada transaksi</p>
 
