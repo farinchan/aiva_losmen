@@ -29,6 +29,6 @@ class Transaksi extends Model
 
     public function konfirmasiPembayaran()
     {
-        return $this->hasMany(konfirmasiPembayaran::class, 'transaksi_id', 'id');
+        return $this->hasMany(KonfirmasiPembayaran::class, 'transaksi_id', 'id');
     }
 }
