@@ -11,16 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords"
-        content="html, html5, SEO, responsive, creative, fullscreen, business, samll business, multi purpose, bootstrap, bootstrap 4, google material design, material design, metro, metronic, start-up, ui/ux, html template, css3, css, branding, creative design, multipurpose, multi-purpose, parallax, personal, consulting, masonry, grid, carousel, agency, construction, ecommerce, landing, event, medical,eal-estate">
+        content="aiva losmen, aceh, kamar, losmen">
     <meta name="description"
-        content="Bellevue is Professional Creative Template. Bellevue is a Powerful Responsive Multi-Purpose HTML5 CSS3 Template. Build whatever you like with this Template. We have included 6+ ready-to-use Homepages. What ever you are using the device your site will run as it should be. This template is fully responsive layout for all type of devices. Bellevue template coded with beautiful and clean codes! Some powerful HTML files 100% valid W3 web standards. Try out the demo." />
-    <meta property="og:title" content="Bellevue || Creative Hostel Bootstrap 5 Template" />
+        content="Aiva Losmen adalah losmen yang menyediakan fasilitas kamar yang nyaman dan bersih. Kami juga menyediakan fasilitas lainnya seperti restoran, kolam renang, dan lainnya.">
+    <meta property="og:title" content="AIVA LOSMEN" />
     <!-- SITE TITLE -->
-    <title>Bellevue || Creative Hostel Bootstrap 5 Template</title>
+    <title>AIVA LOSMEN </title>
     <!-- Favicon Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('front/images/favicon/favicon-1.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('front/images/favicon/favicon-2.png') }}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ asset('front/images/favicon/favicon-3.png') }}" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('front/images/aiva_losmen_logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('front/images/aiva_losmen_logo.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('front/images/aiva_losmen_logo.png') }}" sizes="16x16">
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
