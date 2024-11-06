@@ -10,6 +10,7 @@ use App\Models\Tipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class KamarController extends Controller
 {
@@ -67,7 +68,7 @@ class KamarController extends Controller
         }
 
         $file = $request->file('foto');
-        $fileName = time() . '_' . $file->getClientOriginalName();
+        $fileName = Str::random(10) . time() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('uploads/kamar/', $fileName, 'public');
 
         Kamar::create([
@@ -141,7 +142,7 @@ class KamarController extends Controller
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $fileName = time() . '_' . $file->getClientOriginalName();
+            $fileName = Str::random(10) . time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('uploads/kamar/', $fileName, 'public');
             $kamar->foto = $fileName;
         }
