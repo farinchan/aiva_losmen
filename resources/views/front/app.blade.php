@@ -10,8 +10,7 @@
     <meta name="author" content="Bellevue Theme" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords"
-        content="aiva losmen, aceh, kamar, losmen">
+    <meta name="keywords" content="aiva losmen, aceh, kamar, losmen">
     <meta name="description"
         content="Aiva Losmen adalah losmen yang menyediakan fasilitas kamar yang nyaman dan bersih. Kami juga menyediakan fasilitas lainnya seperti restoran, kolam renang, dan lainnya.">
     <meta property="og:title" content="AIVA LOSMEN" />
@@ -27,6 +26,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Trirong:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+
+    @yield('styles')
 
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">

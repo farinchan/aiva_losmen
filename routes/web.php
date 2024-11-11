@@ -35,6 +35,8 @@ Route::get('/transaksi', [FrontTransaksiController::class, 'myTransaction'])->na
 Route::get('/transaksi/{id}/cancel', [FrontTransaksiController::class, 'myTransactionCancel'])->name('transaksi.cancel')->middleware(['auth', 'role:pelanggan']);
 Route::get('/transaksi/{id}/receipt', [FrontTransaksiController::class, 'receipt'])->name('transaksi.receipt')->middleware(['auth', 'role:pelanggan']);
 
+Route::post('/transaksi/{id}/ulasan', [FrontTransaksiController::class, 'ulasanStore'])->name('ulasan')->middleware(['auth', 'role:pelanggan']);
+
 
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');

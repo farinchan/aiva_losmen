@@ -1,5 +1,9 @@
 @extends('front.app')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('front/css/hystmodal.min.css') }}">
+@endsection
+
 @section('content')
     <!-- Room page Header Start-->
     <div class="thmv-room-headv3">
@@ -113,8 +117,8 @@
                                             Cetak Invoice
                                         </a>
                                         &nbsp; | &nbsp;
-                                        <a href="#">
-                                            <i class="fas fa-receipt"></i>&nbsp;
+                                        <a href="#" data-hystmodal="#ulasan{{ $transaksi->id }}">
+                                            <i class="fas fa-star"></i>&nbsp;
                                             Tambah Ulasan
                                         </a>
                                     @elseif ($transaksi->status !== 'dibatalkan')
@@ -171,6 +175,36 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="hystmodal" id="ulasan{{ $transaksi->id }}" aria-hidden="true">
+                    <div class="hystmodal__wrap">
+                        <div class="hystmodal__window" role="dialog" aria-modal="true" style="padding: 20px;">
+                            <button data-hystclose class="hystmodal__close">Ulasan</button>
+                            <form action="{{ route('ulasan', $transaksi->id) }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="rating">Rating</label>
+                                    <select name="rating" id="rating" class="form-control" required>
+                                        <option value="">Pilih Rating</option>
+                                        <option value="1">1 - Sangat Buruk</option>
+                                        <option value="2">2 - Buruk</option>
+                                        <option value="3">3 - Cukup</option>
+                                        <option value="4">4 - Baik</option>
+                                        <option value="5">5 - Sangat Baik</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ulasan">Komentar</label>
+                                    <textarea name="ulasan" id="ulasan" rows="4" class="form-control" required></textarea>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="btn btn-primary">Kirim Ulasan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             @empty
                 <div class="col-md-12" style="height: 300px">
                     <p class="text text-center">Belum ada transaksi</p>
@@ -180,7 +214,15 @@
 
         </div>
     </div>
+
+
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('front/js/hystmodal.min.js') }}"></script>
+    <script>
+        const hystModal = new HystModal({
+            linkAttributeName: "data-hystmodal",
+        });
+    </script>
 @endsection

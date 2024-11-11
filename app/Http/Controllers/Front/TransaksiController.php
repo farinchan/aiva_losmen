@@ -8,6 +8,7 @@ use App\Models\Kamar;
 use App\Models\KonfirmasiPembayaran;
 use App\Models\MetodePembayaran;
 use App\Models\Transaksi;
+use App\Models\Ulasan;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -218,6 +219,44 @@ class TransaksiController extends Controller
         $pdf = Pdf::loadView('front.pages.transaksi.receipt_pdf', $data);
 
         return $pdf->download('receipt-' . $transaksi->id .' (' . Auth::user()->pelanggan?->nama . ').pdf');
+
+    }
+
+    public function ulasanStore(Request $request, $id)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'rating' => 'required|numeric|min:1|max:5',
+                'ulasan' => 'required',
+            ],
+            [
+                'rating.required' => 'Rating harus diisi',
+                'rating.numeric' => 'Rating harus berupa angka',
+                'rating.min' => 'Rating minimal 1',
+                'rating.max' => 'Rating maksimal 5',
+                'ulasan.required' => 'Ulasan harus diisi',
+            ]
+        );
+
+        if ($validator->fails()) {
+            Alert::error('Gagal', $validator->errors()->all());
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $transaksi = Transaksi::findOrFail($id);
+
+        // dd($transaksi);
+
+        $ulasan = Ulasan::create([
+            'kamar_id' => $transaksi->kamar->id,
+            'pelanggan_id' => Auth::user()->pelanggan->id_pelanggan,
+            'rating' => $request->rating,
+            'ulasan' => $request->ulasan,
+        ]);
+
+        Alert::success('Berhasil', 'Ulasan berhasil ditambahkan');
+        return redirect()->back();
 
     }
 
