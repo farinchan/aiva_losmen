@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pelanggan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -37,21 +38,26 @@ class ProfileController extends Controller
         }
 
         $user = User::find(auth()->id());
-        $user->nama = $request->name;
-        $user->jenis_kelamin = $request->jenis_kelamin;
-        $user->no_telp = $request->no_telp;
         $user->email = $request->email;
         if($request->password != null || $request->password != '') {
             $user->password = bcrypt($request->password);
         }
+        $user->save();
+
+        $pelanggan = new Pelanggan();
+        $pelanggan->nama = $request->name;
+        $pelanggan->jenis_kelamin = $request->jenis_kelamin;
+        $pelanggan->no_telp = $request->no_telp;
+        $pelanggan->user_id = $user->id;
+
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('uploads/pengguna/', $fileName, 'public');
-            $user->foto = $fileName;
+            $path = $file->storeAs('uploads/pengguna/', $fileName, 'public');
+            $pelanggan->foto = $path;
         }
 
-        $user->save();
+        $pelanggan->save();
 
         Alert::success('Success', 'Profil berhasil diupdate');
         return back();
