@@ -57,7 +57,7 @@ class ProfileController extends Controller
             $pelanggan->foto = $path;
         }
 
-        $pelanggan->save();
+        $pelanggan->update();
 
         Alert::success('Success', 'Profil berhasil diupdate');
         return back();
