@@ -37,7 +37,7 @@ class ProfileController extends Controller
         }
 
         $user = User::find(auth()->id());
-        $user->name = $request->name;
+        $user->nama = $request->name;
         $user->jenis_kelamin = $request->jenis_kelamin;
         $user->no_telp = $request->no_telp;
         $user->email = $request->email;
