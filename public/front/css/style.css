@@ -18,7 +18,7 @@ Created by Bellevue Theme
     1. Global Styles
     ========================================================================== */
     body {
-      font-family: 'Trirong', serif; 
+      font-family: 'Trirong', serif;
       color:#1C1715;
       font-size: 16px;
       line-height: 30px;
@@ -37,7 +37,7 @@ Created by Bellevue Theme
     }
     h1{
       font-size: 48px;
-      line-height: 62px;  
+      line-height: 62px;
     }
     h2{
       font-size: 42px;
@@ -66,14 +66,14 @@ Created by Bellevue Theme
     }
     a {
       color: #1C1715;
-      text-decoration: none; 
-      display: inline-block; 
+      text-decoration: none;
+      display: inline-block;
       outline: none;
       transition: .5s ease;
     }
     a:hover{
         color: #1C171570;
-        text-decoration: none; 
+        text-decoration: none;
         outline: none;
         transition: 0.3s ease;
     }
@@ -93,11 +93,11 @@ Created by Bellevue Theme
       display: inline-block;
     }
     button {
-      border:none; 
-      outline:none; 
-      box-shadow: none; 
-      display: block; 
-      padding: 0; 
+      border:none;
+      outline:none;
+      box-shadow: none;
+      display: block;
+      padding: 0;
       background: transparent;
     }
     select:focus,
@@ -108,10 +108,10 @@ Created by Bellevue Theme
     }
     select, input,textarea {
       font-family: 'Trirong', sans-serif;
-      display: block; 
-      font-size: 16px; 
-      line-height: 30px; 
-      outline: none; 
+      display: block;
+      font-size: 16px;
+      line-height: 30px;
+      outline: none;
       box-shadow: none;
       transition: all 0.3s ease-in-out;
     }
@@ -134,7 +134,7 @@ Created by Bellevue Theme
       margin-top: 3px;
       font-size: 16px;
     }
-    .clear_fix { 
+    .clear_fix {
       clear:both;
     }
     .clear_fix:after {
@@ -147,16 +147,16 @@ Created by Bellevue Theme
     }
     .float_right {
       float: right;
-    }    
+    }
 
     /*====== Background Color ======*/
     .thmv-bg-dark{
       background:#181818;
     }
     .thmv-bg-glass{
-        background-color: rgba(255, 255, 255, 0.7); 
+        background-color: rgba(255, 255, 255, 0.7);
         -webkit-backdrop-filter: blur(25px);
-        backdrop-filter: blur(25px); 
+        backdrop-filter: blur(25px);
 
     }
 
@@ -187,7 +187,7 @@ Created by Bellevue Theme
     .btn-outline-light,
     .btn-full-filled,
     .btn-full-filled-light{
-      color: #1C1715;  
+      color: #1C1715;
       font-size: 14px;
       line-height: 24px;
       font-weight: 700;
@@ -231,8 +231,8 @@ Created by Bellevue Theme
     }
     .btn-full-filled-light:hover{
         background: #1C1715;
-        color:#FFFFFF; 
-        border-color:#1C1715;   
+        color:#FFFFFF;
+        border-color:#1C1715;
     }
 
     /*====== Section Title Effects ======*/
@@ -335,7 +335,7 @@ Created by Bellevue Theme
         cursor: pointer;
     }
     .thmv-menu-drop{
-      position: relative;      
+      position: relative;
     }
     .thmv-menu-drop:before {
         content: "\f0d7";
@@ -501,7 +501,7 @@ Created by Bellevue Theme
       -moz-transform: translateX(0);
       -ms-transform: translateX(0);
       -o-transform: translateX(0);
-      transform: translateX(0);  
+      transform: translateX(0);
       -webkit-overflow-scrolling: touch;
     }
     #cd-lateral-nav .item-has-children > a {
@@ -522,7 +522,7 @@ Created by Bellevue Theme
         font-family: 'Font Awesome 5 Free';
         font-size: 18px;
         font-weight: 900;
-        color: #1C1715;    
+        color: #1C1715;
     }
     .item-has-children .sub-menu > li:first-child{
         border-top:1px solid rgba(0, 0, 0, 0.1);
@@ -614,7 +614,7 @@ Created by Bellevue Theme
         }
         .thmv-tour-row .form-group {
             display: flex;
-            border: 1px solid #1C1715;        
+            border: 1px solid #1C1715;
             width:230px;
             height: 50px;
             margin-right:24px;
@@ -675,7 +675,7 @@ Created by Bellevue Theme
           color: #1C1715;
           font-weight: 500;
       }
-      .form-select-guests .btn-add, 
+      .form-select-guests .btn-add,
       .form-select-guests .btn-minus {
           font-size: 12px;
           width: 30px;
@@ -693,7 +693,7 @@ Created by Bellevue Theme
           display: inline-block;
           text-align: center;
       }
-    /*----------  Datepicker Design  ----------*/   
+    /*----------  Datepicker Design  ----------*/
        .datepick {
            font-family: 'Trirong', sans-serif;
            font-size: 18px;
@@ -745,10 +745,10 @@ Created by Bellevue Theme
            height: 40px;
            line-height: 40px;
            display: inline-block;
-           text-align: center;           
+           text-align: center;
        }
        .datepick-cmd-next:after {
-           content: "\f061";        
+           content: "\f061";
        }
        .datepick-month td {
            background-color: #ffffff;
@@ -822,7 +822,7 @@ Created by Bellevue Theme
         font-size: 14px;
         line-height: 28px;
         margin-top: 10px;
-    }   
+    }
 /*=====  End Of Facilities Section Styles  ======*/
 
 /*=============================================
@@ -853,7 +853,7 @@ Created by Bellevue Theme
     }
     .slick-slide {
       margin: 0px 10px;
-    } 
+    }
     .slick-slide img{
       width: 100%;
     }
@@ -874,7 +874,7 @@ Created by Bellevue Theme
         display: none !important;
     }
 /*=====  End Of Our Hotel Sectin Style  ======*/
-     
+
 /*=============================================
     =      Welcome To Paradise Section Style         =
     =============================================*/
@@ -906,7 +906,7 @@ Created by Bellevue Theme
         justify-content: space-between;
     }
 /*=====  End Of Welcome To Paradise Section Style  ======*/
-        
+
 /*=============================================
     =       Rooms & Suites Sectin Style         =
     =============================================*/
@@ -922,11 +922,11 @@ Created by Bellevue Theme
     }
     .thmv-rooms-img-slider .slick-slide {
           margin: 0px 20px;
-    } 
+    }
     .thmv-room-view{
         position: relative;
     }
-    .thmv-room-view img{ 
+    .thmv-room-view img{
         width:100%;
     }
     .thmv-room-view .thmv-room-price{
@@ -986,7 +986,7 @@ Created by Bellevue Theme
     =         About Covid Section Style            =
     =============================================*/
     .thmv-covid-sec{
-        padding:150px 10px 120px; 
+        padding:150px 10px 120px;
     }
     .thmv-covid-sec .thmv-about-covid{
         border: 5px solid #181818;
@@ -1018,7 +1018,7 @@ Created by Bellevue Theme
         padding:15px;
     }
 /*=====  End Of About Covid Section Style  ======*/
-        
+
 /*=============================================
     =        Our Service Section Style            =
     =============================================*/
@@ -1052,7 +1052,7 @@ Created by Bellevue Theme
         font-size: 18px;
     }
     .thmv-our-service .thmv-slider-service-box{
-        background-color: rgba(255, 255, 255, 0.7); 
+        background-color: rgba(255, 255, 255, 0.7);
         display: none;
         padding:30px;
         margin:-50px 50px 0px;
@@ -1061,7 +1061,7 @@ Created by Bellevue Theme
     .thmv-our-service .thmv-slider-service-box h5{
         margin-bottom: 10px;
     }
-    
+
     .thmv-our-service .thmv-slick-img-slider .slick-active .thmv-slider-service-box{
         display: block;
     }
@@ -1158,7 +1158,7 @@ Created by Bellevue Theme
         padding-top:50px;
     }
     .thmv-service-box{
-        
+
         text-align: center;
         min-height:475px;
         position: relative;
@@ -1238,7 +1238,7 @@ Created by Bellevue Theme
         margin-bottom: 0;
     }
     .thmv-footer-sec{
-        padding:90px 10px;    
+        padding:90px 10px;
     }
     .thmv-footer-sec .thmv-about h6{
         margin-bottom: 10px;
@@ -1258,7 +1258,7 @@ Created by Bellevue Theme
     .thmv-footer-sec .thmv-footer-social a.btn-outline{
         margin-top:25px;
         min-width:100%;
-    } 
+    }
     /*----------  Bottom Footre Section  ----------*/
     .thmv-footer .thmv-bottom-footer{
         padding:15px 10px;
@@ -1281,7 +1281,7 @@ Created by Bellevue Theme
     .thmv-footer .thmv-bottom-footer a:hover,
     .thmv-footer .thmv-bottom-footer .thmv-payment i:hover{
         opacity: 1;
-    }    
+    }
 /*=====  End Of Footer Section Style   ======*/
 
 /*========================================================
@@ -1498,10 +1498,10 @@ Created by Bellevue Theme
         margin-bottom: 30px;
         max-width: 710px;
     }
-    .thmv-first-list{        
+    .thmv-first-list{
         z-index: 1;
         position: relative;
-        margin-top: -50px;        
+        margin-top: -50px;
     }
     .thmv-listimg {
         position: relative;
@@ -1537,7 +1537,7 @@ Created by Bellevue Theme
         font-size: 16px;
         margin-bottom: 0;
     }
-    .thmv-listroom-servicec li img {        
+    .thmv-listroom-servicec li img {
         width: 20px;
         opacity: 0.4;
     }
@@ -1600,7 +1600,7 @@ Created by Bellevue Theme
             top: var(--offset);
         }
         .thmv-form-availability h5,
-        .thmv-extra-services h5{ 
+        .thmv-extra-services h5{
             font-size: 24px;
             line-height: 31px;
             letter-spacing: -0.02em;
@@ -1773,7 +1773,7 @@ Created by Bellevue Theme
     .thmv-two-col-roomlist-v1 .thmv-listroom-detail h5 {
         font-size: 24px;
         line-height: 28px;
-    }    
+    }
     .thmv-two-col-roomlist-v1 .thmv-listroom-detail p{
         font-weight: 400;
     }
@@ -1840,7 +1840,7 @@ Created by Bellevue Theme
     }
     /*----------  Slick Slider Arrow Style  ----------*/
         .slick-prev:before,
-        .slick-next:before { 
+        .slick-next:before {
           font-family:"Font Awesome 5 Free";
           font-weight: 600;
           font-size: 14px;
@@ -2051,12 +2051,12 @@ Created by Bellevue Theme
         }
         .thmv-availability-datepik .datepick-month td .datepick-today{
             background-color: #f0c0c0;
-            width: 100%;  
+            width: 100%;
         }
         .thmv-availability-datepik .datepick-month td a.thmv-date-highlightedClass{
             background:rgb(28 23 21/ 20%);
         }
-        
+
         .datepick-month td .datepick-selected{
             border:none;
         }
@@ -2312,7 +2312,7 @@ Created by Bellevue Theme
         background:linear-gradient(0deg, rgba(58, 51, 53, 0.04), rgba(58, 51, 53, 0.04)), #FFFFFF;
         border:0;
         text-align:right;
-        
+
     }
     .thmv-room-modern .thmv-show-al-photos a.btn-full-filled:hover{
         color:#908E8E;
@@ -2335,7 +2335,7 @@ Created by Bellevue Theme
         justify-content:space-between;
     }
     /* .thmv-room-single-modern .thmv-room-details .thmv-room-details-price{
-        margin-bottom: 10px;    
+        margin-bottom: 10px;
     } */
     .thmv-room-single-modern .thmv-room-details .thmv-room-details-price h5{
         text-transform: capitalize;
@@ -2568,10 +2568,10 @@ Created by Bellevue Theme
     =            package and spacial style            =
     =================================================*/
     .thmv-package-top-sec {
-        height:485px;   
+        height:485px;
     }
     .thmv-package-top-sec img{
-        width:100%;   
+        width:100%;
         height:485px;
         object-fit:cover;
     }
@@ -2587,7 +2587,7 @@ Created by Bellevue Theme
     .thmv-spcial-offser-box h2,
     .thmv-spcial-offser-box p{
         color: #ffffff;
-    }   
+    }
     .thmv-spcial-offser-box p{
         margin:20px 0px 30px;
     }
@@ -2687,13 +2687,13 @@ Created by Bellevue Theme
         .thmv-video-modal{
           position: relative;
         }
-        .thmv-video-modal .embed-container { 
+        .thmv-video-modal .embed-container {
           position: relative;
           padding-bottom: 56.25%;
           height: 0;
           overflow: hidden;
           max-width: 100%;
-        } 
+        }
         .thmv-video-modal .embed-container iframe,
         .thmv-video-modal .embed-container object,
         .thmv-video-modal .embed-container embed {
@@ -2777,7 +2777,7 @@ Created by Bellevue Theme
     /*----------  get in touch section  ----------*/
         .thmv-get-in-touch{
             padding: 250px 10px 150px;
-        }    
+        }
         .thmv-get-in-touch.thmv-bg-dark .thmv-contact-info .thmv-info-title h2,
         .thmv-get-in-touch.thmv-bg-dark .thmv-contact-form .thmv-form-title h2,
         .thmv-get-in-touch.thmv-bg-dark .thmv-contact-info .thmv-info-icon i,
