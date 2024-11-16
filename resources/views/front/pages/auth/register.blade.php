@@ -5,8 +5,8 @@
     <section class="thmv-get-in-touch thmv-contact-sec">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-lg-5 col-md-12 thmv-contact-info">
-                    <img src="{{ asset('front/images/contac-side-img.jpg') }}" alt="">
+                <div class="col-lg-5 col-md-12 thmv-contact-info" style="height: 1000px;">
+                    <img src="{{ asset('front/images/contac-side-img.jpg') }}" alt="" style="height: 1000px; object-fit: cover;">
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-12 mx-auto thmv-contact-form my-5">
                     <div class="thmv-form-title">
